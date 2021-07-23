@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 
-// useState는 독립적인 함수이므로, 커스텀 함수(useMyState)에서 활용할 수 있다.
-// 숫자가 아닌 무언가를 초기값으로 넣었을 시, 숫자로 강제 변경하자
+// 숫자가 아닌 값을 초기값으로 입력하면 숫자로 강제 변경하는 함수
 const useMyState = (initialValue) => {
-  
-  // CUSTOM HOOK (강화)
-  const initNum = Number.isInteger(initialValue) ? initialValue : 0 ; // 변수가 정수면 출력, 정수가 아니면 0 출력 
-
+  const initNum = Number.isInteger(initialValue) ? initialValue : 0 ; // 매개변수 initialValue가 정수면 출력, 정수가 아니면 0 출력 
   const [myState, changeState] = useState(initNum);
   return {myState, changeState};
 };
@@ -22,3 +18,13 @@ function Extra(){
 };
 
 export default Extra;
+
+
+/*
+
+useState()의 특징: 
+
+useState는 독립적인 함수이므로,
+커스텀 함수(useMyState) 내부에서도 활용할 수 있다.
+
+*/
