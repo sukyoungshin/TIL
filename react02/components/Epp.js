@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
-// 숫자가 아닌 값을 초기값으로 입력하면 숫자로 강제 변경하는 함수
+// 커스텀 기능추가 : 숫자가 아닌 값을 초기값으로 입력하면 숫자로 강제 변경한다.
 const useMyState = (initialValue) => {
   const initNum = Number.isInteger(initialValue) ? initialValue : 0 ; // 매개변수 initialValue가 정수면 출력, 정수가 아니면 0 출력 
   const [myState, changeState] = useState(initNum);
   return {myState, changeState};
 };
 
-// 숫자조절하는 함수
 function Extra(){
   const {myState, changeState} = useMyState(0);
   return <div>
