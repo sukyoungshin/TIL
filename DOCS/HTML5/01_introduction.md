@@ -1,21 +1,20 @@
-
 ## 1. HTML이란?
 
 HyperText Markup Language의 약자로 사용자가 인터넷에서 클릭을 통해 자유롭게 이동하면서 해당 정보를 확인할 때 보는 웹 문서를 의미합니다. 
 
-- HTML는 컨텐츠의 구조를 정의하는 마크업 언어이다.
-- HTML문서의 확장자: *.html, *.htm (* 파일명에는 영문 대문자X 공백X. 특수문자는 _언더바와 -하이픈만 사용한다.)
-- HTML은 텍스트, 이미지, 도형, 링크 등 다양한 요소를 포함할 수 있다.
-- HTML은 작성하는 형식과 브라우저를 통해 표시하는 형식이 달라지는 언어이다.<br>
+> - HTML는 컨텐츠의 구조를 정의하는 마크업 언어이다.
+>- HTML문서의 확장자: *.html, *.htm (* 파일명에는 영문 대문자X 공백X. 특수문자는 _언더바와 -하이픈만 사용한다.)
+>- HTML은 텍스트, 이미지, 도형, 링크 등 다양한 요소를 포함할 수 있다.
+>- HTML은 작성하는 형식과 브라우저를 통해 표시하는 형식이 달라지는 언어이다.<br>
 
 
 ## 2. HTML5는 웹 표준이다
 
 인터넷 초기에는 대부분 인터넷 익스플로러를 이용해 인터넷에 접속했습니다. 그래서 익스플로러를 제외한 다른 브라우저 (크롬, 오페라, 넷스케이프, 사파리... 등)에서는 웹 페이지가 익스플로러와는 다르게 보여지거나 멀티미디어 기능이 작동하지 않는 경우도 많았습니다. 이런 문제점을 해결하기 위해 W3C(World Wide Web Consortium)를 중심으로 웹 페이지의 표준화에 대한 작업이 진행되었습니다. 브라우저 중심이 아닌 HTML 태그가 중심이며, 사용자 중심이 되는 표준안으로 모든 브라우저에서 공통으로 인터넷을 사용하고 자유롭게 커뮤니티를 만들어가는 것을 웹 표준이라고 합니다.
 
-- 웹 표준이란? 웹사이트를 만들 때 지켜야 할 약속을 정리한 것
-- 웹 표준으로 정해진 언어: HTML5, CSS3
-- 웹 표준은 다양한 브라우저와 기기 환경으로 인한 문제를 최소화하기 위한 표준안이다.
+> - 웹 표준이란? 웹사이트를 만들 때 지켜야 할 약속을 정리한 것
+>- 웹 표준으로 정해진 언어: HTML5, CSS3
+>- 웹 표준은 다양한 브라우저와 기기 환경으로 인한 문제를 최소화하기 위한 표준안이다.
 
 
 HTML5는 모든 웹 표준을 지향하는 브라우저에서 웹 페이지가 동일하게 보이는 것을 기본 목표로 하고 있으며, 모든 디지털 장치에서도 HTML5는 쉽게 대응할 수 있도록 HTML 문서를 지원하고 있습니다.
@@ -26,10 +25,10 @@ HTML5는 모든 웹 표준을 지향하는 브라우저에서 웹 페이지가 �
 
 HTML 문서에서 활용되는 태그는 문서의 구조가 어떤 부분인지를 나타내며, 태그를 작성할 경우 정해진 명령어를 <>로 묶어서 표현합니다.
 
-- 태그의 가장 보편적인 형태는 "시작 태그"와 "종료 태그"로 이루어져있다. ```ex. <h1></h1>```
-- 끝나는 태그가 없는 경우도 있다.(empty tag) ```ex. <img>, <br>, <hr> ...```
-- '알파벳 소문자'를 사용해서 기입한다.
-- 필요한 경우, 각각의 태그에는 추가 속성을 기입할 수 있다.<br>
+> - 태그의 가장 보편적인 형태는 "시작 태그"와 "종료 태그"로 이루어져있다. ```ex. <h1></h1>```
+>- 끝나는 태그가 없는 경우도 있다.(empty tag) ```ex. <img>, <br>, <hr> ...```
+>- '알파벳 소문자'를 사용해서 기입한다.
+>- 필요한 경우, 각각의 태그에는 추가 속성을 기입할 수 있다.<br>
 
 
 ### 📌 HTML 문서의 기본구조
@@ -46,18 +45,19 @@ HTML 문서에서 활용되는 태그는 문서의 구조가 어떤 부분인지
  </body>
 </html>
 ```
+
 > **문법이해**<br>
-```<!doctype html>``` 
+`<!doctype html>` 
 웹 브라우저에게 지금 사용하는 문서 타입은 HTML 유형을 사용했으니 그 버전에 맞는 방법으로 해석(렌더링)하라고 알려주는 것이다. 부분적으로는 쿼크 모드를 피하기 위한 목적도 있다. <br>
-```<html lang="ko">```  
+`<html lang="ko">`  
 HTML 문서의 시작을 알리며, lang 속성을 사용해 문서에서 사용할 언어를 지정한다. 화면 낭독 프로그램(스크린 리더)가 lang 속성의 값을 읽어들여 언어를 인식하여 자동으로 음성을 변환하거나 해당 언어에 적합한 발음을 제공한다. (웹접근성 관련 속성) <br>
-```<head> ~ </head>```
+`<head> ~ </head>`
 브라우저에 정보를 주는 태그. 눈에는 보이지 않지만 웹 페이지를 표현하기 위해 필요한 정보를 담고 있다. ex. CSS파일, script 파일, 웹 폰트 관련 소스 등<br>
-```<meta>```
+`<meta>`
 화면에 글자를 표시하는 문자 인코딩 방법을 비롯한 웹 페이지 키워드 등을 지정할 수 있다. HTML5는 대부분 기본 인코딩을 한글, 영문을 비롯한 모든 언어를 표시할 수 있는 UTF-8로 지정하고 있다. (SEO 관련 속성) <br>
-```<title> ~ </title>``` 
+`<title> ~ </title>` 
 웹 브라우저의 페이지 제목을 정의하는데 사용된다. 브라우저 탭의 제목으로 표시되고 즐겨찾기를 했을 때 표시되는 제목.<br>
-```<body> ~ </body>```
+`<body> ~ </body>`
 본문 내용을 표시하는 공간. <br>
 
 ## 4. HTML5 Contents Model
@@ -108,17 +108,15 @@ Sectioning Content의 header를 정의하는 콘텐츠입니다.
 ```img (usemap 속성이 있으면) ```
 ```object (usemap 속성이 있으면)```<br>
 
-  <br><br>
-  
-
+-----------------------------------------
 
 ## 📖 REFERENCE 
 
 - HTML:
-  + MDN: [HTML](https://developer.mozilla.org/ko/docs/Web/HTML), [HTML Contents Model](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories)
-  + W3SCHOOL: [BASIC HTML](https://www.w3schools.com/tags/ref_byfunc.asp), [HTML Tutorials](https://www.w3schools.com/html/default.asp)
+  + MDN: [HTML](https://developer.mozilla.org/ko/docs/Web/HTML), [HTML Contents Model(EN)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories)
+  + W3SCHOOL: [BASIC HTML(EN)](https://www.w3schools.com/tags/ref_byfunc.asp), [HTML Tutorials(EN)](https://www.w3schools.com/html/default.asp)
   
-- HTML ATTRIBUTES (HTML속성): [HTML Global Attributes](https://www.w3schools.com/tags/ref_standardattributes.asp), [HTML Attributes References](https://www.w3schools.com/tags/ref_attributes.asp)
+- HTML ATTRIBUTES: [HTML Global Attributes(EN)](https://www.w3schools.com/tags/ref_standardattributes.asp), [HTML Attributes References(EN)](https://www.w3schools.com/tags/ref_attributes.asp)
 
 - BLOG:
   + [웹접근성 속성 HTML lang](https://mygumi.tistory.com/52)
