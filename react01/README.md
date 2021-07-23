@@ -1,15 +1,15 @@
 # REACT STUDY
 
 ## BASIC (JSX)
-App.js
+App.js <br>
 Bpp.js
 
 ## props
 Cpp.js
 
 ## map
-Dpp.js
-Epp.js
-Fpp.js
-Gpp.js
+Dpp.js <br>
+Epp.js <br>
+Fpp.js <br>
+Gpp.js <br>
 
