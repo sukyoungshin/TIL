@@ -1,10 +1,10 @@
-// 문자열을 관리하는데, 문자열 길이가 10을 넘어가지 못하도록 제한을 주는 (커스텀 기능을 주는) 컴포넌트
 import React, { useState } from 'react';
 
+// 커스텀 기능 : 문자열의 길이가 10을 넘어가지 못하도록 제한한다.
 const useLimitedState = (validation) => {
   const [ value, setValue ] = useState("")
   const handleChange = (e) => {
-    const currentValue = e.target.value
+    const currentValue = e.target.value;
     if(validation(currentValue)){
       setValue(currentValue)
     }
@@ -19,9 +19,11 @@ function Fila(){
     }
   };
   const { value, handleChange } = useLimitedState(validation);
-  return <div>
-    <input type="text" value={value} onChange={handleChange} />
-  </div>;
+  return (
+    <>
+      <input type="text" value={value} onChange={handleChange} />
+    </>
+  );
 };
 
 
