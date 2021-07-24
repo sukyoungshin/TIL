@@ -1,10 +1,10 @@
-# 💡 REACT
+#  REACT<br><br>
 
-### BASIC (JSX, props, map)
+## 📘 BASIC (JSX, props, map)
 App.js <br>
 Bpp.js
 
-## React Hook APIs
+## 📙 React Hook APIs
 ### useState()
 Cpp.js <br>
 Dpp.js <br>
