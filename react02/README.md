@@ -1,5 +1,3 @@
-#  REACT<br><br>
-
 ## 1. BASIC (JSX, props, map)
 App.js <br>
 Bpp.js
