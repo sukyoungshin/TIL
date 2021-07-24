@@ -1,7 +1,6 @@
 // map()
-import React, { useState } from 'react';
+import React from 'react';
 
-const FOOD = ['떡볶이', '피자', '피자', '햄버거', '치킨', '쌀국수'];
 const TODOS = [{
   content: '리액트 공부하기', isDone: false, priority: 1
 },{
@@ -25,6 +24,7 @@ const ToDoList = () => {
 };
 
 export default ToDoList;
+
 /*
 map()
 
