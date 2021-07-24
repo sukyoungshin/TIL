@@ -1,5 +1,3 @@
-# REACT STUDY
-
 ## BASIC (JSX)
 App.js <br>
 Bpp.js
