@@ -1,5 +1,3 @@
-## REACT STUDY<br><br>
-
 ## 1. React Hook APIs
 ### 🎈 useState(), useEffect()
 App.js<br>
