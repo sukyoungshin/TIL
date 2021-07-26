@@ -3,15 +3,12 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-// https://cat.beansdrawer.com/api/breeds/image/random
-
 // axios.get(url) : 프로미스 기반의 비동기 통신 객체를 반환
-// async + await : 최신 자바스크립트에서 프로미스를 반환할 때 사용하는 키워드
 async function getCatImage(){
   return await axios.get('https://cat.beansdrawer.com/api/breeds/image/random');
 };
-
-// getCatImage().then().catch(); ==> 비동기라 실행순서가 어케 될지 모르므로 이렇게 쓰면 안됨. 키워드를 넣어서 사용한다. async + await
+// getCatImage().then().catch(); ==> 비동기라 실행순서가 어케 될지 모르므로 이렇게 쓰면 안됨. 대신 키워드를 넣어서 사용한다. async + await
+// async + await : 최신 자바스크립트에서 프로미스를 반환할 때 사용하는 키워드
 
 const BUTTON = styled.button`
   display: block;
