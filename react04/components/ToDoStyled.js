@@ -16,9 +16,9 @@ export const ListItem = styled.li`
 `;
 
 // 특징: STYLED-COMPONENT는 속성을 받아서 처리할 수 있다
-// ${} 안에는 콜백을 넣게 되어있음.
+// ${} 안에는 콜백함수를 넣는다.
 export const ToDoContent = styled.span`
-  color: ${props => props.isDone? 'gray' : 'black'};
+  color: ${props => props.isDone? 'gray' : 'black'}; 
   text-decoration: ${props => props.isDone? 'line-through' : 'none'};
   cursor: pointer;
 `;
@@ -30,3 +30,8 @@ export const ToDoXButton = styled.span`
   font-weight: bold;
   cursor: pointer;
 `;
+
+/*
+export default 와 export의 차이?
+default 없으면 구조분해 안하고 바로 받을 수 있어요
+*/
