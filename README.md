@@ -1,10 +1,8 @@
 # REFERENCES
 
-### HTML & CSS 공부자료
-책, MDN, W3SCHOOL, YOUTUBE 강의<br/><br/>
-
-### JavaScript 공부자료
-MDN, W3SCHOOL, YOUTUBE 강의<br>
+### HTML, CSS, JavaScript 공부자료
+MDN https://developer.mozilla.org/ko/ <br>
+W3SCHOOL https://www.w3schools.com/ <br>
 포이마웹 https://poiemaweb.com/ <br>
 모던JavaScript 튜토리얼 https://ko.javascript.info/ 
 
