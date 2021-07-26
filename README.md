@@ -1,13 +1,12 @@
-# TIL
-TODAY I LEARNED<br/><br/>
+# REFERENCES
 
-### HTML, CSS 공부자료
+### HTML & CSS 공부자료
 책, MDN, W3SCHOOL, YOUTUBE 강의<br/><br/>
 
 ### JavaScript 공부자료
 MDN, W3SCHOOL, YOUTUBE 강의<br>
 포이마웹 https://poiemaweb.com/ <br>
-모던JavaScript 튜토리얼 https://ko.javascript.info/ <br><br>
+모던JavaScript 튜토리얼 https://ko.javascript.info/ 
 
 <br/><br/>
 ### React 공부자료
