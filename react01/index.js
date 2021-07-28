@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SubwayLine from './components/Gpp'; 
+import App from './App';
 
 ReactDOM.render(
-  // <RoundBtn id="btn">버튼</RoundBtn>,
-  <SubwayLine />,
+    <App />,
   document.getElementById('root')
 );
