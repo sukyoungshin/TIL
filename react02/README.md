@@ -1,6 +1,6 @@
 ## current directory
-Counter.js : useState() <br><br>
-
+Counter.js : useState()  <br>
+InputSample.js : useState()<br><br>
 
 ## components (directory)
 
