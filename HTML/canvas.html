@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>HTML 내장객체 : CANVAS </title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+  <canvas id="canvas" width="200" height="150"></canvas>
+
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'rgb(200, 0, 0)';
+  ctx.fillRect(10, 10, 50, 50);
+  ctx.fillStyle = 'rgb(0, 0, 200, 0.5)';
+  ctx.fillRect(30, 30, 50, 50);
+</script>  
+</body>
+</html>
