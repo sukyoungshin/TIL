@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>CANVAS 활용 : IMG</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    canvas{
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Image</h1>
+  <canvas class="canvas" width="500" height="300"></canvas>
+
+<script>
+  /* 
+  MDN (DrawImage) : https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
+  */
+  const canvas = document.querySelector('canvas');
+  const context = canvas.getContext('2d');
+
+  /* 이미지 객체를 생성하는 방법 (아래 2개의 코드중 하나를 사용) */
+  // const imgElem = document.createElement('img');
+  const imgElem = new Image();
+  
+  imgElem.src = 'https://cdn.pixabay.com/photo/2021/07/25/20/47/cat-6492741_960_720.jpg';
+
+  /* 이미지 load가 완료되면 함수호출 */
+  imgElem.addEventListener('load', () => {
+    context.drawImage(imgElem, 0, 0);                  /* 이미지객체, 위치, 크기 */
+    context.drawImage(imgElem, 150, 50, 300, 200);    /* 이미지객체, 위치, 크기, 이미지너비, 높이 */
+    context.drawImage(imgElem, 550, 30, 500, 500, 0, 0, 200, 200);
+  });
+
+</script>  
+</body>
+</html>
