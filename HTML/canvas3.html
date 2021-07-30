@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title> CANVAS연습 - PATH, 원 그리기 </title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    canvas{
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas class="canvas" width="600" height="400">
+    이 브라우저는 캔버스를 지원하지 않습니다.
+  </canvas>
+
+<script>
+  /* 
+  MDN : Drawing shapes
+  https://developer.mozilla.org/ko/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+  */
+
+  // 1. PATH 그리기
+  // beginPath
+  // moveTo
+  // lineTo
+  // closePath
+  const canvas = document.querySelector('.canvas');
+  const context = canvas.getContext('2d'); 
+
+  context.beginPath();      /* PATH그리기 시작 */
+  context.moveTo(50, 50); /* 붓의 시작위치 지정 */
+  context.lineTo(200, 200); /* 붓의 끝나는 위치 지정 */
+  context.stroke();         /* 실제로 선이 그어짐 */
+  context.closePath();      /* PATH그리기 종료 */
+  // context.fill();         /* 색을 채울거라면 이런식으로 (지금은 색을 채울 영역이 없어서 안됨) */
+
+
+  // 2. 원 그리기
+  /* 
+  360도 = 2PI 
+  1도 = 1PI/180
+  */
+  function toRadian(a) {
+    return a * Math.PI / 180;
+  };
+  // beginPath
+  // arc
+  // closePath
+  // context.arc(300, 300, 50, 0, toRadian(360), false); /* 중심점의 x y좌표, 반지름, 시작각도, 끝각도, 시계방향인지 반시계방향인지 */
+  // context.fill();
+  
+  context.beginPath();  /* 새로운 도형을 그릴때마다 반드시 beginPath를 넣어둔다. */
+  context.arc(300, 200, 50, 0, toRadian(360), false); /* 중심점의 x y좌표, 반지름, 시작각도, 끝각도, 시계방향인지 반시계방향인지 */
+  context.stroke();
+  context.closePath();  /* closePath는 굳이 안해줘도 됨 */
+  
+  context.beginPath();
+  context.arc(500, 100, 20, 0, toRadian(360), false); /* 중심점의 x y좌표, 반지름, 시작각도, 끝각도, 시계방향인지 반시계방향인지 */
+  context.stroke();
+  context.closePath();
+
+</script>
+</body>
+</html>
