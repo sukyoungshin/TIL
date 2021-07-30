@@ -3,20 +3,29 @@
 <head>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>HTML 내장객체 : CANVAS </title>
+  <title> CANVAS 지원여부 확인하기 </title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src="./modernizr.js"></script>
 </head>
 <body>
 
-  <canvas id="canvas" width="200" height="150"></canvas>
+  <canvas>이 브라우저는 캔버스를 지원하지 않습니다.</canvas>
 
-<script>
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = 'rgb(200, 0, 0)';
-  ctx.fillRect(10, 10, 50, 50);
-  ctx.fillStyle = 'rgb(0, 0, 200, 0.5)';
-  ctx.fillRect(30, 30, 50, 50);
-</script>  
+  <script>
+    // CANVAS 지원여부 확인 
+
+    // 1.Modernizr을 이용해서 확인한다 https://modernizr.com/
+    if (Modernizr.canvas) {
+      console.log('Canvas를 지원하는 브라우저');
+    }
+
+    // 2. canvas의 속성(getContext)이 작동되는지 체크해본다.
+    const canvas = document.querySelector('canvas');
+    console.log(canvas.getContext);
+
+    if (canvas.getContext) {
+      console.log('캔버스 지원');
+    }
+  </script>
 </body>
 </html>
