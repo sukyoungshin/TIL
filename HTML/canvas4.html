@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>CANVAS 활용: requestAnimationFrame </title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    canvas{
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>requestAnimationFrame</h1>
+  <canvas class="canvas" width="500" height="300"></canvas>
+
+<script>
+  /* 
+  CSS animation은 keyframe으로 설정해두면 알아서 움직이지만,
+  Javascript animation은 우리가 움직일 객체의 좌표를 일일히 바꿔줘야 한다. (라이브러리 많이들 사용한다.)
+  */
+  /* 
+  requestAnimationFrame 대신 setInterval도 사용가능함.
+  단, setInterval이 아니라 requestAnimationFrame을 쓰는 이유>
+  - setInterval은 여러개의 속도조절 따로 하기 어렵다
+  - setInterval은 requestAnimationFrame보다 속도가 느림
+
+ */
+  const canvas = document.querySelector('.canvas');
+  const context = canvas.getContext('2d');
+  let xPos = 10;
+  let count = 0; /* 여러개 속도조절하기 위해 */
+
+  function draw() {
+    if (count % 30 === 0) {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.beginPath();
+      context.arc(xPos, 150, 10, 0, Math.PI*2); /* 360도 = 2 PI */
+      context.fill();
+      xPos += 5; /* xPos = xPos + 3; */
+      context.closePath();
+    } 
+
+    count++;
+    // console.log(draw);         /* 1/60초를 목표로 빠르게 반복됨을 확인 가능 */
+    requestAnimationFrame(draw);  /* 그릴 준비가 완료되면 반복실행된다. 여기에서 x축이나 y축 바꿔주면 애니메이션 작업이 가능하다. 타이밍 조절 하기 위해 유용하다 */
+  };
+  
+  draw();
+
+</script>
+</body>
+</html>
