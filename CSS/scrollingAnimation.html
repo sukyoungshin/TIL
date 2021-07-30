@@ -1,0 +1,134 @@
+<!-- 
+  Scrolling animation with Background color changing While Scroll using HTML CSS JavaScript
+  https://youtu.be/R5UoNF2VA-E
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Scrolling Animation</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    body{
+      color: #000;
+      background-color: #f4f4f4;
+      transition: background-color 1s ease;
+    }
+    .panel{
+      min-height: 100vh;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-family: sans-serif;
+    }    
+    .color-white{
+      background-color: white;
+    }
+    .color-violet{
+      background: #654ea3;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .color-indigo{
+      background: #8360c3;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .color-blue{
+      background: #009FFF;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #ec2F4B, #009FFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .color-green{
+      background: #636363;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #a2ab58, #636363);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #a2ab58, #636363); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .color-yellow{
+      background: #FDC830;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .color-red{
+      background: #8A2387;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #F27121, #E94057, #8A2387);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #F27121, #E94057, #8A2387); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    body{
+      text-align: center;
+      font-size: 120%;
+      line-height: 1.618;
+    }
+    h1, h2{
+      font-size: 3em;
+      letter-spacing: -0.05em;
+      line-height: 1.1;
+    }
+    p{
+      max-width: 30em;
+      margin-bottom: 1.618rem;;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="panel" data-color="white">
+    <div>
+      <h1>Start Scrolling To see changes</h1>
+    </div>    
+  </div>
+
+  <div class="panel" data-color="violet">
+    <h2>Blue+Deepskyblue</h2>
+  </div>
+
+  <div class="panel" data-color="indigo">
+    <h2>Indigo</h2>
+  </div>
+
+  <div class="panel" data-color="blue">
+    <h2>Blue</h2>
+  </div>
+
+  <div class="panel" data-color="green">
+    <h2>Hot</h2>
+  </div>
+
+  <div class="panel" data-color="yellow">
+    <h2>Pink</h2>
+  </div>
+
+  <div class="panel" data-color="orange">
+    <h2>Orange</h2>
+  </div>
+
+  <div class="panel" data-color="red">
+    <h2>Red</h2>
+  </div>
+
+  <!-- JQUERY CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(window).scroll(function() {
+      var $window = $(window),
+          $body = $('body'),
+          $panel = $('.panel');
+
+      var scroll = $window.scrollTop() + ($window.height() / 3);
+      $panel.each(function() {
+        var $this = $(this);
+        if($this.position().top <= scroll && $this.position().top + $this.height() > scroll) {
+          $body.removeClass(function(index, css) {
+            return (css.match (/(^|`s)color-`S+/g) || []).join('');
+          });
+
+          $body.addClass('color-' + $(this).data('color'));
+        }
+      });
+    }).scroll();
+  </script>
+</body>
+</html>
