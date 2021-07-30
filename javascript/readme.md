@@ -9,4 +9,4 @@
 <br><br>
 
 ## 📖 REFERENCE
-- [밸로퍼트와 함께하는 모던 자바스크립트](https://learnjs.vlpt.us/)
+- DOC: [밸로퍼트와 함께하는 모던 자바스크립트](https://learnjs.vlpt.us/)
