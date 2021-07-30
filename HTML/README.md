@@ -8,7 +8,7 @@
   <li><b>canvas3.html</b> : CANVAS연습 - PATH, 원 그리기 </li>
   <li><b>canvas4.html</b> : CANVAS : requestAnimationFrame </li>
   <li><b>canvas5.html</b> : CANVAS : 애니메이션 멈추기(requestAnimationFrame, cancelAnimationFrame) </li>
-  <li></li>
+  <li><b>canvas6.html</b> : CANVAS : 애니메이션 멈추기(setInterval, clearInterval) </li>
   <li></li>
 </ul>
 
