@@ -1,6 +1,7 @@
 ## 🎨 CANVAS 기초학습 및 활용
 
 <ul>
+  <li> <b>data.html</b> / data-* 속성 알아보기 </li>
   <li> <b>canvas0.html</b> / CANVAS 지원여부 체크하기</li>
   <li> <b>canvas1.html</b> / CANVAS 사이즈 설정 </li>
   <li> <b>canvas2.html</b> / 연습 : 사각형 그리기 </li>
