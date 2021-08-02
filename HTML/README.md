@@ -1,5 +1,7 @@
 ## 🎨 CANVAS 기초학습 및 활용
 
+완성작 : [CODEPEN](https://codepen.io/sukyoung/pen/qBmyaEZ) <br>
+
 <ul>
   <li> <b>data.html</b> / data-* 속성 알아보기 </li>
   <li> <b>canvas0.html</b> / CANVAS 지원여부 체크하기</li>
