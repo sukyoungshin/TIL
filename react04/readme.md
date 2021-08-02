@@ -8,4 +8,7 @@ ToDoStyled.js (styled-components) <br>
 
 ## AXIOS 활용
 Bpp.js<br/>
-Cpp.js
+Cpp.js<br>
+
+## PROP-TYPE
+Dpp.js
