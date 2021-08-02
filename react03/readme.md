@@ -1,13 +1,13 @@
 ## 1. React Hook APIs
-### 🎈 useState(), useEffect()
+### useState(), useEffect()
 App.js<br>
 
-### 🎈 useRef()
+### useRef()
 Bpp.js<br>
 Cpp.js<br><br>
 
 ## 2. Array related
-### 🎈 map()
+### map()
 Dpp.js<br>
 Epp.js<br>
 Fpp.js  - map() , filter() <br>
