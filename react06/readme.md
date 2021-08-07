@@ -1,4 +1,4 @@
-### React libraries 실습
+# React libraries 실습
 
 ## color-picker
 App.js <br/><br/>
