@@ -7,13 +7,15 @@ App.js <br/><br/>
 - 설치 : npm install react-color --save<br/><br/>
 
 ## formik
-Cpp.js, Dpp.js, Epp.js  <br/><br/>
+클래스형 : Cpp.js, Dpp.js <br>
+함수형 : Epp.js + validation.js  <br/><br/>
 - formik : form wrapper로 폼을 관리해주는 라이브러리 <br />
 - URL : https://www.npmjs.com/package/formik <br/>
 - 설치: `npm install formik` <br/><br/>
 
 ## Yup
 validation.js <br/><br/>
+- Yup : 유효성검사를 위해 스키마를 작성하여 관리하는 라이브러리 <br/>
 - URL : https://www.npmjs.com/package/yup <br>
 - 설치 : `npm install yup`<br/><br/>
 
