@@ -3,7 +3,7 @@
 ## color-picker
 App.js <br/><br/>
 - color-picker : 컬러피커를 설치해주는 라이브러리 <br>
-- URL : https://www.npmjs.com/package/color-picker  <br/>
+- URL : https://casesandberg.github.io/react-color/   <br/>
 - 설치 : npm install react-color --save<br/><br/>
 
 ## formik
