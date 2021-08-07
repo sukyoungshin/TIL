@@ -1,4 +1,4 @@
-### 리액트 라이브러리
+### React libraries 실습
 
 ## color-picker
 App.js <br/><br/>
