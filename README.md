@@ -1,6 +1,6 @@
 # TODAY I LEARNED...
 - 개인적으로 공부했던 내용을 업로드한 코드입니다.
-- 참고했던 자료는 아래 REFERENCES 있습니다.
+- 참고했던 자료는 아래 REFERENCES 있습니다.<br/><br/>
 
 ## 📖 REFERENCES
 
@@ -11,7 +11,6 @@
 - 모던JavaScript 튜토리얼 : https://ko.javascript.info/<br> 
 - 밸로퍼트와 함께하는 모던 자바스크립트 : https://learnjs.vlpt.us/<br>
 - 간단히 훑어보는 자바스크립트(캡틴판교) : https://joshua1988.github.io/web-development/javascript/javascript-basic-summary/
-
 <br/><br/>
 ### React
 - 밸로퍼트와 함께하는 모던리액트 : https://react.vlpt.us/basic
