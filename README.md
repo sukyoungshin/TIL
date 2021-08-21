@@ -1,6 +1,6 @@
-# TODAY I LEARNED...
-- 개인적으로 공부했던 내용을 업로드한 코드입니다.
-- 참고했던 자료는 아래 REFERENCES 있습니다.<br/><br/>
+## DIRECTORY
+- DOCS : 공부했던 내용을 문서화한 내용
+- 나머지 폴더 : 개인적으로 공부했던 내용을 업로드한 코드
 
 ## 📖 REFERENCES
 
