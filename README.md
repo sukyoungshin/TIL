@@ -1,8 +1,10 @@
 ## DIRECTORY
 - DOCS : 공부했던 내용을 문서화한 내용
-- 나머지 폴더 : 개인적으로 공부했던 내용을 업로드한 코드
+- 나머지 폴더 : 개인적으로 공부했던 내용을 업로드한 코드들
 
-## 📖 REFERENCES
+<br/><br/>
+
+## 📖 REFERENCES (참고자료)
 
 ### HTML, CSS, JavaScript
 - MDN : https://developer.mozilla.org/ko/ <br>
