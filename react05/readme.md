@@ -1,4 +1,7 @@
-REACT-ROUTER-DOM 설치 : npm install react-router-dom
+# REACT-ROUTER-DOM
+installation
+`yarn add react-router-dom` <br/>
+`npm install react-router-dom`<br/><br/>
 
 ## 1. 리액트 라우팅하기 (react-router-dom)
 - SPA 특성상 페이지 여러개를 이용한 이동이 불가능하다.
