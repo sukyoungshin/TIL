@@ -23,5 +23,6 @@
 
 ### React
 
+- 리액트를 다루는 기술 : https://thebook.io/080203/ch01/01/
 - 밸로퍼트와 함께하는 모던리액트 : https://react.vlpt.us/basic
   <br/><br/>
