@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>CALCULATOR</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    #history{ 
+      width: 600px; 
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" id="n1">
+  <select id="op">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+      <option value="%">%</option>
+  </select>
+  <input type="text" id="n2">
+  <button>=</button>
+  <input type="text" id="result" readonly><hr>
+  <div id="history"></div>
+
+<script>
+  // 연산을 실행할 때마다 아래 div에 계산한 이력을 출력. ex. 5+3 = 8 2021-04-21 16:04:22 ....
+
+// YYYY-MM-DD 
+const DATE =  new Date();
+const YEAR = DATE.getFullYear();
+const MONTH = DATE.getMonth()+1;
+const DAY = DATE.getDate();
+
+// HH:MM:SEC
+const HOUR = DATE.getHours();
+const MIN = DATE.getMinutes();
+const SEC = DATE.getSeconds();
+
+// ONLOAD FUNCTION
+window.onload = function(){
+  // 변수생성
+  const N1 = document.getElementById('n1');
+  const N2 = document.getElementById('n2');
+  const OP = document.getElementById('op');
+  const BTN = document.getElementsByTagName('button')[0];
+  const RESULT = document.getElementById('result'); // 결과값을 출력할 input태그
+  let history = document.getElementById('history'); // 결과값 누적하여 출력할 div태그
+
+  // BTN 클릭시, RESULT 내부에 table을 생성하여 결과값을 출력한다
+  BTN.onclick = function(){
+    
+    if (OP.value =='+') {
+        RESULT.value = Number(N1.value) + Number(N2.value); // 또는 n1.value*1 + n2.value*2
+    } else if (OP.value == '-') {
+        RESULT.value =  Number(N1.value) - Number(N2.value);
+    } else if (OP.value == '*') {
+        RESULT.value = Number(N1.value) * Number(N2.value);
+    } else if (OP.value == '/') {
+        RESULT.value = Number(N1.value) / Number(N2.value);
+    } else if (OP.value == '%') {
+        RESULT.value = Number(N1.value) % Number(N2.value);
+    }
+    
+    // div#history 태그 내부에 결과값, 날짜, 시간을 누적하여 출력
+    history.innerHTML += `<p> ${N1.value} ${OP.value} ${N2.value} = ${RESULT.value} </p>`;
+    history.innerHTML += `<p> DATE: ${YEAR}/${MONTH}/${DAY} </p>`;
+    history.innerHTML += `<p> TIME: ${HOUR}:${MIN}:${SEC} </p><hr>`;
+  };
+};
+</script>
+</body>
+</html>
