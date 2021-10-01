@@ -117,7 +117,7 @@ useEffect(() => {
 
 <br /> <br />
 
-## useRef
+## 3. useRef
 
 참조변수. DOM객체를 직접 지정할 때 사용할 수 있다. <br/>
 참조변수를 2개의 DOM에 넣어주고 싶으면 useRef를 두개 만들어줘야함<br>
