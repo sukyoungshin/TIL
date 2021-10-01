@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title> CANVAS 활용 : 그림판 만들기 </title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    canvas{ background-color: #eee; }
+    .color-btn{
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 50%;
+    }
+    .color-btn[data-color="black"] { background-color: black; }
+    .color-btn[data-color="red"] { background-color: red; }
+    .color-btn[data-color="blue"] { background-color: blue; }
+    .color-btn[data-color="green"] { background-color: green; }
+    .color-btn[data-color="yellow"] { background-color: yellow; }
+    .image-btn{
+      width: 30px;
+      height: 30px;
+      background: url('https://raw.githubusercontent.com/sukyoungshin/canvas_practice/796beeb795e6663f7f40daf4c267a21b646c3910/brush-outline.svg') no-repeat 50% 50% / cover;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Image</h1>
+  <canvas class="canvas" width="500" height="300"></canvas>
+  <div class="control">
+    <button class="color-btn" data-type="color" data-color="red"></button>
+    <button class="color-btn" data-type="color" data-color="blue"></button>
+    <button class="color-btn" data-type="color" data-color="black"></button>
+    <button class="color-btn" data-type="color" data-color="green"></button>
+    <button class="color-btn" data-type="color" data-color="yellow"></button>
+    <button class="image-btn" data-type="image"></button>
+  </div>
+  <button class="save-btn">IMAGE SAVE</button>
+  <div class="result-image"></div>
+
+<script>
+  const canvas = document.querySelector('.canvas');
+  const context = canvas.getContext('2d');
+  const control = document.querySelector('.control'); // 이벤트 위임을 위해 button의 부모element인 div를 선택
+  const saveBtn = document.querySelector('.save-btn'); 
+  const resultImage = document.querySelector('.result-image');
+  let drawingMode = false; // true일 때만 그리기
+  let brush = 'color'; // 'color', 'image'
+  let colorVal= 'black'; // 브러쉬색상 기본값
+
+  const imgElem = new Image(); // 이미지 객체 생성
+  imgElem.src= './brush-outline.svg';
+
+  function downHandler() {
+    drawingMode = true;
+  }
+  function upHandler() {
+    drawingMode = false;
+  }
+  function moveHandler(e) {
+    if (!drawingMode) return;
+
+    switch (brush) {
+      case 'color':
+        context.beginPath();
+        context.arc(e.layerX, e.layerY, 10, 0, Math.PI*2, false);
+        context.fill();
+        context.closePath();
+        break;
+        
+      case 'image':
+        context.drawImage(imgElem, e.layerX, e.layerY, 50, 50);
+        break;
+    }
+  };
+
+  function setBrush(e) {
+    brush = e.target.getAttribute('data-type');
+    colorVal = e.target.getAttribute('data-color');
+    context.fillStyle = colorVal;
+    console.log(brush, colorVal);
+  }
+  function createImage() {
+    const url = canvas.toDataURL('image/png');
+    const imgElem = new Image();
+    imgElem.src = url;
+    resultImage.appendChild(imgElem);
+  }
+
+  canvas.addEventListener('mousedown', downHandler);
+  canvas.addEventListener('mousemove', moveHandler);
+  canvas.addEventListener('mouseup', upHandler);
+  control.addEventListener('click', setBrush);
+  saveBtn.addEventListener('click', createImage);
+  /* 
+  addEventListener를 많이 사용하면 메모리공간을 많이 잡아먹기 떄문에 좋지 않다.
+  https://youtu.be/ovf8cbKtBH0
+  */
+</script>  
+</body>
+</html>

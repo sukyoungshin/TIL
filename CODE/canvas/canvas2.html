@@ -1,0 +1,53 @@
+<!--
+  MDN : https://developer.mozilla.org/ko/docs/Web/API/Canvas_API
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title> CANVAS연습 : 사각형그리기 </title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    canvas{
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+
+<canvas class="canvas" width="600" height="400">
+  이 브라우저는 캔버스를 지원하지 않습니다.
+</canvas>
+
+<script>
+  // fillRect
+  // clearRect
+  // strokeRect
+  const canvas = document.querySelector('.canvas');
+  const context = canvas.getContext('2d'); // context 객체를 이용해서 canvas에 그림을 그린다.
+  console.log(context);
+
+  context.fillRect(50, 50, 100, 100);
+  context.fillStyle= 'blue';        /* 색상지정 */  // 들어갈 수 있는 값: red, rgba(0,0,0,0.5);, #ff0000,
+  context.fillRect(0, 0, 100, 100); /* 순서 : x위치, y위치, width, height */
+  context.fillRect(100, 100, 100, 100); 
+  /* 
+  canvas의 특징 : 
+  - 브라우저의 왼쪽 상단위 : x좌표 0, y좌표0
+  - 그려진 순서대로 레이어 순서가 정해진다.
+  - 색상을 지정하지 않으면 기본 색상은 black이다.
+  - 색상을 지정한 뒤 그리면, 계속 지정된 색상으로 그려진다.
+  */
+  context.clearRect(80, 80, 50, 50); /* 사각형 지우기 */
+  context.strokeRect(150, 150, 100, 100); /* stroke 그리기 */
+
+  /* 
+  canvas의 활용:
+  보통 canvas로 그림을 그리기보단
+  이미지를 불러와서 사용한다.
+  */
+  
+</script>  
+</body>
+</html>

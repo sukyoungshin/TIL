@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>CANVAS : 사이즈 설정</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    body{margin:0;}
+    canvas{
+      width: 500px;
+      height: 300px;
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>캔버스 사이즈 설정</h1>
+  <!-- CANVAS 사이즈를 지정하지 않으면 기본값 : 300 x 150 -->
+  <canvas class="canvas" width="500" height="300"></canvas>
+  <!-- 원하는 width와 height를 인라인스타일로 지정가능 -->
+  <canvas class="canvas canvas2" width="1000" height="600"></canvas>
+
+  <!-- 
+    NOTE: CSS에서 canvas크기를 지정하는것과 인라인으로 크기를 지정하는 것은 의미가 다르다!
+    각 canvas에 width와 height를 준 뒤에, css로 width와 height를 억지로 주게 되면,
+    눈으로 볼 때의 canvas 크기는 같게 보이지만 실제 그려지는 캔버스는 인라인으로 주어진 크기이다.
+
+    억지로 css로 크기를 맞춰준 뒤에, 가로세로 100 크기인 원을 캔버스에 그리게 된다면
+    첫번째 canvas는 1/5크기로 그려지고
+    두번째 canvas 같은 경우엔 1/10크기로 그려진다. 예문 확인
+  -->
+  <!--
+
+    NOTE: CANVAS크기는 두배로 만들고 CSS로 사이즈를 줄여서 사용하는 경우? 
+    => 고해상도 스크린에서 더 또렷한 이미지를 보여주기 위함. (예문을 보면 두번째 canvas의 원이 더 또렷하게 보인다)
+
+  -->
+  <!--
+
+    NOTE: CANVAS는 보통 풀스크린 형태로 많이 쓴다.
+    따라서, 고해상도 이미지를 보여주기 위해선 JS에서 canvas 크기를 window의 2배로 셋팅해주고,
+    css에서 width, height를 100%으로 맞춰주면 된다.
+    ==> 이 경우엔 연산할게 많아지고 성능이 떨어진다는 단점이 있음.
+    ==> 이쁘게 보여주는게 중요한지, 성능이 좋아야하는지 고려해서 사용하자.
+
+  -->
+
+<script>
+  const canvas = document.querySelector('.canvas');
+  const canvas2 = document.querySelector('.canvas2');
+  const context = canvas.getContext('2d');
+  const context2 = canvas2.getContext('2d');
+
+  /* 중점: x 100, y 100, 반지름: 50, */
+  context.arc(100, 100, 50, 0, Math.PI*2, false);
+  context2.arc(100, 100, 50, 0, Math.PI*2, false);
+  context.fill();
+  context2.fill();
+</script>
+</body>
+</html>

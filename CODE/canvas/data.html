@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title> DATA-* </title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+<!-- 
+  data-*
+  HTML에 data속성을 저장해서, JavaScript로 핸들링할 수 있음.
+-->
+
+<div id="me" data-my-name="SUKYOUNG" data-my-age="900"></div>
+
+<script>
+  const ME = document.getElementById('me');
+  console.log( ME.dataset.myName );
+  console.log( ME.dataset.myAge );
+</script>
+</body>
+</html>

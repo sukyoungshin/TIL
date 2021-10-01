@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>CANVAS 활용: 애니메이션 멈추기 (requestAnimationFrame, cancelAnimationFrame) </title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    canvas{
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>requestAnimationFrame</h1>
+  <canvas class="canvas" width="500" height="300"></canvas>
+
+<script>
+  const canvas = document.querySelector('.canvas');
+  const context = canvas.getContext('2d');
+  let xPos = 10;
+  let timerId;
+
+  function draw() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.beginPath();
+    context.arc(xPos, 150, 10, 0, Math.PI*2); /* 360도 = 2 PI */
+    context.fill();
+    xPos += 5; 
+    context.closePath();
+
+    // 1. CANVAS 오른쪽 끝에 가면 ANIMATION 종료
+    // if (xPos >= canvas.width - 10) {
+    //   return;
+    // }
+
+    // 2. ANIMATION 자체를 취소
+    timerId = requestAnimationFrame(draw);  
+    // console.log(timerId);
+    // if (xPos >= canvas.width - 10) {
+    //   cancelAnimationFrame(timerId);
+    // }
+  };
+  
+  draw();
+
+  // 3. 클릭 시 이벤트 취소
+  canvas.addEventListener('click', () => {
+    cancelAnimationFrame(timerId);
+  })
+
+</script>
+</body>
+</html>
