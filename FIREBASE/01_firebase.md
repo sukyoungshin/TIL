@@ -21,7 +21,16 @@ REACT_APP_APP_ID=앱아이디
   : firebase프로젝트를 만들기 위해 작성한다.<br/>
   자세한 사용법은 공식문서 참고 (https://firebase.google.com/docs/web/setup?hl=ko)<br/>
 
-NOTE : firebase 버전에 맞는 doc을 확인할 것<br><br>
+NOTE : firebase 버전에 맞는 doc을 확인할 것<br>
+
+- WEB : javascript - version 8
+  https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth?authuser=0#setpersistence
+
+- Authentication State Persistence
+  https://firebase.google.com/docs/auth/web/auth-state-persistence#web-version-8
+
+<br>
+<br>
 
 ## useCase
 
