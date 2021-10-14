@@ -6,72 +6,191 @@
   <title>CALCULATOR</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <style>
-    #history{ 
-      width: 600px; 
+    form{
+      margin: 0 auto;
+      width: 260px;
+      height: fit-content;
+      background: rgb(97, 98, 104);
+      border-radius: 16px;
+      padding: 16px;
       box-sizing: border-box;
+    }
+    form input[type="text"] {
+      padding-right: 16px;
+      margin: 0 auto;
+      width: 100%;
+      height: 48px;
+
+      text-align: right;
+      font-size: 32px;
+
+      outline: none;
+      background: rgba(208, 214, 225);
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+    form table {
+      width: 100%;
+      text-align: center;
+    }
+    form table td:not(.result) {
+      margin-right: 10px;
+      width: calc(100% / 4);  
+      height: 40px;
+      
+      background: rgb(255, 255, 255);
+      border: 3px solid rgb(97, 98, 104);
+      border-radius: 8px;
+      box-sizing: content-box;
+      vertical-align: middle;
+    }
+    form table td.empty {
+      height: 32px;
+      background: rgb(97, 98, 104);
+      box-sizing: border-box;
+    }
+
+    .reset {
+      font-size: 16px;
+      font-weight: normal;
+    }
+    span:not(.reset){
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    .number,
+    .reset,
+    .operator,
+    .comma,
+    .equal {
+      display: block;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <input type="text" id="n1">
-  <select id="op">
-      <option value="+">+</option>
-      <option value="-">-</option>
-      <option value="*">*</option>
-      <option value="/">/</option>
-      <option value="%">%</option>
-  </select>
-  <input type="text" id="n2">
-  <button>=</button>
-  <input type="text" id="result" readonly><hr>
-  <div id="history"></div>
+  <form action="">
+    <table>
+      <thead>
+        <tr>
+          <td><span class="reset">DEL</span></td>
+          <td colspan="3" class="result">
+            <input id="result" type="text" placeholder="0" disabled>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="empty"></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="number">7</span></td>
+          <td><span class="number">8</span></td>
+          <td><span class="number">9</span></td>
+          <td><span class="operator">&divide;</span></td>
+        </tr>
+        <tr>
+          <td><span class="number">4</span></td>
+          <td><span class="number">5</span></td>
+          <td><span class="number">6</span></td>
+          <td><span class="operator">&times;</span></td>
+        </tr>
+        <tr>
+          <td><span class="number">1</span></td>
+          <td><span class="number">2</span></td>
+          <td><span class="number">3</span></td>
+          <td><span class="operator">&minus;</span></td>
+        </tr>
+        <tr>
+          <td><span class="number">0</span></td>
+          <td><span class="comma">.</span></td>
+          <td><span class="equal">&equals;</span></td>
+          <td><span class="operator">&plus;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 
 <script>
-  // 연산을 실행할 때마다 아래 div에 계산한 이력을 출력. ex. 5+3 = 8 2021-04-21 16:04:22 ....
 
-// YYYY-MM-DD 
-const DATE =  new Date();
-const YEAR = DATE.getFullYear();
-const MONTH = DATE.getMonth()+1;
-const DAY = DATE.getDate();
 
-// HH:MM:SEC
-const HOUR = DATE.getHours();
-const MIN = DATE.getMinutes();
-const SEC = DATE.getSeconds();
-
-// ONLOAD FUNCTION
-window.onload = function(){
-  // 변수생성
-  const N1 = document.getElementById('n1');
-  const N2 = document.getElementById('n2');
-  const OP = document.getElementById('op');
-  const BTN = document.getElementsByTagName('button')[0];
-  const RESULT = document.getElementById('result'); // 결과값을 출력할 input태그
-  let history = document.getElementById('history'); // 결과값 누적하여 출력할 div태그
-
-  // BTN 클릭시, RESULT 내부에 table을 생성하여 결과값을 출력한다
-  BTN.onclick = function(){
-    
-    if (OP.value =='+') {
-        RESULT.value = Number(N1.value) + Number(N2.value); // 또는 n1.value*1 + n2.value*2
-    } else if (OP.value == '-') {
-        RESULT.value =  Number(N1.value) - Number(N2.value);
-    } else if (OP.value == '*') {
-        RESULT.value = Number(N1.value) * Number(N2.value);
-    } else if (OP.value == '/') {
-        RESULT.value = Number(N1.value) / Number(N2.value);
-    } else if (OP.value == '%') {
-        RESULT.value = Number(N1.value) % Number(N2.value);
+  let operator = document.getElementsByClassName('operator'); // 연산자
+  const NUMBER = document.getElementsByClassName('number'); // 숫자
+  const RESULT = document.getElementById('result'); // 결과값 출력
+  const EQUAL = document.getElementsByClassName('equal')[0]; // 계산 끝
+  // const COMMA = document.getElementsByClassName('comma'); // 콤마
+  
+// When: Number is clicked. Get the current number selected
+  let resultNum; // result Number
+  let theNum = ''; // current number
+  let oldNum = ''; // first number
+  function setNum() {
+    if (resultNum) {
+      console.log('hi');
+      console.log('@@the num', theNum);
+    } else {
+      theNum += this.innerText;
+      console.log('@@the num2', theNum);
     }
-    
-    // div#history 태그 내부에 결과값, 날짜, 시간을 누적하여 출력
-    history.innerHTML += `<p> ${N1.value} ${OP.value} ${N2.value} = ${RESULT.value} </p>`;
-    history.innerHTML += `<p> DATE: ${YEAR}/${MONTH}/${DAY} </p>`;
-    history.innerHTML += `<p> TIME: ${HOUR}:${MIN}:${SEC} </p><hr>`;
+    RESULT.value = theNum;
   };
-};
+
+// When: Operator is clicked. Pass number to oldNum and save operator
+  function passNum() {
+    oldNum = theNum;
+    theNum = '';
+    operator = this.innerHTML; // 선택한 연산자로 셋팅
+  };
+
+  // Perform operation
+  function calculate() {
+    switch (operator) {
+      case '÷':
+        console.log('나눗셈');
+        RESULT.value = Number(oldNum) / Number(theNum);
+        console.log(RESULT.value);
+        break;
+      case '×':
+        console.log('곱셈');
+        RESULT.value = Number(oldNum) * Number(theNum);
+        console.log(RESULT.value);
+        break;
+      case '−':
+        console.log('뺄셈');
+        RESULT.value = Number(oldNum) - Number(theNum);
+        console.log(RESULT.value);
+        break;
+      case '+':
+        console.log('덧셈');
+        RESULT.value = Number(oldNum) + Number(theNum);
+        console.log(RESULT.value);
+        break;
+
+      // If there's no number selected yet, just show the original number.
+      default:
+        console.log(`Sorry, we are out of ${operator}.`);
+    };
+  };
+
+  // 숫자
+  for(let i = 0; i < NUMBER.length; i++) {
+    NUMBER[i].onclick = setNum;
+  };
+
+  // 연산자
+  for(let i = 0; i < operator.length; i++) {
+    operator[i].onclick = passNum;
+  };
+
+  // 결과물
+  EQUAL.onclick = calculate;
+
+  // When: Clear button is pressed. Clear everything
+
+
+
 </script>
 </body>
 </html>
