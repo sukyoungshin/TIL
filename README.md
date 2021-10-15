@@ -1,4 +1,4 @@
-# TIL (TODAY I LEARNED...)
+# TIL (Today I Learned...)
 
 스스로 공부했던 내용을 문서화 하여 업로드하는 레포이며, 잘못된 부분이 있을 수 있습니다. <br>
 피드백은 언제나 환영합니다. 📬 sukyoung.dev@gmail.com<br><br>
