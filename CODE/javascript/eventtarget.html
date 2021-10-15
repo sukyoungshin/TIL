@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>event.target</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+<script>
+  // 출처 : https://developer.mozilla.org/ko/docs/Web/API/Event/target
+  
+  // Make a list
+  const LISTS = document.createElement('ul');
+  document.body.appendChild(LISTS);
+
+  const LI1 = document.createElement('li');
+  const LI2 = document.createElement('li');
+  const LI3 = document.createElement('li');
+  LI1.innerText = 'FIRST';
+  LI2.innerText = 'SECOND';
+  LI3.innerText = 'LAST';
+
+  LISTS.appendChild(LI1);
+  LISTS.appendChild(LI2);
+  LISTS.appendChild(LI3);
+
+  function hide(e){
+  // e.target refers to the clicked <li> element
+  console.log(e.target);
+  e.target.style.visibility = 'hidden';
+  }
+
+  // Attach the listener to the list
+  // It will fire when each <li> is clicked
+  LISTS.addEventListener('click', hide, false);
+</script>
+
+</body>
+</html>
