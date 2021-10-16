@@ -1,13 +1,11 @@
 # TIL (Today I Learned...)
 
-스스로 공부했던 내용을 문서화 하여 업로드하는 레포입니다. <br>
-피드백은 언제나 환영합니다. 📬 sukyoung.dev@gmail.com<br><br>
+공부했던 내용을 문서화 하여 업로드하는 레포입니다. <br><br>
 
 
-## 📖 REFERENCES (참고자료)
+## 참고자료
 
 ### HTML, CSS, JavaScript
-
 - MDN : https://developer.mozilla.org/ko/ <br>
 - W3SCHOOL : https://www.w3schools.com/ <br>
 - 포이마웹 : https://poiemaweb.com/ <br>
@@ -17,7 +15,6 @@
   <br/><br/>
 
 ### React
-
 - 리액트를 다루는 기술 : https://thebook.io/080203/ch01/01/
 - 밸로퍼트와 함께하는 모던리액트 : https://react.vlpt.us/basic
   <br/><br/>
