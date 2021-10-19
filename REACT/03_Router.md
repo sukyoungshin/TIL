@@ -33,3 +33,13 @@
 - Route : 경로를 받아서 처리해주는 wrapper 컴포넌트
 - Switch : 경로들을 감싸는 wrapper (스위치 역할)
 - Link : 링크...
+
+## API
+
+- 데이터를 fetching 하는 방법 : useState, useEffect로 데이터 로딩
+
+```
+1. 요청의 결과
+2. 로딩의 상태
+3. 에러
+```
