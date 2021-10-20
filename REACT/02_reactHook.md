@@ -145,3 +145,55 @@ const Banana = () => {
 export default Banana;
 
 ```
+
+<br><br>
+
+## 4. useReducer
+
+- 상태 관리를 위해 사용하는 리액트 내장 훅
+- useState vs useReducer ? 상황에 따라 더 편한 방법으로 사용한다. <br>
+  컴포넌트에서 관리하는 값이 딱 하나고 숫자, 문자열, 불리언 값처럼 간단하면 useState 사용하는 것이 편하고,
+  컴포넌트에서 관리하는 값이 여러개가 되어서 상태의 구조가 복잡해지거나, 해야하는 액션이 많을 때 (user값을 delete, add 등...)는 useReducer가 편할 것이니, 상황에 맞게 선택해서 지혜롭게 사용할 것.
+
+```
+const [ numbers, setNumbers ] = useState(true); // 이런 경우엔 useState가 편함
+```
+
+<br><br>
+
+### useState과의 차이
+
+A. 상태 변경 시
+
+- useState에서의 상태변경 ? 직접변경 ex) setValue(5);
+- useReducer에서의 상태변경? action이라는 (update할 때 참조하는) 객체를 기반으로 상태변경. ex) dispatch({ type: 'INCREMENT' })<br>
+  업데이트 할때 필요한 참조하고 싶은 값이 있다면, dispatch ({ type: 'INCREMENT', diff : 4 }) 이런식으로도 넣어줄 수 있음 <br><br>
+
+B. useReducer를 사용하면, 상태 업데이트 로직을 컴포넌트 밖으로 분리하여 사용할 수 있음
+
+C. 사용방법
+
+- reducer : 상태를 업데이트 하는 함수. 현재 상태와 action parameter를 받아와서, 업데이트 된 새로운 형태를 반환해주는 형태를 갖추고 있음
+- action = { type : 'INCREMENT' }
+
+```
+function reducer (state, action) {
+	switch (action.type) {
+		case 'INCREMENT':
+			return state + 1;
+		case 'DECREMENT':
+			return state - 1;
+		default:
+			return state;
+	}
+};
+```
+
+- useReducer
+
+```
+const [ number, dispatch ] = useReducer(reducer, 0);
+// number : 현재 상태 (기본값 0)
+// dispatch : action을 발생시키는 함수
+// useReducer(reducer 함수, 기본값(문자, 숫자, 배열 등 가능))
+```

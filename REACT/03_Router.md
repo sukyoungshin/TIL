@@ -37,6 +37,7 @@
 ## API
 
 - 데이터를 fetching 하는 방법 : useState, useEffect로 데이터 로딩
+- (RestAPI에 대하여)[https://meetup.toast.com/posts/92]
 
 ```
 1. 요청의 결과
