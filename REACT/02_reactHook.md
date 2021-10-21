@@ -1,5 +1,8 @@
 # React Hook
 
+- Hook 사용규칙 [ React공식문서1 ](https://ko.reactjs.org/docs/hooks-overview.html), [ React공식문서2 ](https://ko.reactjs.org/docs/hooks-rules.html)
+-
+
 ## 1. useState
 
 useState - 상태관리
@@ -65,27 +68,32 @@ export default Fila;
 
 ## 2. useEffect
 
-useEffect - 컴포넌트 생명주기 관련 Hook으로, 리렌더링 시에 호출할 콜백을 지정하는 함수이다.<br/>
-useEffect는 이 함수를 언제 호출할건지 같이 지정해줘야한다 (이를 dependencyList라고 한다.) <br />
-주로 비동기적으로 웹서버에 뭔가를 요청할때 사용한다.<br/>
+- React는 DOM을 바꾼 뒤에 “effect” 함수를 실행
+- useEffect는 컴포넌트 생명주기 관련 Hook으로, 리렌더링 시에 호출할 콜백을 지정하는 함수이다.
+- useEffect는 이 함수를 언제 호출할건지 같이 지정해줘야한다 (이를 dependencyList라고 한다.)
+- 주로 비동기적으로 웹서버에 뭔가를 요청할때 사용한다.
 
 ```
 useEffect(() => {
   console.log('반가워');
 }, [state1, state2]);
+
+// state1이 바뀔때 호출, state2가 바뀔때 호출.
+// 배열 state1, state2한테 의존해서 콜백함수가 호출된다.
 ```
 
-state1이 바뀔때 호출, state2가 바뀔때 호출. 배열 state1, state2한테 의존해서 콜백함수가 호출된다. <br/>
 만일 [] 배열 내부에 아무것도 없으면 최초 1번만 실행한다.<br/>
 만일 배열자체가 아예 없으면 뭐가됐든 바뀔때마다 호출된다.
 <br />
 <br />
 
-`useEffect(() => console.log('렌더링COMPLETE!'));` // 기본형 : 모든 렌더링 직후에 콜백을 호출한다.
+### Dependency lists (deps, 의존배열)
 
-`useEffect(() => console.log('렌더링COMPLETE!'), []);` // 빈 배열: 최초 1회에만 콜백호출!
-
-`useEffect(() => console.log('렌더링COMPLETE!'), [특정조건]);` // dependency (의존성)이 정해져 있는 경우, 조건이 바뀔때만 콘솔 출력
+```
+useEffect(() => console.log('렌더링COMPLETE!'), []); // 빈 배열: 최초 1회에만 콜백호출!
+useEffect(() => console.log('렌더링COMPLETE!'), [특정조건]); // dependency (의존성)이 정해져 있는 경우, 조건이 바뀔때만 콘솔 출력
+useEffect(() => console.log('렌더링COMPLETE!')); // 기본형 : 모든 렌더링 직후에 콜백을 호출한다.
+```
 
 ```
 useEffect(() => {
@@ -119,8 +127,9 @@ useEffect(() => {
 
 ## 3. useRef
 
-참조변수. DOM객체를 직접 지정할 때 사용할 수 있다. <br/>
-참조변수를 2개의 DOM에 넣어주고 싶으면 useRef를 두개 만들어줘야함<br>
+- 참조변수. DOM객체를 직접 지정할 때 사용할 수 있다. <br/>
+- 참조변수를 2개의 DOM에 넣어주고 싶으면 useRef를 두개 만들어야 한다.<br>
+- ref.current에 접근해서 DOM을 직접 수정한다면, 리액트에서 제공하는 Lifecycle 혹은 Virtual DOM 렌더링 뎁스가 꼬일 위험이 매우 높아진다. ref를 여러 군데서 호출하고 있다면 어디에서 로직이 수정되었는지 추적이 더욱 어려워진다. current가 undefined인 경우도 고려해야한다. 이렇게 side-effect가 존재하는 ref의 사용보다는 가능하다면 리액트의 Lifecycle을 따르는 것이 좋다.
 
 ```
 import React, { useRef, useEffect } from 'react';
@@ -143,7 +152,6 @@ const Banana = () => {
 };
 
 export default Banana;
-
 ```
 
 <br><br>
