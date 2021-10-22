@@ -148,3 +148,80 @@ window.addEventListener('offline', handleWindowOffline);
 // f12 (개발자도구) -> Network -> No throttling 클릭 -> 목록 리스트 중에서 offline클릭. 그걸 누르면 현재 브라우저 자체에서 네트워크가 offline으로 설정되어 와이파이 끊겼을 시 코드가 작동되는 것을 볼 수 있습니다.
 // 그리고 다시 기본 설정이었던 no throttling 을 클릭하면 와이파이 연결 시 코드가 작동되는 것을 볼 수 있습니다.
 ```
+
+### JS로 CSS제어하기
+
+```
+- 1. find element
+- 2. listen events
+- 3. react that event
+```
+
+```
+h1 {
+  color: cornflowerblue;
+  transition: all 0.5s ease-in-out;
+}
+h1.clicked {
+  color: tomato;
+}
+```
+
+```
+<div class="hello">
+  <h1>Grab me!</h1>
+</div>
+<div class="hello">
+  <h1>Grab me!</h1>
+</div>
+<div class="hello">
+  <h1>Grab me!</h1>
+</div>
+```
+
+```
+const h1 = document.querySelector('.hello:first-of-type h1');
+
+// @@ CSS 제어하는 방법 3가지
+// @@@ way 1 : JS에서 직접 style을 제어하는 방법 (권장X)
+function handleTitleClick() {
+  const currentColor = h1.style.color;
+  let newColor;
+  if (currentColor === 'blue') {
+    newColor = 'tomato';
+  } else {
+    newColor = 'blue';
+  }
+  h1.style.color = newColor;
+};
+
+// @@@ way 2 : className을 사용하여 replace!
+// - ISSUE : 만약 DOM요소에 기존에 클래스명이 있었다면, 이 방법을 사용하면 기존 클래스가 clicked 클래스명으로 replace됨 (만일, 기존 클래스명은 유지하고 새로운 클래스명을 더 입력하고 싶은 경우라면 문제가 될 수 있음)
+function handleTitleClick() {
+  const clickedClass = 'clicked';
+  if (h1.className === clickedClass) {
+    h1.className = '';
+  } else {
+    h1.className = clickedClass;
+  }
+};
+
+// @@@ way 3 : classList
+// - 장점 : class들의 목록으로 작업할 수 있도록 한다.
+function handleTitleClick() {
+  const clickedClass = 'clicked';
+
+  if (h1.classList.contains(clickedClass)) {
+    h1.classList.remove(clickedClass);
+  } else {
+    h1.classList.add(clickedClass);
+  }
+};
+
+function handleTitleClick() {
+  const clickedClass = 'clicked';
+  h1.classList.toggle(clickedClass);
+};
+
+h1.addEventListener('click', handleTitleClick);
+```
