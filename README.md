@@ -1,9 +1,11 @@
 # TIL (Today I Learned...)
 
-공부했던 내용 문서화 및 읽었던 IT 도서를 정리하여 업로드하는 레포입니다. <br><br>
+공부했던 내용 문서화 및 읽은 IT Articles, 도서 등를 정리하여 업로드하는 레포입니다. <br><br>
 
 
 ## 참고자료
+
+- Daily Dev : https://daily.dev/
 
 ### HTML, CSS, JavaScript
 - MDN : https://developer.mozilla.org/ko/ <br>
@@ -18,3 +20,4 @@
 - 리액트를 다루는 기술 : https://thebook.io/080203/ch01/01/
 - 밸로퍼트와 함께하는 모던리액트 : https://react.vlpt.us/basic
   <br/><br/>
+
