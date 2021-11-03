@@ -35,4 +35,4 @@
 
 ## Reference
 
-- [vanillaJS Redux 코드](https://github.com/sukyoungshin/reactJS/blob/master/vanilla-redux/src/index.js)
+- [vanillaJS Redux 코드](https://github.com/sukyoungshin/reactJS/blob/master/vanilla-redux)
