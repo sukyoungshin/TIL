@@ -8,4 +8,4 @@
 
 - [09_useful_tools](https://github.com/sukyoungshin/TIL/blob/main/REACT/09_useful_tools.md): prettier, ESLint, React Snippet 사용방법
 - [10_Libraries](https://github.com/sukyoungshin/TIL/blob/main/REACT/10_Libraries.md): 리액트 라이브러리 소개 react-color, formik, Yup, react-device-detect
-- [11_redux](https://github.com/sukyoungshin/TIL/blob/main/REACT/11_redux.md)
+- [11_redux](https://github.com/sukyoungshin/TIL/blob/main/REACT/11_redux.md) : pure redux 및 react-redux
