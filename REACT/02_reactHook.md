@@ -1,7 +1,9 @@
-# React Hook
+# 🔗 React Hooks
 
-- Hook 사용규칙 [ React공식문서1 ](https://ko.reactjs.org/docs/hooks-overview.html), [ React공식문서2 ](https://ko.reactjs.org/docs/hooks-rules.html)
--
+- Hook 사용규칙 [ Hooks overview ](https://ko.reactjs.org/docs/hooks-overview.html), [ Hooks rule ](https://ko.reactjs.org/docs/hooks-rules.html)
+- [Common React Hook Mistakes](https://blog.bitsrc.io/common-react-hooks-mistakes-every-developer-should-avoid-defd47d09d8c)
+
+<br/>
 
 ## 1. useState
 
