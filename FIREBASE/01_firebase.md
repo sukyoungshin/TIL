@@ -18,8 +18,7 @@ REACT_APP_APP_ID=앱아이디
 ```
 
 - `firebase.js`
-  : firebase프로젝트를 만들기 위해 작성한다.<br/>
-  자세한 사용법은 [firebase공식문서](https://firebase.google.com/docs/web/setup?hl=ko) 참고 <br/>
+  : firebase프로젝트를 만들기 위해 작성한다. 자세한 사용법은 [firebase공식문서](https://firebase.google.com/docs/web/setup?hl=ko) 참고 <br/>
   
 ## 2. method
 - 🔗 firebase 예제 : [트위터 클론코딩](https://github.com/sukyoungshin/twitter-clone) <br>
