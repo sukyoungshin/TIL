@@ -1,7 +1,5 @@
 # firebase 사용방법
 
-> 🔗 관련레포 : [트위터 클론코딩](https://github.com/sukyoungshin/twitter-clone) <br>
-
 ## 1. 환경변수 셋팅
 
 - `.env `
@@ -24,6 +22,7 @@ REACT_APP_APP_ID=앱아이디
   자세한 사용법은 [firebase공식문서](https://firebase.google.com/docs/web/setup?hl=ko) 참고 <br/>
   
 ## 2. method
+- 🔗 firebase 예제 : [트위터 클론코딩](https://github.com/sukyoungshin/twitter-clone) <br>
 - App.js<br/>
 
   > [onAuthStateChanged](https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth?authuser=0#onauthstatechanged) : auth상태에 변화가 있음을 감지하는 observer. <br/>
