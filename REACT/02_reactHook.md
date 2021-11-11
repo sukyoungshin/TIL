@@ -1,13 +1,18 @@
-# 🔗 React Hooks
+# React Hooks
+리액트 훅과 관련하여 공부한 내용을 정리한 레포<br/><br/>
+## 🔗 Index
+[1. useState](#1-usestate) <br/>
+[2. useEffect](#2-useeffect) <br/>
+[3. useRef](#3-useref) <br/>
+[4. useReducer](#4-usereducer)<br/>
 
-- Hook 사용규칙 [ Hooks overview ](https://ko.reactjs.org/docs/hooks-overview.html), [ Hooks rule ](https://ko.reactjs.org/docs/hooks-rules.html)
-- [Common React Hook Mistakes](https://blog.bitsrc.io/common-react-hooks-mistakes-every-developer-should-avoid-defd47d09d8c)
+[📖 Reference](#reference) <br/>
 
-<br/>
+<br/><br/>
 
-## 1. useState
+## 1 useState</a>
 
-useState - 상태관리
+#useState - 상태관리
 useState(초기값) <br>
 useState함수의 반환값 : 상태값변수, 상태변경함수 <br>
 
@@ -68,7 +73,7 @@ export default Fila;
 <br>
 <br>
 
-## 2. useEffect
+## 2 useEffect
 
 - React는 DOM을 바꾼 뒤에 “effect” 함수를 실행
 - useEffect는 컴포넌트 생명주기 관련 Hook으로, 리렌더링 시에 호출할 콜백을 지정하는 함수이다.
@@ -127,7 +132,7 @@ useEffect(() => {
 
 <br /> <br />
 
-## 3. useRef
+## 3 useRef
 
 - 참조변수. DOM객체를 직접 지정할 때 사용할 수 있다. <br/>
 - 참조변수를 2개의 DOM에 넣어주고 싶으면 useRef를 두개 만들어야 한다.<br>
@@ -158,7 +163,7 @@ export default Banana;
 
 <br><br>
 
-## 4. useReducer
+## 4 useReducer
 
 - 상태 관리를 위해 사용하는 리액트 내장 훅
 - useState vs useReducer ? 상황에 따라 더 편한 방법으로 사용한다. <br>
@@ -207,3 +212,8 @@ const [ number, dispatch ] = useReducer(reducer, 0);
 // dispatch : action을 발생시키는 함수
 // useReducer(reducer 함수, 기본값(문자, 숫자, 배열 등 가능))
 ```
+
+## Reference
+- Hook 사용규칙 [ Hooks overview ](https://ko.reactjs.org/docs/hooks-overview.html), [ Hooks rule ](https://ko.reactjs.org/docs/hooks-rules.html)
+- [Common React Hook Mistakes](https://blog.bitsrc.io/common-react-hooks-mistakes-every-developer-should-avoid-defd47d09d8c)
+
