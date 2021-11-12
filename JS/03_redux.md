@@ -10,6 +10,9 @@ Redux 공식문서와 노마드코더 리덕스101 강의, 리액트를 다루�
 - redux 설치 : `yarn add redux`
 
 ## One-way Data Flow
+<img alt="Redux data flow diagram" src="https://ko.redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif">
+
+[이미지출처](https://ko.redux.js.org/tutorials/fundamentals/part-1-overview/)
 
 #### 1. data(state)를 저장하는 공간을 생성
   
@@ -25,10 +28,6 @@ Redux 공식문서와 노마드코더 리덕스101 강의, 리액트를 다루�
 #### 3. redux가 reducer를 호출
 #### 4. reducer 내부의 조건에 맞도록 state값을 바꾸어서 return
 - 불변성을 유지해줘야함. "Mutable" means "changeable". If something is "immutable", it can never be changed.
-
-<img alt="Redux data flow diagram" src="https://ko.redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif">
-
-[이미지출처](https://ko.redux.js.org/tutorials/fundamentals/part-1-overview/)
 
 
 ## Sample
@@ -83,8 +82,10 @@ store.dispatch({ type: 'DECREMENT' }) // 1
 
 <br/><br/>
 
+
+
 ## 🔗 관련레포 및 Reference
 
 - [vanillaJS Redux 코드](https://github.com/sukyoungshin/reactJS/blob/master/vanilla-redux)
 - [Redux공식문서](https://ko.redux.js.org/introduction/getting-started/)
-- 
+- [Redux Terminology](https://ko.redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow#redux-terminology)
