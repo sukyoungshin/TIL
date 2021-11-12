@@ -1,4 +1,8 @@
-# Redux
+# Redux 라이브러리
+
+노마드코더 리덕스101 강의를 듣고 학습한 내용을 정리한 파일입니다. <br/>
+
+## Redux
 
 - redux : `JavaScript` application의 state(상태)를 관리하는 방법
 - redux는 VanillaJS, Vue.js, Angular.js, React.js 어디에서든 사용가능함

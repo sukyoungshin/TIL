@@ -1,5 +1,7 @@
 # How JavaScript Works
 
+노마드코더 바닐라JS 크롬앱만들기 학습하며 배운 내용을 정리한 파일입니다.
+
 ## NOTE
 
 - Javascript reads HTML as document (object)
