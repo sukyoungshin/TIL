@@ -9,7 +9,7 @@
 - redux는 React에 의존하는 라이브러리가 아님
 - redux 설치 : `yarn add redux`
 
-## Pure redux's flow
+## Redux's flow
 
 1. data(state)를 저장하는 공간을 생성
 
@@ -37,6 +37,6 @@
   this is the only func(), which changes the state of your application's data. And this func returns the data/state of your application.
 - action : this makes the data/state change.
 
-## Reference
+## 🔗 관련레포
 
 - [vanillaJS Redux 코드](https://github.com/sukyoungshin/reactJS/blob/master/vanilla-redux)
