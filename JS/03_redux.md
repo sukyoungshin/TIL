@@ -1,6 +1,6 @@
 # Redux 라이브러리
 
-노마드코더 리덕스101 강의를 듣고 학습한 내용을 정리한 파일입니다. <br/>
+Redux 공식문서와 노마드코더 리덕스101 강의, 리액트를 다루는 기술(개정판) 등을 참고하여 학습한 내용을 정리한 파일입니다. <br/>
 
 ## Redux
 
@@ -9,7 +9,7 @@
 - redux는 React에 의존하는 라이브러리가 아님
 - redux 설치 : `yarn add redux`
 
-## Data flow
+## One-way Data Flow
 
 #### 1. data(state)를 저장하는 공간을 생성
   
@@ -24,7 +24,7 @@
 
 #### 3. redux가 reducer를 호출
 #### 4. reducer 내부의 조건에 맞도록 state값을 바꾸어서 return
-- 불변성을 유지해줘야함.
+- 불변성을 유지해줘야함. "Mutable" means "changeable". If something is "immutable", it can never be changed.
 
 <img alt="Redux data flow diagram" src="https://ko.redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif">
 
