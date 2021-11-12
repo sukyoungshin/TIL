@@ -88,4 +88,4 @@ store.dispatch({ type: 'DECREMENT' }) // 1
 
 - [vanillaJS Redux 코드](https://github.com/sukyoungshin/reactJS/blob/master/vanilla-redux)
 - [Redux공식문서](https://ko.redux.js.org/introduction/getting-started/)
-- [Redux Terminology](https://ko.redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow#redux-terminology)
+- [Redux Terminology, Redux Application Data Flow](https://ko.redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow#redux-terminology)
