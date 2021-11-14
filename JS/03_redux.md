@@ -92,7 +92,7 @@ unsubscribe(); // 추후 구독을 비활성화할 때 함수를 호출
 
 #### 4. reducer 내부의 조건에 맞도록 state값을 바꾸어서 return
 
-- 불변성을 유지해줘야함. "Mutable" means "changeable". If something is "immutable", it can never be changed.
+- [불변성](https://daveceddia.com/react-redux-immutability-guide/)을 유지해줘야함. 
 
 ## Sample
 
@@ -154,3 +154,4 @@ store.dispatch({ type: 'DECREMENT' }) // 1
 - [vanillaJS Redux 코드](https://github.com/sukyoungshin/reactJS/blob/master/vanilla-redux)
 - [Redux공식문서](https://ko.redux.js.org/introduction/getting-started/)
 - [Redux Terminology, Redux Application Data Flow](https://ko.redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow#redux-terminology)
+- [React Redux 불변성 가이드](https://daveceddia.com/react-redux-immutability-guide/)
