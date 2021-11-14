@@ -1,6 +1,7 @@
 # Hooks
 
 리액트 훅과 관련하여 공부한 내용을 정리한 레포입니다. <br/>
+주로 [리액트를 다루는 기술](https://thebook.io/080203/), [벨로퍼트와 함께하는 모던리액트](https://github.com/velopert/react-tutorial)을 참고하였습니다 <br/><br/>
 Hooks는 리액트 v16.8에 새로 도입된 기능으로 함수형 컴포넌트에서도 상태 관리를 할 수 있는 useState, 렌더링 직후 작업을 설정하는 useEffect 등의 기능을 제공하여 기존의 함수형 컴포넌트에서 할 수 없었던 다양한 작업을 할 수 있게 해 줍니다.<br/><br/>
 
 ## 🔗 Index
@@ -9,7 +10,8 @@ Hooks는 리액트 v16.8에 새로 도입된 기능으로 함수형 컴포넌트
 [2. useEffect](#2-useeffect) <br/>
 [3. useReducer](#3-usereducer) <br/>
 [4. useMemo](#4-usememo)<br/>
-[5. useCallback](#5-usecallback)<br/>
+[5. useCallback](#5-usecallback을-사용하여-함수-재사용하기)<br/>
+[💡 React.memo](#react.memo)<br/>
 [6. useRef](#6-useref)<br/>
 [7. 커스텀 Hooks 만들기](#7-커스텀-hooks-만들기)<br/>
 [8. 다른 Hooks](#8-다른-hooks)<br/>
@@ -124,21 +126,21 @@ useEffect(() => {
 
 ```
 useEffect(() => {
-  // Component Mount : UI가 나타난 이후이므로, DOM에 바로 접근 가능
   console.log('컴포넌트가 화면에 나타남');
 
+  // Component Mount : UI가 나타난 이후이므로, DOM에 바로 접근 가능
   // 주로 사용하는 경우 :
-  // props -> state
-  // REST API
-  // D3 Video.js (라이브러리 인스턴스)
-  // setInterval, setTimeout
+  // - props -> state
+  // - REST API 요청할 때
+  // - D3, Video.js (라이브러리 인스턴스를 생성했을 때)
+  // - setInterval, setTimeout
 
   return () => {
-    // Component Unmount : UI가 사라질 때 뒷정리
     console.log('컴포넌트가 화면에서 사라짐');
 
-    // clearInterval, clearTimeout
-    // (라이브러리 인스턴스 제거
+    // Component Unmount : UI가 사라질 때 뒷정리해주는 함수 (cleanup 함수 / 뒷정리함수)
+    // - clearInterval, clearTimeout
+    // - (라이브러리 인스턴스 제거
 
   };
 }, []);
@@ -255,13 +257,229 @@ const [ number, dispatch ] = useReducer(reducer, 0);
 
 ## 4 useMemo
 
-## 5 useCallback
+- 함수형 컴포넌트 내부에서 발생하는 연산을 최적화하기 위해 사용하는 Hook <br/>
+- 렌더링하는 과정에서 특정 값이 바뀌었을 때만 연산을 실행하고, 원하는 값이 바뀌지 않았다면 이전에 연산했던 결과를 다시 사용하는 방식.
+
+```
+import React, { useRef, useState, useMemo } from 'react';
+import UserList from './UserList';
+import CreateUser from './CreateUser';
+
+function countActiveUsers(users) {
+  console.log('활성 사용자 수를 세는중...');
+  return users.filter(user => user.active).length;
+}
+
+function App() {
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: ''
+  });
+  const { username, email } = inputs;
+  const onChange = e => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value
+    });
+  };
+  const [users, setUsers] = useState([
+    {
+      id: 1,
+      username: 'velopert',
+      email: 'public.velopert@gmail.com',
+      active: true
+    },
+    {
+      id: 2,
+      username: 'tester',
+      email: 'tester@example.com',
+      active: false
+    },
+    {
+      id: 3,
+      username: 'liz',
+      email: 'liz@example.com',
+      active: false
+    }
+  ]);
+
+  const nextId = useRef(4);
+  const onCreate = () => {
+    const user = {
+      id: nextId.current,
+      username,
+      email
+    };
+    setUsers(users.concat(user));
+
+    setInputs({
+      username: '',
+      email: ''
+    });
+    nextId.current += 1;
+  };
+
+  const onRemove = id => {
+    setUsers(users.filter(user => user.id !== id));
+  };
+  const onToggle = id => {
+    setUsers(
+      users.map(user =>
+        user.id === id ? { ...user, active: !user.active } : user
+      )
+    );
+  };
+  const count = useMemo(() => countActiveUsers(users), [users]); // users값이 바뀔때만 countActiveUsers 함수를 호출함
+  return (
+    <>
+      <CreateUser
+        username={username}
+        email={email}
+        onChange={onChange}
+        onCreate={onCreate}
+      />
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
+      <div>활성사용자 수 : {count}</div>
+    </>
+  );
+};
+
+export default App;
+```
+
+## 5 useCallback을 사용하여 함수 재사용하기
+
+- useMemo처럼 렌더링 성능을 최적화하기 위해 사용
+- `useMemo`는 특정 결과값을 재사용 할 때 사용하는 반면, `useCallback`은 이벤트 핸들러 함수를 필요할 때만 생성한다. 컴포넌트의 렌더링이 자주 발생하거나 렌더링해야 할 컴포넌트의 개수가 많아지면 `useCallback`을 사용하여 최적화해 주는 것이 좋다.
+- 특히, react-redux에서는 <b>`useDispatch`와 함께 사용하는 습관이 필요</b>
+- 사용방법 : useCallback의 첫 번째 파라미터에는 생성하고 싶은 함수를 넣고, 두 번째 파라미터에는 배열을 넣는다. <br/>
+  `const onChange = useCallback((e) => {setNumber(e.target.value)}, []);`
+
+```
+import React, { useRef, useState, useMemo, useCallback } from 'react';
+import UserList from './UserList';
+import CreateUser from './CreateUser';
+
+function countActiveUsers(users) {
+  console.log('활성 사용자 수를 세는중...');
+  return users.filter(user => user.active).length;
+}
+
+function App() {
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: ''
+  });
+  const { username, email } = inputs;
+  const onChange = useCallback(
+    e => {
+      const { name, value } = e.target;
+      setInputs({
+        ...inputs,
+        [name]: value
+      });
+    },
+    [inputs]
+  );
+  const [users, setUsers] = useState([
+    {
+      id: 1,
+      username: 'velopert',
+      email: 'public.velopert@gmail.com',
+      active: true
+    },
+    {
+      id: 2,
+      username: 'tester',
+      email: 'tester@example.com',
+      active: false
+    },
+    {
+      id: 3,
+      username: 'liz',
+      email: 'liz@example.com',
+      active: false
+    }
+  ]);
+
+  const nextId = useRef(4);
+  const onCreate = useCallback(() => {
+    const user = {
+      id: nextId.current,
+      username,
+      email
+    };
+    setUsers(users.concat(user));
+
+    setInputs({
+      username: '',
+      email: ''
+    });
+    nextId.current += 1;
+  }, [users, username, email]);
+
+  const onRemove = useCallback(
+    id => {
+      setUsers(users.filter(user => user.id !== id));
+    },
+    [users]
+  );
+  const onToggle = useCallback(
+    id => {
+      setUsers(
+        users.map(user =>
+          user.id === id ? { ...user, active: !user.active } : user
+        )
+      );
+    },
+    [users]
+  );
+  const count = useMemo(() => countActiveUsers(users), [users]);
+  return (
+    <>
+      <CreateUser
+        username={username}
+        email={email}
+        onChange={onChange}
+        onCreate={onCreate}
+      />
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
+      <div>활성사용자 수 : {count}</div>
+    </>
+  );
+}
+
+export default App;
+```
+
+- 사실, useCallback 은 useMemo 를 기반으로 만들어졌습니다. 다만, 함수를 위해서 사용 할 때 더욱 편하게 해준 것 뿐이지요. useCallback은 결국 useMemo로 함수를 반환하는 상황에서 더 편하게 사용할 수 있는 Hook입니다. 숫자, 문자열, 객체처럼 일반 값을 재사용하려면 useMemo를 사용하고, 함수를 재사용하려면 useCallback을 사용하세요.
+
+```
+useCallback(() => {
+  console.log('hello world!');
+}, []);
+
+useMemo(() => {
+  const fn = () => {
+    console.log('hello world!');
+  };
+  return fn;
+}, []);
+```
+
+### React.memo
+
+- 💡 샘플코드 : [밸로퍼트의 모던 리액트 React.memo](https://github.com/velopert/react-tutorial/blob/master/basic/19-React.memo.md)
+- 컴포넌트에서 리렌더링이 불필요할 때는 이전에 렌더링했던 결과를 재사용할 수 있게 하는 방법. 이 함수를 사용하면 컴포넌트의 리렌더링 성능을 최적화 할 수 있음.
+- 사용방법 : 컴포넌트를 export할때 React.memo()로 감싸주면 됨. props가 바뀌었을때만 리렌더링 해줌
 
 ## 6 useRef
 
 - 참조변수. DOM객체를 직접 지정할 때 사용할 수 있다. <br/>
 - 참조변수를 2개의 DOM에 넣어주고 싶으면 useRef를 두개 만들어야 한다.<br>
 - ref.current에 접근해서 DOM을 직접 수정한다면, 리액트에서 제공하는 Lifecycle 혹은 Virtual DOM 렌더링 뎁스가 꼬일 위험이 매우 높아진다. ref를 여러 군데서 호출하고 있다면 어디에서 로직이 수정되었는지 추적이 더욱 어려워진다. current가 undefined인 경우도 고려해야한다. 이렇게 side-effect가 존재하는 ref의 사용보다는 가능하다면 리액트의 Lifecycle을 따르는 것이 좋다.
+- useRef를 사용하여 ref를 설정하면 useRef를 통해 만든 객체 안의 current 값이 실제 엘리먼트를 가리킵니다.
 
 ```
 import React, { useRef, useEffect } from 'react';
@@ -285,6 +503,33 @@ const Banana = () => {
 
 export default Banana;
 ```
+
+### 로컬 변수로 사용하기
+
+로컬 변수란 렌더링과 상관없이 바뀔 수 있는 값을 의미
+
+```
+import React, { useRef } from 'react';
+
+const RefSample = () => {
+  const id = useRef(1);
+  const setId = (n) => {
+    id.current = n;
+  }
+  const printId = () => {
+    console.log(id.current);
+  }
+  return (
+    <div>
+      refsample
+    </div>
+  );
+};
+
+export default RefSample;
+```
+
+이렇게 ref 안의 값이 바뀌어도 컴포넌트가 렌더링되지 않는다는 점에는 주의해야 합니다. 렌더링과 관련되지 않은 값을 관리할 때만 이러한 방식으로 코드를 작성하세요.
 
 <br><br>
 
