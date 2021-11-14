@@ -156,10 +156,11 @@ useEffect(() => {
 
 ## 3 useReducer
 
-- `상태 관리`를 위해 사용하는 리액트 내장 훅. useState보다 더 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 업데이트해 주고 싶을 때 사용
+- `상태 관리`를 위해 사용하는 리액트 내장 훅. 
+- useState보다 더 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 업데이트해 주고 싶을 때 사용
 - useState vs useReducer ? 상황에 따라 더 편한 방법으로 사용한다. <br>
- useState : 컴포넌트에서 관리하는 값이 딱 하나고 숫자, 문자열, 불리언 값처럼 간단할 때 `const [ numbers, setNumbers ] = useState(true);`<br/>
- useReducer : 컴포넌트에서 관리하는 값이 여러개가 되어서 상태의 구조가 복잡해지거나, 해야하는 액션이 많을 때 (user값을 delete, add 등...) <br/>
+- useState : 컴포넌트에서 관리하는 값이 딱 하나고 숫자, 문자열, 불리언 값처럼 간단할 때 `const [ numbers, setNumbers ] = useState(true);`<br/>
+- useReducer : 컴포넌트에서 관리하는 값이 여러개가 되어서 상태의 구조가 복잡해지거나, 해야하는 액션이 많을 때 (user값을 delete, add 등...) <br/>
 
 - 리듀서는 현재 상태, 그리고 업데이트를 위해 필요한 정보를 담은 `액션(action) 값을 전달받아 새로운 상태를 반환하는 함수`입니다. <br/>
 리듀서 함수에서 새로운 상태를 만들 때는 `반드시 불변성을 지켜 주어야` 합니다.
