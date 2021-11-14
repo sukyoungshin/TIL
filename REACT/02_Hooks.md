@@ -24,6 +24,7 @@ Hooks는 리액트 v16.8에 새로 도입된 기능으로 함수형 컴포넌트
 
 - 상태관리를 위해 사용하는 리액트 내장 훅 <br/>
 - 사용 방법: `const [상태값변수, 상태변경함수] = useState(초기값);`
+- https://reactjs.org/docs/hooks-reference.html#usestate
 
 ```
 import React, { useState } from 'react';
@@ -32,7 +33,7 @@ function Counter(){
   const [number, setNumber] = useState(0);
   // number: 0으로 초기화되어 있는 상태변수, 이 변수의 값이 바뀌면 다시 렌더링된다.
   // setNumber(x) : 상태변수의 값을 x로 변경하는 함수
-  
+
   return <div>
     <h1>{number}</h1>
     <button onClick={() => setNumber(number === -5 ? number : number - 1)}>뺄셈</button>
@@ -84,31 +85,35 @@ export default Fila;
 
 - React는 DOM을 바꾼 뒤에 'useEffect' 함수를 실행
 - useEffect는 컴포넌트 생명주기 관련 Hook으로, 리액트 컴포넌트가 렌더링될 때마다 특정 작업을 수행하도록 지정하는 함수이다.
-- - 클래스형 컴포넌트의 componentDidMount와 componentDidUpdate를 합친 형태
+- 클래스형 컴포넌트의 componentDidMount와 componentDidUpdate를 합친 형태
 - useEffect는 이 함수를 언제 호출할건지 같이 지정해줘야한다 (이를 의존배열deps 라고 한다.)
 - 주로 비동기적으로 웹서버에 뭔가를 요청할때 사용한다.
+- https://reactjs.org/docs/hooks-reference.html#usereducer
 
 <br/>
 
 ### 💡 Dependency lists (deps, 의존배열)
 
-#### 기본형 
-- 모든 렌더링 직후에 콜백을 호출한다. 
-- `useEffect(() => console.log('렌더링COMPLETE!'));` 
+#### 기본형
+
+- 모든 렌더링 직후에 콜백을 호출한다.
+- `useEffect(() => console.log('렌더링COMPLETE!'));`
 
 #### 마운트될 때만 실행하고 싶을 때
- -  useEffect에서 설정한 함수를 컴포넌트가 화면에 맨 처음 렌더링될 때만 실행하고, 업데이트될 때는 실행하지 않으려면
- -  `useEffect(() => console.log('마운트될 때만 실행됩니다.'), []);` 
- -  빈 배열: 최초 1회에만 콜백호출
+
+- useEffect에서 설정한 함수를 컴포넌트가 화면에 맨 처음 렌더링될 때만 실행하고, 업데이트될 때는 실행하지 않으려면
+- `useEffect(() => console.log('마운트될 때만 실행됩니다.'), []);`
+- 빈 배열: 최초 1회에만 콜백호출
 
 #### 특정 값이 업데이트될 때만 실행하고 싶을 때
--   dependency (의존성)이 정해져 있는 경우, 특정 value가 변경될 때만 호출하려면
--   `useEffect(() => console.log(name), [name]);` <br/>
+
+- dependency (의존성)이 정해져 있는 경우, 특정 value가 변경될 때만 호출하려면
+- `useEffect(() => console.log(name), [name]);` <br/>
 
 ```
 useEffect(() => {
   console.log('반가워');
-}, [state1, state2]); 
+}, [state1, state2]);
 // 배열 내부의 state1 또는 state2 값이 바뀔때마다 useEffect 내부가 호출된다
 ```
 
@@ -139,6 +144,7 @@ useEffect(() => {
 ```
 
 #### 마운트될 때만 뒷정리 함수를 호출하고 싶다면
+
 - useEffect 함수의 두 번째 파라미터에 비어 있는 배열을 넣으면 됩니다.
 
 ```
@@ -156,14 +162,14 @@ useEffect(() => {
 
 ## 3 useReducer
 
-- `상태 관리`를 위해 사용하는 리액트 내장 훅. 
+- `상태 관리`를 위해 사용하는 리액트 내장 훅.
 - useState보다 더 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 업데이트해 주고 싶을 때 사용
 - useState vs useReducer ? 상황에 따라 더 편한 방법으로 사용한다. <br>
 - useState : 컴포넌트에서 관리하는 값이 딱 하나고 숫자, 문자열, 불리언 값처럼 간단할 때 `const [ numbers, setNumbers ] = useState(true);`<br/>
 - useReducer : 컴포넌트에서 관리하는 값이 여러개가 되어서 상태의 구조가 복잡해지거나, 해야하는 액션이 많을 때 (user값을 delete, add 등...) <br/>
 
 - 리듀서는 현재 상태, 그리고 업데이트를 위해 필요한 정보를 담은 `액션(action) 값을 전달받아 새로운 상태를 반환하는 함수`입니다. <br/>
-리듀서 함수에서 새로운 상태를 만들 때는 `반드시 불변성을 지켜 주어야` 합니다.
+  리듀서 함수에서 새로운 상태를 만들 때는 `반드시 불변성을 지켜 주어야` 합니다.
 
 ```
 // Counter.js
@@ -210,6 +216,7 @@ const App = () => {
 
 export default App;
 ```
+
 ### useReducer VS useState
 
 #### A. 상태 변경 시
@@ -219,9 +226,11 @@ export default App;
 - 업데이트 할때 필요한 참조하고 싶은 값이 있다면, `dispatch({ type: 'INCREMENT', diff : 4 })` 이런식으로도 넣어서 reducer함수로 전달가능 <br><br>
 
 #### B. useReducer를 사용하면
+
 장점 : 상태 업데이트 로직을 컴포넌트 밖으로 분리하여 사용할 수 있음<br/>
 
 #### C. 사용방법
+
 - reducer : 상태를 업데이트 하는 함수. 현재 상태와 action parameter를 받아와서, 업데이트 된 새로운 형태를 반환해주는 형태
 - `action = { type : 'INCREMENT' }`
 
