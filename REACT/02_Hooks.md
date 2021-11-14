@@ -83,39 +83,38 @@ export default Fila;
 ## 2 useEffect
 
 - React는 DOM을 바꾼 뒤에 'useEffect' 함수를 실행
-- useEffect는 컴포넌트 생명주기 관련 Hook으로, 리렌더링 시에 호출할 콜백을 지정하는 함수이다.
-- useEffect는 이 함수를 언제 호출할건지 같이 지정해줘야한다 (이를 dependencyList라고 한다.)
+- useEffect는 컴포넌트 생명주기 관련 Hook으로, 리액트 컴포넌트가 렌더링될 때마다 특정 작업을 수행하도록 지정하는 함수이다.
+- - 클래스형 컴포넌트의 componentDidMount와 componentDidUpdate를 합친 형태
+- useEffect는 이 함수를 언제 호출할건지 같이 지정해줘야한다 (이를 의존배열deps 라고 한다.)
 - 주로 비동기적으로 웹서버에 뭔가를 요청할때 사용한다.
 
-- useEffect는 리액트 컴포넌트가 렌더링될 때마다 특정 작업을 수행하도록 설정할 수 있는 Hook입니다. 클래스형 컴포넌트의 componentDidMount와 componentDidUpdate를 합친 형태
-
-<br />
-<br />
+<br/>
 
 ### 💡 Dependency lists (deps, 의존배열)
 
-- 기본형 : 모든 렌더링 직후에 콜백을 호출한다.
-  `useEffect(() => console.log('렌더링COMPLETE!'));` <br/>
+#### 기본형 
+- 모든 렌더링 직후에 콜백을 호출한다. 
+- `useEffect(() => console.log('렌더링COMPLETE!'));` 
 
-- 마운트될 때만 실행하고 싶을 때
-  useEffect에서 설정한 함수를 컴포넌트가 화면에 맨 처음 렌더링될 때만 실행하고, 업데이트될 때는 실행하지 않으려면
-  `useEffect(() => console.log('마운트될 때만 실행됩니다.'), []);` 빈 배열: 최초 1회에만 콜백호출! <br/>
-- 특정 값이 업데이트될 때만 실행하고 싶을 때
-  dependency (의존성)이 정해져 있는 경우, 특정 value가 변경될 때만 호출
-  `useEffect(() => console.log(name), [name]);` <br/>
+#### 마운트될 때만 실행하고 싶을 때
+ -  useEffect에서 설정한 함수를 컴포넌트가 화면에 맨 처음 렌더링될 때만 실행하고, 업데이트될 때는 실행하지 않으려면
+ -  `useEffect(() => console.log('마운트될 때만 실행됩니다.'), []);` 
+ -  빈 배열: 최초 1회에만 콜백호출
+
+#### 특정 값이 업데이트될 때만 실행하고 싶을 때
+-   dependency (의존성)이 정해져 있는 경우, 특정 value가 변경될 때만 호출하려면
+-   `useEffect(() => console.log(name), [name]);` <br/>
 
 ```
 useEffect(() => {
   console.log('반가워');
-}, [state1, state2]);
-
-// 배열 state1, state2한테 의존해서 콜백함수가 호출된다.
-// state1이 바뀔때 호출, state2가 바뀔때 호출.
+}, [state1, state2]); 
+// 배열 내부의 state1 또는 state2 값이 바뀔때마다 useEffect 내부가 호출된다
 ```
 
 <br/>
 
-- 뒷정리하기
+#### 뒷정리함수 (cleanup 함수)
 
 ```
 useEffect(() => {
@@ -139,7 +138,8 @@ useEffect(() => {
 }, []);
 ```
 
-마운트될 때만 뒷정리 함수를 호출하고 싶다면 useEffect 함수의 두 번째 파라미터에 비어 있는 배열을 넣으면 됩니다.
+#### 마운트될 때만 뒷정리 함수를 호출하고 싶다면
+- useEffect 함수의 두 번째 파라미터에 비어 있는 배열을 넣으면 됩니다.
 
 ```
 useEffect(() => {
