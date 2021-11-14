@@ -23,23 +23,16 @@ Hooks는 리액트 v16.8에 새로 도입된 기능으로 함수형 컴포넌트
 ## 1 useState</a>
 
 - 상태관리를 위해 사용하는 리액트 내장 훅 <br/>
-- 사용 방법:
+- 사용 방법: `const [상태값변수, 상태변경함수] = useState(초기값);`
 
 ```
-const [number, setNumber] = useState(0);
-// const [상태값변수, 상태변경함수] = useState(초기값);
-// number: 0으로 초기화되어 있는 상태변수, 이 변수의 값이 바뀌면 다시 렌더링된다.
-// setNumber(x) : 상태변수의 값을 x로 변경하는 함수
-```
-
-- 하나의 useState 함수는 하나의 상태 값만 관리할 수 있습니다. 컴포넌트에서 관리해야 할 상태가 여러 개라면 useState를 여러 번 사용하면 됩니다.
-
-```
-// ex
 import React, { useState } from 'react';
 
 function Counter(){
   const [number, setNumber] = useState(0);
+  // number: 0으로 초기화되어 있는 상태변수, 이 변수의 값이 바뀌면 다시 렌더링된다.
+  // setNumber(x) : 상태변수의 값을 x로 변경하는 함수
+  
   return <div>
     <h1>{number}</h1>
     <button onClick={() => setNumber(number === -5 ? number : number - 1)}>뺄셈</button>
@@ -50,7 +43,7 @@ function Counter(){
 export default Counter;
 ```
 
-<br><br>
+- 하나의 useState 함수는 하나의 상태 값만 관리한다. 컴포넌트에서 관리해야 할 상태가 여러 개라면 useState를 여러 번 사용한다.
 
 - useState는 독립적인 함수이므로, 커스텀 함수(useMyState) 내부에서도 활용할 수 있다.
 
