@@ -30,8 +30,11 @@ actions, constants, reducers라는 세 개의 디렉터리를 만들고 그 안�
 
 Ducks 패턴을 사용하여 액션 타입, 액션 생성 함수, 리듀서를 작성한 코드를 ‘모듈’이라고 합니다.
 
-## Reference
+## REFERENCE 및 관련레포
+### REFERENCE
 - 리액트를 다루는 기술 [17강](https://thebook.io/080203/ch17/)
-- 🔗 React-redux 예제코드 : [예제1](https://github.com/sukyoungshin/reactJS/tree/master/02-react-redux-velopert), [예제2](https://github.com/sukyoungshin/reactJS/tree/master/01-react-redux-nomard), [예제3](https://github.com/sukyoungshin/reactJS/tree/master/shoeshop)
-- 🔗 Pure-redux 관련레포 : [이론](https://github.com/sukyoungshin/TIL/blob/main/JS/03_redux.md),
+
+### 관련레포
+- React-redux 예제코드 : [💡예제1](https://github.com/sukyoungshin/reactJS/tree/master/02-react-redux-velopert), [예제2](https://github.com/sukyoungshin/reactJS/tree/master/01-react-redux-nomard), [예제3](https://github.com/sukyoungshin/reactJS/tree/master/shoeshop)
+- Pure-redux 관련레포 : [이론](https://github.com/sukyoungshin/TIL/blob/main/JS/03_redux.md),
 [vanilla-redux 예제](https://github.com/sukyoungshin/reactJS/tree/master/vanilla-redux)
