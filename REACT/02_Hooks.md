@@ -158,10 +158,11 @@ useEffect(() => {
 
 - `상태 관리`를 위해 사용하는 리액트 내장 훅. useState보다 더 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 업데이트해 주고 싶을 때 사용
 - useState vs useReducer ? 상황에 따라 더 편한 방법으로 사용한다. <br>
-  useState : 컴포넌트에서 관리하는 값이 딱 하나고 숫자, 문자열, 불리언 값처럼 간단할 때 `const [ numbers, setNumbers ] = useState(true);`
-  useReducer : 컴포넌트에서 관리하는 값이 여러개가 되어서 상태의 구조가 복잡해지거나, 해야하는 액션이 많을 때 (user값을 delete, add 등...)
+ useState : 컴포넌트에서 관리하는 값이 딱 하나고 숫자, 문자열, 불리언 값처럼 간단할 때 `const [ numbers, setNumbers ] = useState(true);`<br/>
+ useReducer : 컴포넌트에서 관리하는 값이 여러개가 되어서 상태의 구조가 복잡해지거나, 해야하는 액션이 많을 때 (user값을 delete, add 등...) <br/>
 
-- 리듀서는 현재 상태, 그리고 업데이트를 위해 필요한 정보를 담은 `액션(action) 값을 전달받아 새로운 상태를 반환하는 함수`입니다. 리듀서 함수에서 새로운 상태를 만들 때는 `반드시 불변성을 지켜 주어야` 합니다.
+- 리듀서는 현재 상태, 그리고 업데이트를 위해 필요한 정보를 담은 `액션(action) 값을 전달받아 새로운 상태를 반환하는 함수`입니다. <br/>
+리듀서 함수에서 새로운 상태를 만들 때는 `반드시 불변성을 지켜 주어야` 합니다.
 
 ```
 // Counter.js
@@ -208,23 +209,20 @@ const App = () => {
 
 export default App;
 ```
+### useReducer VS useState
 
-<br><br>
+#### A. 상태 변경 시
 
-### useState과의 차이
+- `useState`에서의 상태변경 ? 직접변경 `setValue(5);`
+- `useReducer`에서의 상태변경? action 객체를 기반으로 상태변경. `dispatch({ type: 'INCREMENT' })`<br>
+- 업데이트 할때 필요한 참조하고 싶은 값이 있다면, `dispatch({ type: 'INCREMENT', diff : 4 })` 이런식으로도 넣어서 reducer함수로 전달가능 <br><br>
 
-A. 상태 변경 시
+#### B. useReducer를 사용하면
+장점 : 상태 업데이트 로직을 컴포넌트 밖으로 분리하여 사용할 수 있음<br/>
 
-- useState에서의 상태변경 ? 직접변경 ex) setValue(5);
-- useReducer에서의 상태변경? action이라는 (update할 때 참조하는) 객체를 기반으로 상태변경. ex) dispatch({ type: 'INCREMENT' })<br>
-  업데이트 할때 필요한 참조하고 싶은 값이 있다면, dispatch ({ type: 'INCREMENT', diff : 4 }) 이런식으로도 넣어줄 수 있음 <br><br>
-
-B. useReducer를 사용하면, 상태 업데이트 로직을 컴포넌트 밖으로 분리하여 사용할 수 있음
-
-C. 사용방법
-
-- reducer : 상태를 업데이트 하는 함수. 현재 상태와 action parameter를 받아와서, 업데이트 된 새로운 형태를 반환해주는 형태를 갖추고 있음
-- action = { type : 'INCREMENT' }
+#### C. 사용방법
+- reducer : 상태를 업데이트 하는 함수. 현재 상태와 action parameter를 받아와서, 업데이트 된 새로운 형태를 반환해주는 형태
+- `action = { type : 'INCREMENT' }`
 
 ```
 function reducer (state, action) {
@@ -237,11 +235,6 @@ function reducer (state, action) {
 			return state;
 	}
 };
-```
-
-- useReducer
-
-```
 const [ number, dispatch ] = useReducer(reducer, 0);
 // number : 현재 상태 (기본값 0)
 // dispatch : action을 발생시키는 함수
