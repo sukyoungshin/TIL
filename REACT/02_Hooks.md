@@ -534,7 +534,7 @@ export default RefSample;
 
 ## 7 커스텀 Hooks 만들기
 
-자신만의 훅 만들기 : [ React공식문서 ](https://ko.reactjs.org/docs/hooks-custom.html), [ToastUI : 커스텀훅 예제](https://ui.toast.com/weekly-pick/ko_20200916)
+- References : [ React공식문서 : 자신만의 훅 만들기 ](https://ko.reactjs.org/docs/hooks-custom.html), [ToastUI : 커스텀훅 예제](https://ui.toast.com/weekly-pick/ko_20200916)
 
 ### WHY ?
 
@@ -547,7 +547,67 @@ export default RefSample;
 
 useEffect, useState, useReducer 같은 리액트에 내장되어 있는 훅을 이용하여, 원하는 기능을 구현하고 컴포넌트에서 사용하고 싶은 값을 반환해주면 된다.
 
+### SAMPLE
+
+```
+// useInputs.js
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  return {
+    ...state,
+    [action.name]: action.value
+  };
+}
+
+export default function useInputs(initialForm) {
+  const [state, dispatch] = useReducer(reducer, initialForm);
+  const onChange = e => {
+    dispatch(e.target);
+  };
+  return [state, onChange];
+}
+```
+
+```
+// Info.js
+import React from "react";
+import useInputs from "./useInputs";
+
+const Info = () => {
+  const [state, onChange] = useInputs({
+    name: "",
+    nickname: "",
+  });
+  const { name, nickname } = state;
+
+  return (
+    <div>
+      <div>
+        <input name="name" value={name} onChange={onChange} />
+        <input name="nickname" value={nickname} onChange={onChange} />
+      </div>
+      <div>
+        <div>
+          <b>이름:</b> {name}
+        </div>
+        <div>
+          <b>닉네임: </b> {nickname}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Info;
+```
+
 ## 8 다른 Hooks
+
+다른 개발자가 만든 Hooks도 라이브러리로 설치하여 사용할 수 있습니다.
+
+- https://nikgraf.github.io/react-hooks/
+- https://github.com/rehooks/awesome-react-hooks
 
 ## Reference
 
