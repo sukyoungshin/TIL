@@ -470,6 +470,9 @@ useMemo(() => {
 - 컴포넌트에서 리렌더링이 불필요할 때는 이전에 렌더링했던 결과를 재사용할 수 있게 하는 방법. 이 함수를 사용하면 컴포넌트의 리렌더링 성능을 최적화 할 수 있음.
 - 사용방법 : 컴포넌트를 export할때 React.memo()로 감싸주면 됨. props가 바뀌었을때만 리렌더링 해줌
 
+- [ToastUI: React.memo 현명하게 사용하기](https://ui.toast.com/weekly-pick/ko_20190731)
+- <b>\*[함수형 업데이트](https://ui.toast.com/weekly-pick/ko_20201022)</b>
+
 ## 6 useRef
 
 - 참조변수. DOM객체를 직접 지정할 때 사용할 수 있다. <br/>
@@ -531,6 +534,19 @@ export default RefSample;
 
 ## 7 커스텀 Hooks 만들기
 
+자신만의 훅 만들기 : [ React공식문서 ](https://ko.reactjs.org/docs/hooks-custom.html), [ToastUI : 커스텀훅 예제](https://ui.toast.com/weekly-pick/ko_20200916)
+
+### WHY ?
+
+- 코드의 재사용을 용이하게 하고, 번들 시 코드의 용량을 줄여주기 위해 사용한다.
+- App이 비즈니스로직으로 비대해진다면 custom hook을 사용해서 비즈니스 로직과 상태를 분리해내는 방법을 사용하는 것이 좋다.
+- react-async, react-use, react-spectrum 과 같이 잘 만들어진 Hooks 오픈소스도 살펴보자.
+  `yarn add react-async`
+
+### HOW TO USE
+
+useEffect, useState, useReducer 같은 리액트에 내장되어 있는 훅을 이용하여, 원하는 기능을 구현하고 컴포넌트에서 사용하고 싶은 값을 반환해주면 된다.
+
 ## 8 다른 Hooks
 
 ## Reference
@@ -538,3 +554,9 @@ export default RefSample;
 - 리다기 [8강](https://thebook.io/080203/ch08/)
 - Hook 사용규칙 [ Hooks overview ](https://ko.reactjs.org/docs/hooks-overview.html), [ Hooks rule ](https://ko.reactjs.org/docs/hooks-rules.html)
 - [Common React Hook Mistakes](https://blog.bitsrc.io/common-react-hooks-mistakes-every-developer-should-avoid-defd47d09d8c)
+- [ 리액트 hooks에 대해 이해하기(번역) ](https://github.com/sbyeol3/articles/issues/12)
+- [ react-async레포 ](https://github.com/async-library/react-async)
+- [ react-async 밸로퍼트 깃북 ](https://react.vlpt.us/integrate-api/04-react-async.html)
+- [ToastUI : Reack Hook의 어두운 면](https://ui.toast.com/weekly-pick/ko_20200922)
+- [React 렌더러를 최적화하는 간단한 트릭](https://ui.toast.com/weekly-pick/ko_20190725)
+- [React 렌더링과 성능 알아보기](https://ui.toast.com/weekly-pick/ko_20170324)
