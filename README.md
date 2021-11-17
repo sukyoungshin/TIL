@@ -7,8 +7,8 @@
 ### 뉴스레터
 
 - [Daily Dev](https://daily.dev/)
-- GeekNews
-- CSS tricks
+- [GeekNews](https://news.hada.io/)
+- [CSS tricks](https://css-tricks.com/)
 
 ### HTML, CSS, JavaScript
 
