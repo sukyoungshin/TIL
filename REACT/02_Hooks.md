@@ -466,7 +466,7 @@ useMemo(() => {
 
 ### React.memo
 
-- 💡 샘플코드 : [밸로퍼트의 모던 리액트 React.memo](https://github.com/velopert/react-tutorial/blob/master/basic/19-React.memo.md)
+- 💡 샘플코드 : [밸로퍼트의 모던 리액트 React.memo](https://github.com/velopert/react-tutorial/blob/master/basic/19-React.memo.md), [연습코드](https://github.com/sukyoungshin/reactJS/blob/master/react-for-beginner/src/components/Props.js)
 - 컴포넌트에서 리렌더링이 불필요할 때는 이전에 렌더링했던 결과를 재사용할 수 있게 하는 방법. 이 함수를 사용하면 컴포넌트의 리렌더링 성능을 최적화 할 수 있음.
 - 사용방법 : 컴포넌트를 export할때 React.memo()로 감싸주면 됨. props가 바뀌었을때만 리렌더링 해줌
 
