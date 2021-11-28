@@ -1,5 +1,5 @@
 # Subway-renewal-mobile
-subway-renewal-mobile를 작업하며 겪었던 이슈를 정리한 파일입니다.
+subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
 
 ## Issues
 ### Styled-components
@@ -18,6 +18,12 @@ const PaginationList = styled.li`
     }
 `;
 ```
+<br/>
+
+## Lesson
+### 커링함수 Currying
+
+<br/><br/>
 
 ## Reference
-- [깃허브코드](https://github.com/sukyoungshin/subway-renewal-mobile)
+[깃허브코드](https://github.com/sukyoungshin/subway-renewal-mobile)
