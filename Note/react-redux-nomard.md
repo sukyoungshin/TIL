@@ -24,8 +24,6 @@
 
 <br/><br/>
 
-## 📖 Reference
+## Reference
 
-- [리액트 공식문서](https://ko.reactjs.org/)
-- [Flux패턴](https://www.huskyhoochu.com/flux-architecture/)
-- 리다기 [16~17강](https://thebook.io/080203/)
+- [깃허브코드](https://github.com/sukyoungshin/reactJS/tree/master/react-redux-nomard)
