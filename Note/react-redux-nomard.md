@@ -1,4 +1,4 @@
-# react-redux-nomard
+# React-redux-nomard
 
 노마드코더 리덕스101 강의를 들으며 겪었던 이슈를 정리한 파일입니다.<br/><br/>
 
