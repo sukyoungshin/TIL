@@ -17,7 +17,9 @@
 - Node버전 업그레이드 후, Netlify서버에서 deploy 실패하였다. (Node버전 이슈)<br/>
 
 
-> 💡 Solution : 서버 Node버전과 로컬Node버전을 일치시켜서 해결 🔗[Netlify QnA](https://answers.netlify.com/t/deploy-failed-build-script-returned-non-zero-exit-code-2/44263/2), [Netlify 공식문서](https://docs.netlify.com/configure-builds/manage-dependencies/#node-js-and-javascript)
+> 💡 Solution :
+> 1) Node버전을 downgrade하는 방법이 있었으나 팀 프로젝트 진행으로 인해 버전다운을 진행 할 수 없었음 <br/>
+> 2) 서버 Node버전과 로컬Node버전을 일치시켜서 해결 🔗[Netlify QnA](https://answers.netlify.com/t/deploy-failed-build-script-returned-non-zero-exit-code-2/44263/2), [Netlify 공식문서](https://docs.netlify.com/configure-builds/manage-dependencies/#node-js-and-javascript)
 
 <br/>
 
