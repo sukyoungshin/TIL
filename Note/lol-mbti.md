@@ -23,7 +23,7 @@
 
 <br/>
 
-### styled-components
+### Styled-components
 - input태그에 가상선택자::before, ::after (pseudo elements)가 적용되지 않았다.
 > 💡 Solution : empty태그는 가상선택자가 적용되지 않는다. 가상선택자 대신 span태그를 활용하여 문제해결 🔗[StackOverFlow](https://stackoverflow.com/questions/2587669/can-i-use-a-before-or-after-pseudo-element-on-an-input-field/4660434#4660434)
 > 
