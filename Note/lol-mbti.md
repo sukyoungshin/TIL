@@ -5,7 +5,7 @@
 ### Node Version Upgrade
 - Node 버전을 17.0.1로 업그레이드 하였더니 local에서 yarn start가 작동되지 않았다. (openssl이슈)<br/>
 
-> 💡 Solution : 스크립트에 아래 코드 추가입력하여 문제해결 🔗 [StackOverFlow](https://stackoverflow.com/questions/69665222/node-17-0-1-causes-some-error-digital-envelope-routinesunsupported)
+> 💡 Solution : package.json에 아래 코드 추가입력하여 문제해결 🔗 [StackOverFlow](https://stackoverflow.com/questions/69665222/node-17-0-1-causes-some-error-digital-envelope-routinesunsupported)
 ```
 "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
