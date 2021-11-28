@@ -1,6 +1,6 @@
 # React-redux-nomard
 
-노마드코더 리덕스101 강의를 들으며 겪었던 이슈를 정리한 파일입니다.<br/><br/>
+노마드코더 리덕스101 강의를 듣고 스스로 코드를 개선하며 겪었던 이슈를 정리한 파일입니다.<br/><br/>
 
 ## Issues
 ### React-router Version
