@@ -58,7 +58,7 @@ const URLshareWrapper = styled.div`
 
 <br/>
 
-- li태그에 가상선택자::before, ::after (pseudo elements)가 제대로 적용되지 않는 이슈 (li는 empty 태그가 아닌데!)
+- li태그에 가상선택자::before, ::after (pseudo elements)가 제대로 적용되지 않는 이슈 <strike>(li는 empty 태그가 아닌데!)</strike>
 > 💡 Solution : JSX에서는 escaping 문자를 두 번 써야한다.
 
 ```
