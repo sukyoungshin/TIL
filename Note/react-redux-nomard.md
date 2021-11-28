@@ -16,7 +16,7 @@
 
 <br/>
 
-### Redux Dev Tool
+### Redux Dev Tools
 - 로컬에서 작업하던 도중, 잘 작동되고 있던 Redux Dev Tools가 갑자기 탭메뉴에서 사라지는 이슈 발생 (!!!)
 - 라이브러리 버전 더블체크, 크롬 extensions 재설치, 라이브서버 껐다 켜기, 브라우저 재시작을 시도해봤으나 여전히 해결X
 
