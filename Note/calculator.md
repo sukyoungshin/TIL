@@ -1,6 +1,6 @@
 # Calculator
 
-Vanilla JS 프로젝트인 계산기Calculator를 작업하며 고민한 내용과 해결한 방법입니다.<br/><br/>
+Vanilla JS 프로젝트인 계산기Calculator를 작업하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
 
 ## Learn & Issues
 ### 변수명 고민
