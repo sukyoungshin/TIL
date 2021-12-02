@@ -4,8 +4,8 @@ Vanilla JS 프로젝트인 계산기Calculator를 작업하며 겪었던 이슈 
 
 ## Learn & Issues
 ### 좋은 변수명에 대한 고민
-- 변수명은 길어도 괜찮으니 '직관적'으로 짜야한다. 단, 의미전달이 분명해야 한다. 🔗[좋은 변수명 짓기 팁](https://remotty.github.io/blog/2014/03/01/hyogwajeogin-ireumjisgi/)
-<br/>
+변수명은 길어도 괜찮으니 '직관적'으로 짜야한다. 단, 의미전달이 분명해야 한다. 🔗[좋은 변수명 짓기 팁](https://remotty.github.io/blog/2014/03/01/hyogwajeogin-ireumjisgi/)
+<br/><br/>
 
 ### 부동소수점 실수
 - 자바스크립트에서는 `0.1 + 0.2 = 0.30000000000000004`이 나온다. <br/>
