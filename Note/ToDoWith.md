@@ -3,10 +3,11 @@
 
 ## Learn & Issues
 ### 기획 관련
-- 기획, UI/UX 용어와 흐름에 친숙하게 된 계기가 되었다.
-    - 기획 관련 : 페르소나, ADS시나리오, AS-IS / TO-BE process, 스토리보드
-    - UI/UX관련 : Splash, Walkthrough, [모바일 UIUX 디자인용어 정리](https://m.blog.naver.com/the_blenew/220949073188)
-- 관련 앱 인사이트 분석, 페르소나 작성, 스토리보드 작성
+- 투두 관련 앱 인사이트 분석, 페르소나 작성, flowChart작성 및 스토리보드 작성 진행하였음
+- 기획 및 UI/UX 용어와 프로젝트 흐름에 친숙하게 된 계기가 되었다.
+    - 기획 관련 용어: 페르소나, ADS시나리오, AS-IS / TO-BE process, 스토리보드
+    - UI/UX관련 용어: Splash screen, Walkthrough 등 🔗[모바일 UIUX 디자인용어 정리](https://m.blog.naver.com/the_blenew/220949073188)
+
 
 <br/>
 
@@ -18,18 +19,18 @@
 
 <br/>
 
-#### VS Code LF / CRLF
+### VS Code LF / CRLF
 https://radu.link/vs-code-fix-end-of-line-character-is-invalid/
 
 <br/>
 
-#### eslint
+### eslint
 
 <br/>
 
 ### Git / GitHub 관련
 #### CI/CD환경
-- AWS 사용 / IAM
+- AWS 사용 / IAM  🔗[CI/CD에 관하여 정리](https://github.com/sukyoungshin/TIL/blob/main/Git/02_CICD.md)
 
 <br/>
 
