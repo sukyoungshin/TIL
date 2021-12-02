@@ -59,8 +59,8 @@ subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정�
 
 <br/>
 
-- 구글 로그인버튼 custom design이 제대로 적용되지 않는 이슈. <br/>
-구글링하여 [몇 가지 방법](https://developers.google.com/identity/sign-in/web/build-button)을 찾았으나, 첫번째 방법은 내가 원하는 방식으로 예쁘게 커스텀 할 수가 없고, <br/>두번째 방법은 내가 원하는 방식으로 커스텀은 가능하지만 CORS 이슈가 있었다. 디자인때문에 프록시까지 건들고 싶지는 않았다.
+- 구글 로그인버튼 custom design이 적용되지 않는 이슈. <br/>
+구글링하여 로그인 버튼을 커스터마이징 할 수 있는 [몇 가지 방법](https://developers.google.com/identity/sign-in/web/build-button)을 찾았으나, <br/>첫번째 방법은 내가 원하는 방식으로 예쁘게 커스텀 할 수가 없고, <br/>두번째 방법은 내가 원하는 방식으로 커스텀은 가능하지만 CORS 이슈가 있었다. 디자인때문에 프록시까지 건들고 싶지는 않았다.
 > 💡 Solution : CSS OVERRIDE를 사용하니 간단하게 해결되었다. 다만 `!important;`를 남발한 것이 매우 찜찜하다.
 ```
 // Styled.js
