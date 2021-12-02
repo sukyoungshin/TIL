@@ -38,4 +38,4 @@ https://radu.link/vs-code-fix-end-of-line-character-is-invalid/
 <br/><br/>
 
 ## Reference
-🔗 [LVIE DEMO](https://blog-project-app.netlify.app/), [깃허브코드]()
+🔗 [LVIE DEMO](https://blog-project-app.netlify.app/), [깃허브코드](https://github.com/team-christmas)
