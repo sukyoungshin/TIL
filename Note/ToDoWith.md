@@ -1,7 +1,7 @@
 # 팀 프로젝트 회고
 팀 프로젝트 To do with를 작업하며 배운 것과 겪었던 이슈를 기록하였습니다.<br/><br/>
 
-## LEARNRD
+## Learn & Issues
 ### 기획 관련
 - 기획, UI/UX 용어와 흐름에 친숙하게 된 계기가 되었다.
     - 기획 관련 : 페르소나, ADS시나리오, AS-IS / TO-BE process, 스토리보드
