@@ -2,6 +2,7 @@
 subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
 
 ## Issues
+
 ### 구글OAuth 로그인 관련 
 - 구글OAuth 로그인함수는 localhost에서 정상 동작하지 않는다. <strike>(3시간 삽질하고 알게 된 사실...)</strike>
 > 💡 Solution : 서버에 업로드하면 정상 작동된다. Netlify에 업로드하여 해결.
@@ -37,6 +38,30 @@ const PaginationList = styled.li`
     }
 `;
 ```
+<br/>
+
+### Netlify CI/CD Deploy
+- Netlify 환경에서 eslint warning을 error로 간주해서 배포실패
+```
+2:53:13 AM: $ yarn build
+2:53:13 AM: yarn run v1.22.10
+2:53:13 AM: $ react-scripts --openssl-legacy-provider build
+2:53:15 AM: Creating an optimized production build...
+2:53:38 AM: 
+2:53:38 AM: Treating warnings as errors because process.env.CI = true.
+2:53:38 AM: Most CI servers set it automatically.
+2:53:38 AM: 
+2:53:38 AM: Failed to compile.
+2:53:38 AM: 
+2:53:38 AM: src/components/Carousel.js
+2:53:38 AM:   Line 9:10:  'isSelected' is assigned a value but never used  no-unused-vars
+2:53:38 AM: src/components/GoogleLogin.js
+2:53:38 AM:   Line 7:11:  'userInfo' is assigned a value but never used  no-unused-vars
+2:53:38 AM: error Command failed with exit code 1.
+2:53:38 AM: info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
+> 💡 Solution : Deploy settings -> Environment Variables -> Set `Key: CI` and `Value: false`.  [StackOverFlow](https://stackoverflow.com/questions/64468843/netlify-deployment-failed-during-stage-building-site-build-script-returned-n/67503150)
+
 <br/>
 
 ## Lesson
