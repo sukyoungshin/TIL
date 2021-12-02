@@ -2,7 +2,30 @@
 
 subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
 
-## Issues
+## Learn & Issues
+
+### 커링함수 Currying
+아래의 조건으로 캐러셀을 구현하기 위해, JavaScript/jQuery 방식으로 실제 DOM의 index#를 선택해서 구현하고자 하였으나 실패.
+1) 페이지네이션(li tag)를 클릭하면 선택된 li태그의 색상이 변해야 한다
+2) 클릭한 페이지네이션의 index#에 맞는 광고 캐러셀 컨텐츠를 보여줘야 한다.
+
+  > 💡 Solution : 리액트에서는 커링함수를 이용하여 해결한다. 커링: 함수를 실행해서 새로만든 함수를 리턴하는 방식. (*공부 필요*)
+
+```
+// Carousel.js
+
+  const [selectedId, setSelectedId] = useState(0); // 선택한 페이지네이션 및 캐러셀 index#
+  const [isSelected, setIsSelected] = useState(false); // 페이지네이션 및 캐러셀 스위치
+  const handleClick = useCallback((id) => 
+  // 커링 : 함수를 실행해서 새로만든 함수를 리턴
+    () => {
+      console.log(id);
+      setSelectedId(id); // 페이지네이션 인덱스 설정
+      setIsSelected((prev) => !prev); // 페이지네이션 스위치
+    }, []); 
+```
+
+<br/>
 
 ### 구글OAuth 로그인 관련
 
@@ -121,11 +144,6 @@ const PaginationList = styled.li`
 ```
 > 💡 Solution : Deploy settings -> Environment Variables -> Set `Key: CI` and `Value: false`.  [StackOverFlow](https://stackoverflow.com/questions/64468843/netlify-deployment-failed-during-stage-building-site-build-script-returned-n/67503150)
 
-<br/>
-
-## Lesson
-
-### 커링함수 Currying
 
 <br/><br/>
 
