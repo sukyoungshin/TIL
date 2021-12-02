@@ -1,5 +1,5 @@
 # lol-mbti
-롤 mbti를 작업하며 겪었던 이슈를 정리한 파일입니다.
+롤 mbti를 작업하며 겪었던 이슈와 해결방안을 정리한 파일입니다. <br/><br/>
 
 ## Issues
 ### Node Version Upgrade
