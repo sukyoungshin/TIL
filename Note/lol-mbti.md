@@ -19,7 +19,7 @@
 
 > 💡 Solution :
 > 1) Node버전을 downgrade하는 방법이 있었으나 팀 프로젝트 진행으로 인해 버전다운을 진행 할 수 없었음 <br/>
-> 2) 서버 Node버전과 로컬Node버전을 일치시켜서 해결 🔗[Netlify QnA](https://answers.netlify.com/t/deploy-failed-build-script-returned-non-zero-exit-code-2/44263/2), [Netlify 공식문서](https://docs.netlify.com/configure-builds/manage-dependencies/#node-js-and-javascript)
+> 2) 서버 Node버전을 강제로 17.1.0으로 업그레이드하여 build시 버전을 Override하도록 설정하였음. <br/>즉, 서버Node버전과 로컬Node버전을 일치시켜서 해결 🔗[Netlify QnA](https://answers.netlify.com/t/deploy-failed-build-script-returned-non-zero-exit-code-2/44263/2), [Netlify 공식문서](https://docs.netlify.com/configure-builds/manage-dependencies/#node-js-and-javascript)
 
 <br/>
 
