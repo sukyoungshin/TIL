@@ -20,7 +20,7 @@ subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정�
     - 2) 두번째 방법은 CORS 이슈가 있었다. 디자인때문에 굳이 프록시까지 건들고 싶지는 않았다.
 > 💡 Solution : CSS OVERRIDE를 사용하니 간단하게 해결되었다. 다만 `!important;`를 사용한 것이 찜찜하다.
 
-
+<br/>
 
 ### Styled-components
 - li태그에 가상선택자::before, ::after (pseudo elements)가 제대로 적용되지 않는 이슈<br/>
