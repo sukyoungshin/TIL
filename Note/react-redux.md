@@ -25,11 +25,9 @@ index.js
 
 - containers 폴더 :
   - 데이터를 처리하는 비즈니스 로직을 담당<br/>
-
 - components 폴더 :
   - UI만 담당한다. (presentational components)
   - 부모컴포넌트에게 전달받은 props를 사용하기만 하면 된다.
-
 - modules폴더 :
   - modules/index.js : 루트리듀서 (counter와 todos 함수를 합쳐줌)
   - modules/counter.js : 카운터 구현에 관련된 액션타입, 액션생성함수, 리듀서함수를 보관
