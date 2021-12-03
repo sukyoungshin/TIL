@@ -34,7 +34,7 @@ subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정�
 
 <br/>
 
-- 다른 프로젝트(blog-project)에서 구글oauth 로그인 연동을 해본 뒤 해당 프로젝트에 똑같은 코드를 적용했음에도 불구하고, 구글 OAuth 로그인함수가 정상적으로 작동하지 않았다. (현재 프로젝트에는 kakao API도 있기 때문에 아마도 js 렌더링 순서에 문제가 있던 것으로 추정됨)
+- 다른 프로젝트(blog-project)에서 구글OAuth 로그인 연동을 해본 뒤 해당 프로젝트에 똑같은 코드를 적용했음에도 불구하고, 구글 OAuth 로그인함수가 정상적으로 작동하지 않았다. (현재 프로젝트에는 kakao API도 있기 때문에 아마도 js 렌더링 순서에 문제가 있던 것으로 추정됨)
   > 💡 Solution : useEffect 훅 내부에서 script파일을 생성하여 동적으로 구글oauth 스크립트를 호출해서 해결.
 
 ```
@@ -60,7 +60,7 @@ subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정�
 <br/>
 
 - 구글 로그인버튼 custom design이 적용되지 않는 이슈. <br/>
-구글링하여 로그인 버튼을 커스터마이징 할 수 있는 [몇 가지 방법](https://developers.google.com/identity/sign-in/web/build-button)을 찾았으나, <br/>첫번째 방법은 내가 원하는 방식으로 예쁘게 커스텀 할 수가 없고, <br/>두번째 방법은 내가 원하는 방식으로 커스텀은 가능하지만 CORS 이슈가 있었다. 디자인때문에 프록시까지 건들고 싶지는 않았다.
+공식문서에서 로그인 버튼을 커스터마이징 할 수 있는 [몇 가지 방법](https://developers.google.com/identity/sign-in/web/build-button)을 확인했으나, 첫번째 방법은 내가 원하는 방식으로 예쁘게 커스텀 할 수가 없고, 두 번째 방법은 내가 원하는 방식으로 커스텀은 가능하지만 CORS 이슈가 있었다. (디자인때문에 굳이 프록시까지 건들고 싶지는 않았다.)
 > 💡 Solution : CSS OVERRIDE를 사용하니 간단하게 해결되었다. 다만 `!important;`를 남발한 것이 매우 찜찜하다.
 ```
 // Styled.js
