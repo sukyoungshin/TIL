@@ -29,4 +29,4 @@
 
 ## Reference
 - 리액트를 다루는 기술 [17강](https://thebook.io/080203/ch17/)
-- 🔗 [LIVE DEMO](), [깃허브코드]()
+- 🔗 [깃허브코드](https://github.com/sukyoungshin/reactJS/tree/master/react-redux-velopert)
