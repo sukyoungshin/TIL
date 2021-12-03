@@ -4,9 +4,9 @@
 
 ## Learn & Issues
 ### 컴포넌트 구조설계 structure
-- 좋은 컴포넌트 구조란 무엇인가에 대해 고민하게 된 계기가 되었고, 리액트 구조패턴인 ducks 패턴에 대해 알게 되었다.<br/>
+- 좋은 컴포넌트 구조에 대해 고민하게 된 첫 계기가 되었고, 리액트 구조패턴인 ducks 패턴에 대해 알게 되었다.<br/>
 리액트 공식문서에도 딱히 추천하는 파일구조는 없지만 인기있는 🔗[파일구조](https://ko.reactjs.org/docs/faq-structure.html)는 이런것이 있다.<br/>
-밸로퍼트님은 ducks 패턴으로 구조를 설계하였다. 🔗[ducks 패턴](https://github.com/sukyoungshin/TIL/blob/main/REACT/05_reactRedux.md) *설명은 예문 아래에*
+예문에서는 ducks 패턴으로 구조가 설계되어있다. 🔗[ducks 패턴](https://github.com/sukyoungshin/TIL/blob/main/REACT/05_reactRedux.md) *설명은 예문 아래에*
 
 ```
 components/
