@@ -4,8 +4,15 @@
 
 ## Learn & Issues
 
+### structure
+- 강의에서 진행되는 방식은 모든 컴포넌트가 한 파일에 위치해있어 가독성이 좋지 않았다.
+> 💡 Solution : 재사용성 및 유지보수를 고려하여 컴포넌트 분리(component splits)를 진행하여 더 좋은 구조설계를 위해 노력하였다.
+
+<br/>
+
 ### React-bootstrap
-- 강의에서는 react-bootstrap이 아니라 일반 부트스트랩 문법을 사용하였기에, 공식문서를 참고하여 마크업구조를 개선하여 코드의 가독성을 높였다. 🔗[리액트 부트스트랩](https://react-bootstrap.github.io/)
+- 강의에서는 react-bootstrap이 아니라 일반 부트스트랩 문법을 사용하여 마크업구조가 한 눈에 들어오지 않았다.
+> 💡 Solution : 공식문서를 참고하여 react-bootstrap 문법에 맞게 마크업구조를 개선하여 코드 가독성을 높였다. 🔗[리액트 부트스트랩](https://react-bootstrap.github.io/). 
 
 <br/>
 
@@ -16,7 +23,7 @@
 
 <br/>
 
-### Redux Version
+### React-redux Version
 - 강의에서 사용하는 Redux 버전과 최신 버전이 맞지 않았고, 강의에서는 오래된 방식(`connect()()`)으로 Redux를 연동하였다. 
 > 💡 Solution : redux 공식문서를 확인하여, 최근 방식대로 `Hooks`를 사용하여 Redux를 연동하였다. 🔗[Redux 공식문서](https://redux.js.org/api/api-reference), [Flux패턴](https://www.huskyhoochu.com/flux-architecture/)
 
