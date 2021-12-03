@@ -19,7 +19,7 @@
 ### React-router Version
 
 - 강의에서 사용하는 React-router-dom 버전과 최신 버전이 맞지 않아서 정상적으로 라우팅이 실행되지 않았다.
-> 💡 Solution : react-router 공식문서를 확인하여, 새로운 syntax에 맞추어 진행 및 해결 🔗 [깃헙ISSUE](https://github.com/remix-run/react-router/blob/main/docs/upgrading/v5.md#advantages-of-route-element), [React-router(v6)공식문서](https://reactrouter.com/docs/en/v6/getting-started/tutorial#introduction)
+> 💡 Solution : react-router 공식문서를 확인하여, 새로운 syntax에 맞추어 진행 및 해결 🔗 [깃헙issue](https://github.com/remix-run/react-router/blob/main/docs/upgrading/v5.md#advantages-of-route-element), [React-router(v6)공식문서](https://reactrouter.com/docs/en/v6/getting-started/tutorial#introduction)
 
 <br/>
 
