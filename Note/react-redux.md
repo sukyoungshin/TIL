@@ -3,10 +3,10 @@
 리액트를 다루는 기술 [17강](https://thebook.io/080203/ch17/)을 학습하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
 
 ## Learn & Issues
-### 컴포넌트 구조설계 structure
+### 컴포넌트 구조설계 structure & pattern
 - 좋은 컴포넌트 구조에 대해 고민하게 된 첫 계기가 되었고, 리액트 구조패턴인 ducks 패턴에 대해 알게 되었다.<br/>
-리액트 공식문서에도 딱히 추천하는 파일구조는 없지만, 인기있는 🔗[파일구조](https://ko.reactjs.org/docs/faq-structure.html)는 이런것이 있다.<br/>
-해당 예문에서는 ducks 패턴으로 구조가 설계되어있다. 🔗[ducks 패턴](https://github.com/sukyoungshin/TIL/blob/main/REACT/05_reactRedux.md) *설명은 예문 아래에*
+리액트에서 공식적으로 추천하는 파일구조는 없지만, 공식문서에 따르면 인기있는 🔗[파일구조](https://ko.reactjs.org/docs/faq-structure.html)는 이런것이 있다.<br/>
+리다기 예문에서는 ducks 패턴으로 구조가 설계되어있다. 🔗[ducks 패턴](https://github.com/sukyoungshin/TIL/blob/main/REACT/05_reactRedux.md) *설명은 예문 아래에*
 
 ```
 components/
