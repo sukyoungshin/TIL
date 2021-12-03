@@ -2,7 +2,13 @@
 
 코딩애플 React 강의를 듣고 스스로 코드를 개선하며 겪었던 이슈를 정리한 파일입니다.<br/><br/>
 
-## Issues
+## Learn & Issues
+
+### React-bootstrap
+- 강의에서는 react-bootstrap이 아니라 일반 부트스트랩 문법을 사용하였기에, 공식문서를 참고하여 마크업구조를 개선하여 코드의 가독성을 높였다. 🔗[리액트 부트스트랩](https://react-bootstrap.github.io/)
+
+<br/>
+
 ### React-router Version
 
 - 강의에서 사용하는 React-router-dom 버전과 최신 버전이 맞지 않아서 정상적으로 라우팅이 실행되지 않았다.
@@ -11,8 +17,8 @@
 <br/>
 
 ### Redux Version
-- 강의에서 사용하는 Redux 버전과 최신 버전이 맞지 않았고, 강의에서는 오래된 방식(`connect()()`)으로 Redux를 연동하였다.
-> 💡 Solution : redux 공식문서를 확인하여, 최근 방식대로 `Hooks`를 사용하여 Redux를 연동하였다. 🔗[Redux 공식문서](https://redux.js.org/api/api-reference)
+- 강의에서 사용하는 Redux 버전과 최신 버전이 맞지 않았고, 강의에서는 오래된 방식(`connect()()`)으로 Redux를 연동하였다. 
+> 💡 Solution : redux 공식문서를 확인하여, 최근 방식대로 `Hooks`를 사용하여 Redux를 연동하였다. 🔗[Redux 공식문서](https://redux.js.org/api/api-reference), [Flux패턴](https://www.huskyhoochu.com/flux-architecture/)
 
 <br/>
 
@@ -25,4 +31,9 @@
 <br/>
 
 ## Reference
-[깃허브코드](https://github.com/sukyoungshin/reactJS/tree/master/shoeshop)
+[깃허브코드](https://github.com/sukyoungshin/reactJS/tree/master/shoeshop) <br/>
+
+🔗관련 레포:  <b>퓨어redux</b> [이론](https://github.com/sukyoungshin/TIL/blob/main/JS/03_redux.md),
+[예제코드](https://github.com/sukyoungshin/reactJS/tree/master/vanilla-redux) | 
+ <b>React-redux</b> [이론](https://github.com/sukyoungshin/TIL/blob/main/REACT/05_reactRedux.md), [예제코드1](https://github.com/sukyoungshin/reactJS/tree/master/02-react-redux-velopert), [예제코드2](https://github.com/sukyoungshin/reactJS/tree/master/01-react-redux-nomard), [예제코드3](https://github.com/sukyoungshin/reactJS/tree/master/shoeshop)
+
