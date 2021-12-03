@@ -10,4 +10,4 @@ React 프로젝트인 To do list 앱웹을 작업하며 고민한 내용과 해�
 
 
 ## Reference
-🔗 [LVIE DEMO](), [깃허브코드]()
+🔗 [깃허브코드](https://github.com/sukyoungshin/reactJS/tree/master/todo-simple)
