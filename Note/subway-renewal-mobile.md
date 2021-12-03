@@ -105,7 +105,7 @@ export const LoginButton = styled.div`
 ### Styled-components (CSS in JS)
 
 - 프로젝트를 시작할 때는 normal CSS를 사용하여 스타일링을 하였으나, 프로젝트가 커지면서 느낀 몇가지 단점이 있었습니다. <br/> 1) 동적으로 css를 변화시킬 수 없음. 2) 컴포넌트마다 css파일을 생성하니 파일이 늘어나서 점점 구조가 복잡해짐. <br/>
-해결을 위해 CSS-in-CSS (CSS Module 및 CSS전처리기) 도입을 고려해봤으나, 아직 리액트 프로젝트 경험이 많지 않기에 일단 파일구조를 단순화하는 것이 좋을 것 같았습니다. 따라서 JS환경을 최대한 활용하는 CSS-in-JS를 선택하였고, 러닝커브를 고려하여 styled-components를 도입하였습니다.
+처음에는 1번 문제만 해결하고자 CSS-in-CSS (CSS Module 및 CSS전처리기) 도입을 고려해봤으나, 아직 리액트 프로젝트 경험이 많지 않기에 일단 파일구조를 단순화하는 것이 좋을 것 같았습니다. 따라서 두 가지 단점을 모두 해결해줄 수 있는 CSS-in-JS를 선택하였고, 그 중에서도 러닝커브를 고려하여 styled-components를 도입하였습니다.
 
 > 💡 Solution : CSS-in-JS인 styled-components 라이브러리를 도입하여 해결 🔗[CSS-in-JS의 장점](https://www.s-core.co.kr/insight/view/%EC%9B%B9-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%ED%83%80%EC%9D%BC%EB%A7%81-%EA%B4%80%EB%A6%AC-css-in-js-vs-css-in-css/)
 
