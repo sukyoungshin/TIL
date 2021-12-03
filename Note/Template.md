@@ -10,4 +10,4 @@ React 프로젝트인 Project-Name을 작업하며 겪었던 이슈 및 배운 �
 
 
 ## Reference
-🔗 [LVIE DEMO](), [깃허브코드]()
+🔗 [LIVE DEMO](), [깃허브코드]()
