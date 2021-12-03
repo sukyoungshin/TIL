@@ -26,7 +26,8 @@
 
 ## Reference
 
-[깃허브코드](https://github.com/sukyoungshin/reactJS/tree/master/react-redux-nomard)<br/>
+[깃허브코드](https://github.com/sukyoungshin/reactJS/tree/master/react-redux-nomard)
+<br/>
 🔗관련 레포:  <b>퓨어redux</b> [이론](https://github.com/sukyoungshin/TIL/blob/main/JS/03_redux.md),
 [예제코드](https://github.com/sukyoungshin/reactJS/tree/master/vanilla-redux) | 
  <b>React-redux</b> [이론](https://github.com/sukyoungshin/TIL/blob/main/REACT/05_reactRedux.md), [예제코드1](https://github.com/sukyoungshin/reactJS/tree/master/02-react-redux-velopert), [예제코드2](https://github.com/sukyoungshin/reactJS/tree/master/01-react-redux-nomard), [예제코드3](https://github.com/sukyoungshin/reactJS/tree/master/shoeshop)
