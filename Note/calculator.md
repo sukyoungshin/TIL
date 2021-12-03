@@ -81,5 +81,5 @@ console.log(result); // 100 (10의 2승)
 
 
 ## Reference
-🔗 [LVIE DEMO](), [깃허브코드](https://github.com/sukyoungshin/vanillaJS/tree/master/calculator) <br/>
+🔗 [LIVE DEMO](), [깃허브코드](https://github.com/sukyoungshin/vanillaJS/tree/master/calculator) <br/>
 [MDN 자바스크립트 재입문](https://developer.mozilla.org/ko/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
