@@ -10,4 +10,4 @@ Momentum을 작업하며 겪었던 이슈를 정리한 파일입니다.<br/><br/
 
 
 ## Reference
-🔗 [LVIE DEMO](sukyoungshin.github.io/momentum/), [깃허브코드](https://github.com/sukyoungshin/momentum)
+🔗 [LIVE DEMO](sukyoungshin.github.io/momentum/), [깃허브코드](https://github.com/sukyoungshin/momentum)
