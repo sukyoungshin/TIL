@@ -13,7 +13,7 @@ CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deploym
 그러나 해당 URL에 접속하면 404 Not Found 페이지가 나왔다. 아무리 기다려도 Published가 완료되지 않았다
 <br/><br/>
 
-> 💡 Solution : 해당레포의 Settings -> Pages -> Source Branch를 바꿔주니 해결. 또한, Pages탭에서 배포링크를 확인할 수 있다.
+> 💡 Solution : 해당레포의 Settings -> Pages -> Source Branch를 지정해주니 해결! 또한, Pages탭에서 배포링크를 확인할 수 있다.
 
 <br/><br/>
 
