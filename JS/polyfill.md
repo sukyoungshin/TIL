@@ -22,4 +22,4 @@ react jsx -> javascript
 - [Polyfill 용어](https://developer.mozilla.org/ko/docs/Glossary/Polyfill)
 - [폴리필, 폴리필 리스트](https://webdir.tistory.com/328)
 - [폴리필과 트랜스파일러](https://www.reimaginer.me/entry/ECMAscript-6-%ED%8F%B4%EB%A6%AC%ED%95%84polyfill-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8C%8C%EC%9D%BC%EB%9F%ACtranspiler)
-- [HTTP/CSS 폴리필 - Modernizer](https://webclub.tistory.com/256)
+- [HTTP/CSS 폴리필 - Modernizer](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills)

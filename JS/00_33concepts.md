@@ -2,6 +2,46 @@
 
 노마드코더 33 Concepts of JavaScript를 학습하고 정리한 문서입니다.
 
+## 05_typeof, instance of
+
+- Primitive 타입을 체크할 땐 type of
+- Array, Object 타입을 체크할 땐 instance of `어쩌구 instanceof Array`
+
+## 07_function espression, function declaration
+
+관련 링크 🔗[javascript.info](https://ko.javascript.info/function-expressions)
+
+### 함수 선언식(Function Declaration)
+
+```
+function sayHi() {
+  alert( "Hello" );
+}
+```
+
+### 함수 표현식(Function Expression)
+
+함수를 만들고 그 함수를 변수 sayHi에 할당하기. 함수선언식과는 달리 끝에 세미콜론을 붙인다 (statement의 끝이므로)
+
+```
+let sayHi = function() {
+  alert( "Hello" );
+};
+
+alert( sayHi ); // 함수는 값이기 때문에 alert를 이용하여 함수 코드를 출력할 수 있음 (괄호안붙였으니 함수실행X)
+```
+
+```
+function sayHi() {   // (1) 함수 생성
+  alert( "Hello" );
+}
+
+let func = sayHi;    // (2) 함수 복사
+
+func(); // Hello     // (3) 복사한 함수를 실행(정상적으로 실행됩니다)!
+sayHi(); // Hello    //     본래 함수도 정상적으로 실행됩니다.
+```
+
 ## 10_SetTimeout, setInterval and requestAnimationFrame
 
 ### setTimeout()
