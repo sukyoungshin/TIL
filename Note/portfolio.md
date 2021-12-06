@@ -5,7 +5,7 @@ React로 작업한 개인 포트폴리오 웹앱을 작업하며 겪었던 이�
 ## Learn & Issues
 ### Deployment (GitHub Pages)
 
-CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deployment/)를 참고하여 진행하였으나 Deploy가 정상적으로 완료되지 않았다. (<strike>오늘도 3시간 삽질... 참.좋.다..😂</strike>) <br/>
+CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deployment/)를 참고하여 배포 진행하였으나 정상적으로 완료되지 않았다. (<strike>오늘도 3시간 삽질... 참.좋.다..😂</strike>) <br/>
 
 > 💡 Solution : 해당 레포가 Private으로 설정되어있었기에 Public으로 변경해주었다.
 
