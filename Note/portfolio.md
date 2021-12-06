@@ -18,4 +18,4 @@ CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deploym
 <br/><br/>
 
 ## Reference
-🔗 [LIVE DEMO](), [깃허브코드]()
+🔗 [LIVE DEMO](https://sukyoungshin.github.io/githubpage/), [깃허브코드](https://github.com/sukyoungshin/githubpage)
