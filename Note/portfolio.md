@@ -7,8 +7,6 @@ React로 작업한 개인 포트폴리오 웹앱을 작업하며 겪었던 이�
 
 CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deployment/)를 참고하여 배포 진행하였으나 정상적으로 완료되지 않았다. (<strike>오늘도 3시간 삽질...🛠️</strike>) <br/>
 
-> 💡 Solution : 해당 레포가 Private으로 설정되어있었기에 Public으로 변경해주었다.
-
 > 💡 Solution : remote repo 홈페이지URL이 SSH URL이었던것이 문제인 것으로 추정되어, 공식문서 [GitHub Docs](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories)를 참고하여 SSH URL을 HTTPS URL로 바꾸어주고, package.json의 hompage 주소를 HTTPS URL로 바꾸어주었더니 배포"는" 정상적으로 완료되었다.
 
 <br/>
