@@ -3,6 +3,41 @@
 React로 작업한 개인 포트폴리오 웹앱을 작업하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
 
 ## Learn & Issues
+### Image
+React에서 JSX 또는 CSS에 이미지 넣는 방법들
+1. 리액트로 src안에 있는 이미지 넣는 법<br>
+```
+import 이미지 from './이미지경로.jpg'
+<img src={이미지}>`
+```
+
+2. src안에 있는 이미지 css파일에 넣는 법 <br>
+```
+background-image : url('이미지경로')
+```
+
+3. public/assets 폴더 안에 있는 이미지 넣는 법 (* public 안에 assets 폴더를 만들어야 사용가능 *)
+```
+<img src="/assets/이미지명.jpg">
+```
+
+4. public/assets 폴더 안에 있는 이미지 css파일에 넣는 법 (* public 안에 assets 폴더를 만들어야 사용가능 *)
+
+```
+<div style={ {backgroundImage:'url(/assets/logo5121.png)'} }>
+```
+
+> 💡 Note : 다만 public 폴더 안에 넣을 경우, 사이트 주소가 좀 이상하거나 리액트프로젝트를 서브경로에 발행하는 경우엔 경로가 망할 수 있으니
+src를 이용하거나 https://create-react-app.dev/docs/using-the-public-folder 참고하도록 한다. 🔗출처 : [코딩애플](https://online.codingapple.com/forums/topic/image-url-%EC%A7%88%EB%AC%B8-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4/)
+
+<br/>
+
+### Image 삽입
+위 3번 방식으로 JSX에 이미지를 삽입했는데, local 서버에서는 이미지가 나타났으나 배포 서버에선 이미지가 보이지 않았다. Note에 나와있듯, 배포하면서 경로가 꼬인 것으로 보인다.
+
+> 💡 Solution : 1번 방식으로 바꾸고, background-image 같은 경우에는 url을 props로 전달하여 적용하여 해결.
+<br/>
+
 ### Deployment (GitHub Pages)
 
 CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deployment/)를 참고하여 배포 진행하였으나 정상적으로 완료되지 않았다. (<strike>오늘도 3시간 삽질...🛠️</strike>) <br/>
