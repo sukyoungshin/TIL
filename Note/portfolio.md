@@ -3,7 +3,7 @@
 React로 작업한 개인 포트폴리오 웹앱을 작업하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
 
 ## Learn & Issues
-### Image
+### Image 삽입
 React에서 JSX 또는 CSS에 이미지 넣는 방법들
 1. 리액트로 src안에 있는 이미지 넣는 법<br>
 ```
@@ -32,7 +32,7 @@ src를 이용하거나 https://create-react-app.dev/docs/using-the-public-folder
 
 <br/>
 
-### Image 삽입
+### Image pathName Issues
 위 3번 방식으로 JSX에 이미지를 삽입했는데, local 서버에서는 이미지가 나타났으나 배포 서버에선 이미지가 보이지 않았다. Note에 나와있듯, 배포하면서 경로가 꼬인 것으로 보인다.
 
 > 💡 Solution : 1번 방식으로 바꾸고, background-image 같은 경우에는 url을 props로 전달하여 적용하여 해결.
