@@ -27,6 +27,18 @@ subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정�
 
 <br/>
 
+## WebAPI (window 관련)
+  > 💡 Solution : [Window.postMessage()](https://developer.mozilla.org/ko/docs/Web/API/Window/postMessage)
+[Window.opener](https://developer.mozilla.org/ko/docs/Web/API/Window/opener)
+
+<br/>
+
+## 카카오 API
+`var geocoder = new kakao.maps.services.Geocoder();` Geocoder가 Undefined로 불러와지지 않았음
+  > 💡 Solution : 공식문서 참고하여, index.html에 Geocoder 라이브러리를 셋팅하여 해결; 🔗[카카오 지도API 가이드](https://apis.map.kakao.com/web/guide/#whatlibrary)
+
+<br/>
+
 ### 구글OAuth 로그인 관련
 
 - 구글OAuth 로그인함수는 localhost에서 정상 동작하지 않는다. <strike>(3시간 삽질하고 알게 된 사실...)</strike>
@@ -151,6 +163,15 @@ const PaginationList = styled.li`
 ```
 > 💡 Solution : Deploy settings -> Environment Variables -> Set `Key: CI` and `Value: false`.  [StackOverFlow](https://stackoverflow.com/questions/64468843/netlify-deployment-failed-during-stage-building-site-build-script-returned-n/67503150)
 
+<br/>
+
+## Redirects
+- Netlify에 deploy 후, WebAPI postMessage를 사용하여 생성한 새 window창이 Page Not Found로 제대로 작동되지 않았음<br/>
+Error code : `Looks like you've followed a broken link or entered a URL that doesn't exist on this site.`
+
+  > 💡 Solution : 공식문서를 참고하여 redirects 설정해줘서 해결 [Syntax for the Netlify configuration file](https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file)
+
+<br/>
 
 <br/><br/>
 
