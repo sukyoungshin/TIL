@@ -50,6 +50,12 @@ CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deploym
 
 > 💡 Solution : 해당레포의 Settings -> Pages -> Source Branch를 지정해주니 해결! 또한, Pages탭에서 배포링크를 확인할 수 있다.
 
+<br/>
+
+또한, 해당 레포의 이름은 `sukyoungshin.github.io`로 바꿔주어야 해당 링크가 절대경로가 되어 배포가 진행된다. 매우 중요!! <br/>
+
+> 💡 Solution : 해당레포의 Settings -> Pages -> Source Branch를 지정해주니 해결! 또한, Pages탭에서 배포링크를 확인할 수 있다.
+
 <br/><br/>
 
 ## Reference
