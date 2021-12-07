@@ -33,7 +33,7 @@ subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정�
 
 <br/>
 
-## 카카오 API
+## 카카오맵 API
 `var geocoder = new kakao.maps.services.Geocoder();` Geocoder가 Undefined로 불러와지지 않았음
   > 💡 Solution : 공식문서 참고하여, index.html에 Geocoder 라이브러리를 셋팅하여 해결; 🔗[카카오 지도API 가이드](https://apis.map.kakao.com/web/guide/#whatlibrary)
 
