@@ -3,6 +3,21 @@
 React로 작업한 개인 포트폴리오 웹앱을 작업하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
 
 ## Learn & Issues
+### CSS Variable
+- [CSS 변수명 꿀팁](https://ohgyun.com/738)
+- [CSS variables var() doesn't work in media query](https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries)
+
+### CSS property
+CSS속성인 background를 사용할 때 background 보다는 background-color을 쓰라고 권장하는 글을 보았으나 이유가 나와있지 않아서 검색해보았다. 🔗[background VS background-color](https://stackoverflow.com/questions/10205464/what-is-the-difference-between-background-and-background-color)
+
+> 💡 Reason : background가 기존의 background-color, background-image 등을 reset을 시킨다. <br/>
+> `(우선순위 : background > background-color, background-image 등)`
+
+> 💡 Reason : CSS performance에도 영향을 끼친다. background가 background-color보다 약 2배정도 빠르다고 한다. <br/>
+> `(속도 : background > background-color)`
+
+<br/>
+
 ### Image 삽입
 React에서 JSX 또는 CSS에 이미지 넣는 방법들
 1. 리액트로 src안에 있는 이미지 넣는 법<br>
@@ -38,18 +53,7 @@ src를 이용하거나 https://create-react-app.dev/docs/using-the-public-folder
 > 💡 Solution : 1번 방식으로 바꾸고, background-image 같은 경우에는 url을 props로 전달하여 적용하여 해결.
 <br/>
 
-### Device 뷰 
-- 실제 모바일(Galaxy S7 Edge)에서 사이트에 접속했을 때와, 크롬 및 Firefox 화면 뷰에 차이가 있었다. 
-<div style="display: flex; flex-direction: row;">
-  <img src="https://raw.githubusercontent.com/sukyoungshin/TIL/main/Note/test1.jpg" style="width: 300px"/>
-  <img src="https://raw.githubusercontent.com/sukyoungshin/TIL/main/Note/localhost_3000_(Galaxy%20S7%20EDGE).png" style="width: 300px"/>
-</div>
-
-> 💡 Solution : 모바일에선 데스크탑과 달리 자연스럽게 줄넘김 처리가 안되는 것으로 보여 `<p></p>`태그 내부에 `<br/>`태그를 넣어주어 해결
-
-<br/>
-
-### Deployment (GitHub Pages)
+### Deploy (GitHub Pages)
 
 CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deployment/)를 참고하여 배포 진행하였으나 정상적으로 완료되지 않았다. (<strike>오늘도 3시간 삽질...🛠️</strike>) <br/>
 
@@ -66,6 +70,17 @@ CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deploym
 또한, 해당 레포의 이름은 `sukyoungshin.github.io`로 바꿔주어야 해당 링크가 절대경로가 되어 배포가 진행된다. 매우 중요!! <br/>
 
 > 💡 Solution : 해당레포의 Settings -> Pages -> Source Branch를 지정해주니 해결! 또한, Pages탭에서 배포링크를 확인할 수 있다.
+
+<br/>
+
+### 기기별 테스트 
+- 실제 모바일(Galaxy S7 Edge)에서 사이트에 접속했을 때와, 크롬 및 Firefox 화면 뷰에 차이가 있었다. 
+<div style="display: flex; flex-direction: row;">
+  <img src="https://raw.githubusercontent.com/sukyoungshin/TIL/main/Note/test1.jpg" style="width: 300px"/>
+  <img src="https://raw.githubusercontent.com/sukyoungshin/TIL/main/Note/localhost_3000_(Galaxy%20S7%20EDGE).png" style="width: 300px"/>
+</div><br/>
+
+> 💡 Solution : 단순 CSS이슈였고 `<p></p>`태그 내부에 `<br/>`태그를 넣어주어 해결. 모바일에선 자연스럽게 줄넘김 처리가 안되는듯
 
 <br/><br/>
 
