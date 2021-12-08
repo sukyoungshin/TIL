@@ -9,4 +9,4 @@
 
 ## Reference
 
-[기존에 배포 관련하여 겪었던 이슈](https://github.com/sukyoungshin/TIL/blob/main/Note/portfolio.md)
+[기존에 배포 관련하여 겪었던 이슈](https://github.com/sukyoungshin/TIL/blob/main/Note/portfolio.md#deploy-github-pages)
