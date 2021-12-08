@@ -8,7 +8,8 @@ React로 작업한 개인 포트폴리오 웹앱을 작업하며 겪었던 이�
 - [CSS variables var() doesn't work in media query](https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries)
 
 ### CSS property
-CSS속성인 background를 사용할 때 background 보다는 background-color을 쓰라고 권장하는 글을 보았으나 이유가 나와있지 않아서 검색해보았다. 🔗[background VS background-color](https://stackoverflow.com/questions/10205464/what-is-the-difference-between-background-and-background-color)
+CSS속성인 background를 사용할 때 background 보다는 background-color을 쓰라고 권장하는 글을 보았다. <br/>
+그러나 이유가 나와있지 않아서 검색해보고 다음과 같은 사실을 알게 되었다. 🔗 [background VS background-color](https://stackoverflow.com/questions/10205464/what-is-the-difference-between-background-and-background-color)
 
 > 💡 Reason : background가 기존의 background-color, background-image 등을 reset을 시킨다. <br/>
 > `(우선순위 : background > background-color, background-image 등)`
