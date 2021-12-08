@@ -33,9 +33,20 @@ src를 이용하거나 https://create-react-app.dev/docs/using-the-public-folder
 <br/>
 
 ### Image pathName Issues
-위 3번 방식으로 JSX에 이미지를 삽입했는데, local 서버에서는 이미지가 나타났으나 배포 서버에선 이미지가 보이지 않았다. Note에 나와있듯, 배포하면서 경로가 꼬인 것으로 보인다.
+위 3번 방식으로 JSX에 이미지를 삽입했는데, local 서버에서는 이미지가 나타났으나 배포 서버에선 이미지가 보이지 않았다. 배포시 경로가 꼬인 것으로 보인다.
 
 > 💡 Solution : 1번 방식으로 바꾸고, background-image 같은 경우에는 url을 props로 전달하여 적용하여 해결.
+<br/>
+
+### Device 뷰 
+- 실제 모바일(Galaxy S7 Edge)에서 사이트에 접속했을 때와, 크롬 및 Firefox 화면 뷰에 차이가 있었다. 
+<div style="display: flex; flex-direction: row;">
+  <img src="https://raw.githubusercontent.com/sukyoungshin/TIL/main/Note/test1.jpg" style="width: 300px"/>
+  <img src="https://raw.githubusercontent.com/sukyoungshin/TIL/main/Note/localhost_3000_(Galaxy%20S7%20EDGE).png" style="width: 300px"/>
+</div>
+
+> 💡 Solution : 모바일에선 데스크탑과 달리 자연스럽게 줄넘김 처리가 안되는 것으로 보여 `<p></p>`태그 내부에 `<br/>`태그를 넣어주어 해결
+
 <br/>
 
 ### Deployment (GitHub Pages)
