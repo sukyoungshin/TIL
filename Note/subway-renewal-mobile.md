@@ -5,37 +5,123 @@ subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정�
 ## Learn & Issues
 
 ### 커링함수 Currying
-아래의 조건으로 캐러셀을 구현하기 위해, JavaScript/jQuery 방식으로 실제 DOM의 index#를 선택해서 구현하고자 하였으나 실패.
+아래의 조건으로 캐러셀을 구현하기 위해, JavaScript/jQuery 방식으로 실제 DOM의 index#를 추출하여 구현하고자 하였으나 실패.
 1) 페이지네이션(li tag)를 클릭하면 선택된 li태그의 색상이 변해야 한다
 2) 클릭한 페이지네이션의 index#에 맞는 광고 캐러셀 컨텐츠를 보여줘야 한다.
 
-  > 💡 Solution : 리액트에서는 커링함수를 이용하여 해결한다. (함수를 실행해서 새로만든 함수를 리턴하는 방식) 🔗[커링함수](https://code.tutsplus.com/tutorials/understanding-function-currying-in-javascript-and-when-to-use-it--cms-37867), [자바스크립트Info](https://ko.javascript.info/currying-partials)
+  > 💡 Solution : 리액트에서는 선택한 index를 상태로 저장하여 업데이트 해주어야 한다. 깔끔하게 코드를 작성하기 위해서 커링함수를 이용하여 해결했다. (함수를 실행해서 새로만든 함수를 리턴하는 방식) 🔗[커링함수](https://code.tutsplus.com/tutorials/understanding-function-currying-in-javascript-and-when-to-use-it--cms-37867), [자바스크립트Info](https://ko.javascript.info/currying-partials)
 
 ```
 // Carousel.js
 
-  const [selectedId, setSelectedId] = useState(0); // 선택한 페이지네이션 및 캐러셀 index#
-  const [isSelected, setIsSelected] = useState(false); // 페이지네이션 및 캐러셀 스위치
-  const handleClick = useCallback((id) => 
-  // 커링 : 함수를 실행해서 새로만든 함수를 리턴
-    () => {
-      console.log(id);
-      setSelectedId(id); // 페이지네이션 인덱스 설정
-      setIsSelected((prev) => !prev); // 페이지네이션 스위치
-    }, []); 
+const [selectedId, setSelectedId] = useState(0); // 선택한 페이지네이션 및 캐러셀 index#
+const [isSelected, setIsSelected] = useState(false); // 페이지네이션 및 캐러셀 스위치
+const handleClick = useCallback((id) => 
+// 커링 : 함수를 실행해서 새로만든 함수를 리턴
+  () => {
+    console.log(id);
+    setSelectedId(id); // 페이지네이션 인덱스 설정
+    setIsSelected((prev) => !prev); // 페이지네이션 스위치
+  }, []); 
+
+(...)
+
+<AdPagination className="ad_pagination">
+{AdContents.map((content) => (
+  <AdPaginationList
+    key={content.id}
+    isSelected={content.id === selectedId}
+    onClick={handleClick(content.id)}
+  ></AdPaginationList>
+  ))}
+</AdPagination>
 ```
 
 <br/>
 
 ## WebAPI (window 관련)
-  > 💡 Solution : [Window.postMessage()](https://developer.mozilla.org/ko/docs/Web/API/Window/postMessage)
+카카오맵 API를 이용하여, 새 창을 오픈하여 주소정보를 받아올 때 WebAPI인 `Window.postMessage()`와 `Window.opener`를 이용하여 구현하였다. 
+
+```
+// Order.js
+
+// postMessage
+const HandlePopUp = () => {
+  window.open('search', 'addressSearch', "width=380 height=580 left=726 top=306").postMessage('message');
+};
+
+// Dispatch Event
+useEffect(() => {
+  const receiveMessage = (event) => {
+    if (event.origin !== window.location.origin) return;
+    if (event.source.name !== 'addressSearch') return;
+
+    setAddrValue(event.data); // 고객의 주소지 저장
+    getGeocode(event.data); // x좌표 y좌표 셋팅
+    setSubwayPlaces([]); // 기존값 삭제
+  };
+
+  window.addEventListener("message", receiveMessage, false);
+}, []);
+```
+
+> 💡 Note : [Window.postMessage()](https://developer.mozilla.org/ko/docs/Web/API/Window/postMessage)
 [Window.opener](https://developer.mozilla.org/ko/docs/Web/API/Window/opener)
+
+<br/>
+
+## React-router
+`<Link>`나 `useNavigate()`를 사용하여 페이지 이동 시, `state`를 다음 페이지로 전달해줄 수 있다. (type : Object).
+다음 페이지에서는 `useLocation`을 사용하여 state 전달받는다.
+
+```
+// Order.js
+
+const handleBtnSelected = useCallback((id) => 
+  () => {
+    setSelectedBtnId(id); // 선택한 버튼의 인덱스 저장
+    setIsBtnSelected((prev) => !prev); // 버튼 스위치
+    navigate('/menu',  { state: isSelectedSubway }); // 선택된 써브웨이매장 정보를 다음페이지(/menu)로 전달한다.
+  }
+);
+
+(...)
+
+{
+  ButtonOptions.map((option) => (
+    <BtnContainer key={option.id}>
+      <DeliveryButton 
+        type="button" 
+        id={option.id}
+        isBtnSelected={option.id === selectedBtnId} 
+        onClick={handleBtnSelected(option.id)} 
+      >
+        {option.text}
+      </DeliveryButton>
+    </BtnContainer>
+  ))
+}
+```
+
+```
+// Menu.js
+
+const location = useLocation();
+const navigate = useNavigate();
+
+useEffect(() => {
+  if (location.state === null) return navigate(-1); // 이전페이지에서 정보가 넘어오지 않았으면 이전 페이지로 강제이동
+  console.log(location.state); // 이전 페이지에서 입력받은 정보가 콘솔에 출력됨
+}, []);
+```
+
+> 💡 Note : 공식문서의 Location State 내용 참고 🔗 [React-router 공식문서](https://reactrouter.com/docs/en/v6/getting-started/concepts)
 
 <br/>
 
 ## 카카오맵 API
 `var geocoder = new kakao.maps.services.Geocoder();` Geocoder가 Undefined로 불러와지지 않았음
-  > 💡 Solution : 공식문서 참고하여, index.html에 Geocoder 라이브러리를 셋팅하여 해결; 🔗[카카오 지도API 가이드](https://apis.map.kakao.com/web/guide/#whatlibrary)
+  > 💡 Solution : 공식문서 참고하여, index.html에 Geocoder 라이브러리를 셋팅하여 해결. 재밌는 사실은 제이쿼리로 구현했을땐 Geocoder 라이브러리를 불러오지 않아도 에러없이 구현이 되었었다(...) 왜 실행이 다르게 되는지 아직 잘 모르겠다. 🔗[카카오 지도API 가이드](https://apis.map.kakao.com/web/guide/#whatlibrary)
 
 <br/>
 
@@ -116,7 +202,10 @@ export const LoginButton = styled.div`
 
 ### Styled-components (CSS in JS)
 
-- 프로젝트를 시작할 때는 normal CSS를 사용하여 스타일링을 하였으나, 프로젝트가 커지면서 느낀 몇가지 단점이 있었습니다. <br/> 1) 동적으로 css를 변화시킬 수 없음. 2) 컴포넌트마다 css파일을 생성하니 파일이 늘어나서 점점 구조가 복잡해짐. <br/>
+프로젝트를 시작할 때는 normal CSS를 사용하여 스타일링을 하였으나, 프로젝트가 커지면서 느낀 몇가지 단점이 있었습니다. 
+1. 동적으로 css를 변화시킬 수 없음. 
+2. 컴포넌트마다 css파일을 생성하니 파일이 늘어나서 점점 구조가 복잡해짐. 
+
 처음에는 1번 문제만 해결하고자 CSS-in-CSS (CSS Module 및 CSS전처리기) 도입을 고려해봤으나, 아직 리액트 프로젝트 경험이 많지 않기에 일단 파일구조를 단순화하는 것이 좋을 것 같았습니다. 따라서 두 가지 단점을 모두 해결해줄 수 있는 CSS-in-JS를 선택하였고, 그 중에서도 러닝커브를 고려하여 styled-components를 도입하였습니다.
 
 > 💡 Solution : CSS-in-JS인 styled-components 라이브러리를 도입하여 해결 🔗[CSS-in-JS의 장점](https://www.s-core.co.kr/insight/view/%EC%9B%B9-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%ED%83%80%EC%9D%BC%EB%A7%81-%EA%B4%80%EB%A6%AC-css-in-js-vs-css-in-css/)
@@ -142,7 +231,7 @@ const PaginationList = styled.li`
 <br/>
 
 ### Netlify CI/CD Deploy
-- Netlify 환경에서 eslint warning을 error로 간주해서 배포실패
+- Netlify 환경에서 eslint warning을 error로 간주해서 배포실패 
 ```
 2:53:13 AM: $ yarn build
 2:53:13 AM: yarn run v1.22.10
@@ -166,7 +255,7 @@ const PaginationList = styled.li`
 <br/>
 
 ## Redirects
-- Netlify에 deploy 후, WebAPI postMessage를 사용하여 생성한 새 window창이 Page Not Found로 제대로 작동되지 않았음<br/>
+Netlify에 deploy 후, WebAPI postMessage를 사용하여 생성한 새 window창이 Page Not Found로 제대로 작동되지 않았음<br/>
 Error code : `Looks like you've followed a broken link or entered a URL that doesn't exist on this site.`
 
   > 💡 Solution : 공식문서를 참고하여 redirects 설정해줘서 해결 [Syntax for the Netlify configuration file](https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file)
