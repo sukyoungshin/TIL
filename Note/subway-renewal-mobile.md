@@ -136,12 +136,14 @@ useEffect(() => {
   > 💡 Solution : useEffect 훅 내부에서 script파일을 생성하여 동적으로 구글OAuth 스크립트를 호출해서 해결.
 
 ```
-  useEffect(() => {
-    // 동적 script 생성하여 head에 추가
-    const script = document.createElement('script');
-    script.setAttribute('src', 'https://apis.google.com/js/platform.js');
-    document.head.append(script);
-  }, [])
+// // GoogleLogin.js
+
+useEffect(() => {
+  // 동적 script 생성하여 head에 추가
+  const script = document.createElement('script');
+  script.setAttribute('src', 'https://apis.google.com/js/platform.js');
+  document.head.append(script);
+}, [])
 ```
 
 <br/>
@@ -150,9 +152,10 @@ useEffect(() => {
 구글 OAuth 내부 함수를 전역적으로 사용하기 위해 사용하였다. 프로젝트를 진행하며 처음 알게 된 JS 문법.
 ```
 // GoogleLogin.js
-  useEffect(() => {
-    window.onSignIn = onSignIn;  // window 전역객체 사용하여 로그인함수 실행
-  }, [onSignIn])
+
+useEffect(() => {
+  window.onSignIn = onSignIn;  // window 전역객체 사용하여 로그인함수 실행
+}, [onSignIn])
 ```
 
 <br/>
@@ -162,6 +165,7 @@ useEffect(() => {
 > 💡 Solution : CSS OVERRIDE를 사용하니 간단하게 해결되었다. 다만 `!important;`를 남발한 것이 매우 찜찜하다.
 ```
 // Styled.js
+
 export const LoginButton = styled.div`
   border-radius: 8px;
   /* css override - 구글기본스타일을 override하기 위해 어쩔 수 없이 important 사용*/
@@ -217,6 +221,8 @@ export const LoginButton = styled.div`
 > 💡 Solution : 가상선택자 사용을 포기했으나, 후에 알게 된 해결방법 : JSX에서는 escaping 문자를 두 번 써야한다.
 
 ```
+// Styled.js
+
 const PaginationList = styled.li`
     display: block;
     font-size: 16px;
@@ -250,7 +256,7 @@ const PaginationList = styled.li`
 2:53:38 AM: error Command failed with exit code 1.
 2:53:38 AM: info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
-> 💡 Solution : Deploy settings -> Environment Variables -> Set `Key: CI` and `Value: false`.  [StackOverFlow](https://stackoverflow.com/questions/64468843/netlify-deployment-failed-during-stage-building-site-build-script-returned-n/67503150)
+> 💡 Solution : Deploy settings -> Environment Variables -> Set `Key: CI` and `Value: false`.  🔗 [StackOverFlow](https://stackoverflow.com/questions/64468843/netlify-deployment-failed-during-stage-building-site-build-script-returned-n/67503150)
 
 <br/>
 
@@ -258,7 +264,7 @@ const PaginationList = styled.li`
 Netlify에 deploy 후, WebAPI postMessage를 사용하여 생성한 새 window창이 Page Not Found로 제대로 작동되지 않았음<br/>
 Error code : `Looks like you've followed a broken link or entered a URL that doesn't exist on this site.`
 
-  > 💡 Solution : 공식문서를 참고하여 redirects 설정해줘서 해결 [Syntax for the Netlify configuration file](https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file)
+> 💡 Solution : 공식문서를 참고하여 Netlify.toml 파일을 생성하여 redirects 설정하여 해결. 🔗 [Syntax for the Netlify configuration file](https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file)
 
 <br/>
 
