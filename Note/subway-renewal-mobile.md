@@ -120,8 +120,8 @@ useEffect(() => {
 <br/>
 
 ## 카카오맵 API
-`var geocoder = new kakao.maps.services.Geocoder();` Geocoder가 Undefined로 불러와지지 않았음
-  > 💡 Solution : 공식문서 참고하여, index.html에 Geocoder 라이브러리를 셋팅하여 해결. 재밌는 사실은 제이쿼리로 구현했을땐 Geocoder 라이브러리를 불러오지 않아도 에러없이 구현이 되었었다(...) 왜 실행이 다르게 되는지 아직 잘 모르겠다. 🔗[카카오 지도API 가이드](https://apis.map.kakao.com/web/guide/#whatlibrary)
+jQuery로 카카오맵API를 사용할 때는 Geocoder 라이브러리를 따로 불러오지 않아도 에러없이 구현이 되었는데, React로 구현할 때는 import 되지 않는 문제가 있었다. `var geocoder = new kakao.maps.services.Geocoder();` 
+  > 💡 Solution : index.html에 Geocoder 라이브러리를 셋팅하여 해결. 왜 실행이 다르게 되는지 아직 잘 모르겠다. 🔗[카카오 지도API 가이드](https://apis.map.kakao.com/web/guide/#whatlibrary)
 
 <br/>
 
