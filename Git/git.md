@@ -35,7 +35,7 @@ Naver/FE-News 레포틑 fork 떠왔는데 2달동안 업데이트가 없어서 �
 > 2) 동기화해오고 싶은 원본 repository를 upstream 이라는 이름으로 추가 및 확인 <br/>
 > `git remote add upstream <동기화하고 싶은 레포 URL>`<br/>
 > `git remote -v`<br/>
-> 3) upstream repository로부터 최신 업데이트를 가져온다. (이 부분은 깃허브에서 진행하면 된다.) 🔗 참고 : [GitHub 공식문서](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
+> 3) upstream repository로부터 최신 업데이트를 가져온다. (깃헙 레포에서 `Fetch Upstream을 클릭한다`.) 🔗 참고 : [GitHub 공식문서](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
 
 <br/><br/>
 
