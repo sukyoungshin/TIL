@@ -162,7 +162,7 @@ useEffect(() => {
 
 - 구글 로그인버튼 custom design이 적용되지 않는 이슈. <br/>
 공식문서에서 로그인 버튼을 커스터마이징 할 수 있는 [몇 가지 방법](https://developers.google.com/identity/sign-in/web/build-button)을 확인했으나, 첫번째 방법은 내가 원하는 방식으로 예쁘게 커스텀 할 수가 없고, 두 번째 방법은 내가 원하는 방식으로 커스텀은 가능하지만 CORS 이슈가 있었다. (디자인때문에 굳이 프록시까지 건들고 싶지는 않았다.)
-> 💡 Solution : CSS OVERRIDE를 사용하니 간단하게 해결되었다. 다만 `!important;`를 남발한 것이 매우 찜찜하다.
+> 💡 Solution : CSS OVERRIDE를 사용하니 간단하게 해결되었다. 다만 `!important;`를 남발한 것이 매우 찜찜하다. (* 추가 : 구글에서는 브랜드 사용규정이 있고, 아래처럼 디자인을 임의로 바꾸게 되면 [구글 로고 사용규정](https://developers.google.com/identity/branding-guidelines)이 된다. 모든 기능개발이 끝난 뒤, 리펙토링하며 규정에 맞게 변경해야할 것 같다. )
 ```
 // Styled.js
 
