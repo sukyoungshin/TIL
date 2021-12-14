@@ -1,16 +1,24 @@
 # TIL (TODAY I LEARNED)
 
-공부했던 내용 및 읽은 기록물(IT Articles, 도서 등)을 요약 정리하여 업로드하는 레포입니다. <br/>
-Note 디렉토리에는 프로젝트 회고 기록를 업로드합니다.
-<br><br>
+공부했던 내용을 요약 정리하여 업로드하는 레포입니다. <br/>
+
+## 디렉토리 구성
+
+- TIL : 공부했던 내용을 요약 정리하여 업로드 하였습니다.
+- Note : 프로젝트 회고 기록를 업로드 하였습니다.
+- Articles : 한 주 동안 읽은 뉴스레터 중에서 유용한 기사 링크를 업로드 하였습니다.
+  <br><br>
 
 ## 주로 참고하는 자료
+
 ### 뉴스레터
+
 - [Daily Dev](https://daily.dev/)
 - [GeekNews](https://news.hada.io/)
 - [CSS tricks](https://css-tricks.com/)
 
 ### HTML, CSS, JavaScript
+
 - [MDN](https://developer.mozilla.org/ko/) <br>
 - [W3SCHOOL](https://www.w3schools.com/) <br>
 - [포이마웹](https://poiemaweb.com/) <br>
@@ -20,6 +28,7 @@ Note 디렉토리에는 프로젝트 회고 기록를 업로드합니다.
   <br/>
 
 ### React
+
 - [리액트를 다루는 기술(개정판)](https://thebook.io/080203/ch01/01/)
 - [밸로퍼트와 함께하는 모던리액트(깃북)](https://react.vlpt.us/basic)
   <br/><br/>
