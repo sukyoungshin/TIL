@@ -1,19 +1,26 @@
-# Polyfill
+# Transpiler & Polyfill
+
+## 트랜스파일러/변환기 Transpiler
+최신 문법의 자바스크립트를 브라우저에서 호환되도록 변환하는 역할을 한다. cf. 바벨(Babel)
+
+- Transpiler ( translate + complier )
+- es6 -> es5
+- react jsx -> javascript
+
+<br/>
+
+## 폴리필 Polyfill
+- 최신 JS를 사용하면 구 버전의 브라우저에서 호환이 안 될 수 있다. 따라서 최신 자바스크립트를 사용하여 개발했다면, 브라우저가 그것을 알아들을 수 있도록 해주어야 한다.
+- 폴리필(polyfill)은 개발자가 특정 기능이 지원되지 않는 브라우저를 위해 사용할 수 있는 코드 조각이나 플러그인을 말한다. 즉, 폴리필은 HTML5 및 CSS3와 오래된 브라우저 사이의 간격을 메꾸는 역할을 담당한다. 🔗[링크](https://webdir.tistory.com/328)
 
 ```
-- 트랜스파일러/변환기 Transpiler
-: 최신 문법의 자바스크립트를 브라우저에서 호환되도록 변환하는 역할을 한다. cf. 바벨(Babel)
-Transpiler ( translate + complier )
-es6 -> es5
-react jsx -> javascript
-
-- 폴리필 Polyfill
-: 최신 JS를 사용하면 구 버전의 브라우저에서 호환이 안 될 수 있다. 따라서 최신 자바스크립트를 사용하여 개발했다면, 브라우저가 그것을 알아들을 수 있도록 해주어야 한다.
-
-: 폴리필(polyfill)은 개발자가 특정 기능이 지원되지 않는 브라우저를 위해 사용할 수 있는
-코드 조각이나 플러그인을 말한다. 폴리필은 HTML5 및 CSS3와 오래된 브라우저 사이의
-간격을 메꾸는 역할을 담당한다. // 출처: https://webdir.tistory.com/328
+// ex
+if (typeof window.localStorage === 'undefined') {
+	window.localStorage = {...};
+};
 ```
+
+<br/>
 
 ## Reference
 
