@@ -73,6 +73,146 @@ useEffect(() => {
 
 <br/>
 
+## 속성 접근자(bracket notation)
+Menu페이지를 구현할 때 속성접근자를 사용하여 구현하였다. <br/>
+
+- 속성접근자? 변수에 따라 변수값에 동적으로 접근할 수 있게 하는 것.
+- 장점 : key값을 동적으로 할당 (key값에는 문자열만 올 수 있음)
+```
+// Basic syntax
+const Object = {
+  [function(){}] : 'hi'
+};
+Object['function(){}']; // 'hi'
+
+// Ex
+const NAME = 'NAME';
+const obj = {
+  MY: 'my',
+  [NAME]: 'name', // key에 변수값 NAME을 지정함
+};
+console.log(obj); // {MY: 'my', NAME: 'name'}
+
+const NAME = '길동';
+const obj = {
+  MY: 'my',
+  [NAME]: 'name',
+};
+console.log(obj); // {MY: 'my', 길동: 'name'}
+
+const NAME = prompt('what is your name');
+const obj = {
+  MY: 'my',
+  [NAME]: 'name',
+};
+console.log(obj); // {MY: 'my', sukyoung: 'name'} - prompt에서 받아온 값을 key값으로 할당
+```
+
+<br/>
+
+> 코드에 활용. 조건 : Menu페이지에서 카테고리을 선택하면, 선택된 카테고리에 맞는 메뉴목록을 불러와서 화면에 나타내준다.
+```
+// Menu.js
+import { MenuCategories, TabContents, BASEURL } from '../common/Datas';
+
+// 선택된 카테고리 저장
+const [ CategoryTitle, setCategoryTitle ] = useState(MenuCategories[0].titleEng); // 'Default'
+const currentSelectedMenuItems = TabContents[CategoryTitle]; // 리액트에서는 Object를 child를 사용할 수 없기 때문에, Array로 만들어주었다.
+
+(...)
+
+return (
+
+(...)
+
+  // 카테고리선택
+  {
+    MenuCategories
+      .map((category) => (
+        <li key={category.id}>
+          <CategoryBtn 
+            type="button"
+            isBtnSelected={category.id === categoryId}
+            onClick={handleButtonActive(category.id, category.titleEng)}
+          >
+            <img src={`${BASEURL}${category.imgSrc}`} alt={category.title} />
+            <span>{category.title}</span>
+          </CategoryBtn>
+        </li>
+    ))
+  }
+
+(...)
+
+  // 선택된 카테고리에 맞는 아이템메뉴를 화면에 렌더링
+  {
+    currentSelectedMenuItems
+    .map((menu) => (
+      <MenuArticle 
+        key={menu.id}
+        isMenuSelected={menuId === menu.id} 
+      >
+        <OrderIconButton 
+          isMenuSelected={menuId === menu.id} 
+          onClick={handleOrderMenu(menu.id)}
+        >
+          <BsCart2 />
+        </OrderIconButton>
+        <div className="menu-name-wrapper">
+          <h3 className="menu-name-kor">{menu.nameKor}</h3>
+          <p className='menu-name-eng'>{menu.nameEng}</p>
+        </div>
+        <div className="menu-img-wrapper">
+          <img src={`${BASEURL}${menu.imgSrc}`} alt={`${menu.nameKor}`} className="menu-img" />
+          <span className="menu-description">{menu.description}</span>
+        </div>
+        <p className="menu-price">{menu.price} KRW</p>
+      </MenuArticle>
+    ))
+  }
+);
+```
+
+```
+// Datas.js
+
+// Order 메뉴카테고리
+export const MenuCategories = [
+  {
+    id: 0,
+    title: '기본메뉴',
+    titleEng : 'Default',
+    imgSrc : '/sandwich/italianbmt.png', // 수정
+  },
+  {
+    id: 1,
+    title: '샌드위치',
+    titleEng : 'Sandwiches',
+    imgSrc : '/sandwich/eggmayo.png',
+  },
+  {
+    id: 2,
+    title: '샐러드',
+    titleEng: 'Salads',
+    imgSrc : '/salad/shrimp.png',
+  },
+  {
+    id: 3,
+    title: '랩기타',
+    titleEng: 'Wraps',
+    imgSrc : '/wrap/shrimp_egg_grilled_wrap.png',
+  },
+];
+
+export const TabContents = {
+  // 속성 접근자(bracket notation), Routing Design Patterns
+  [ MenuCategories[0].titleEng ] : Default,
+  [ MenuCategories[1].titleEng ] : Sandwiches,
+  [ MenuCategories[2].titleEng ] : Salads,
+  [ MenuCategories[3].titleEng ] : Wraps,
+};
+```
+
 ## React-router
 
 `<Link>`나 `useNavigate()`를 사용하여 페이지 이동 시, `state`를 다음 페이지로 전달해줄 수 있다. (type : Object).
