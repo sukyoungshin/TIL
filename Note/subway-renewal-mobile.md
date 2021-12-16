@@ -76,8 +76,9 @@ useEffect(() => {
 ## 속성 접근자(bracket notation)
 Menu페이지를 구현할 때 속성접근자를 사용하여 구현하였다. <br/>
 
-- 속성접근자? 변수에 따라 변수값에 동적으로 접근할 수 있게 하는 것.
-- 장점 : key값을 동적으로 할당 (key값에는 문자열만 올 수 있음)
+- 속성접근자? <br/>
+변수에 따라 변수값에 동적으로 접근할 수 있게 하는 것. <br/>
+key값을 동적으로 할당할 수 있다는 장점이 있다. (key값에는 문자열만 올 수 있음)
 ```
 // Basic syntax
 const Object = {
@@ -105,19 +106,61 @@ const obj = {
   MY: 'my',
   [NAME]: 'name',
 };
-console.log(obj); // {MY: 'my', sukyoung: 'name'} - prompt에서 받아온 값을 key값으로 할당
+console.log(obj); // {MY: 'my', sukyoung: 'name'} - 이런식으로 prompt에서 받아온 값을 key값으로 '동적으로' 할당할 수 있다.
 ```
 
 <br/>
 
-> 코드에 활용. 조건 : Menu페이지에서 카테고리을 선택하면, 선택된 카테고리에 맞는 메뉴목록을 불러와서 화면에 나타내준다.
+> 속성 선택자를 적용한 코드 <br/>
+> 조건 : Menu페이지에서 카테고리을 선택하면, 선택된 카테고리에 맞는 메뉴목록을 불러와서 화면에 나타내준다.
+
+```
+// Datas.js
+
+// 메뉴카테고리
+export const MenuCategories = [
+  {
+    id: 0,
+    title: '기본메뉴',
+    titleEng : 'Default',
+    imgSrc : '/sandwich/italianbmt.png', // 수정
+  },
+  {
+    id: 1,
+    title: '샌드위치',
+    titleEng : 'Sandwiches',
+    imgSrc : '/sandwich/eggmayo.png',
+  },
+  {
+    id: 2,
+    title: '샐러드',
+    titleEng: 'Salads',
+    imgSrc : '/salad/shrimp.png',
+  },
+  {
+    id: 3,
+    title: '랩기타',
+    titleEng: 'Wraps',
+    imgSrc : '/wrap/shrimp_egg_grilled_wrap.png',
+  },
+];
+
+export const TabContents = {
+  // 속성 접근자(bracket notation), Routing Design Patterns
+  [ MenuCategories[0].titleEng ] : Default,
+  [ MenuCategories[1].titleEng ] : Sandwiches,
+  [ MenuCategories[2].titleEng ] : Salads,
+  [ MenuCategories[3].titleEng ] : Wraps,
+};
+```
+
 ```
 // Menu.js
 import { MenuCategories, TabContents, BASEURL } from '../common/Datas';
 
 // 선택된 카테고리 저장
 const [ CategoryTitle, setCategoryTitle ] = useState(MenuCategories[0].titleEng); // 'Default'
-const currentSelectedMenuItems = TabContents[CategoryTitle]; // 리액트에서는 Object를 child를 사용할 수 없기 때문에, Array로 만들어주었다.
+const currentSelectedMenuItems = TabContents[CategoryTitle]; // 리액트에서는 Object를 child를 사용할 수 없다.
 
 (...)
 
@@ -171,46 +214,6 @@ return (
     ))
   }
 );
-```
-
-```
-// Datas.js
-
-// Order 메뉴카테고리
-export const MenuCategories = [
-  {
-    id: 0,
-    title: '기본메뉴',
-    titleEng : 'Default',
-    imgSrc : '/sandwich/italianbmt.png', // 수정
-  },
-  {
-    id: 1,
-    title: '샌드위치',
-    titleEng : 'Sandwiches',
-    imgSrc : '/sandwich/eggmayo.png',
-  },
-  {
-    id: 2,
-    title: '샐러드',
-    titleEng: 'Salads',
-    imgSrc : '/salad/shrimp.png',
-  },
-  {
-    id: 3,
-    title: '랩기타',
-    titleEng: 'Wraps',
-    imgSrc : '/wrap/shrimp_egg_grilled_wrap.png',
-  },
-];
-
-export const TabContents = {
-  // 속성 접근자(bracket notation), Routing Design Patterns
-  [ MenuCategories[0].titleEng ] : Default,
-  [ MenuCategories[1].titleEng ] : Sandwiches,
-  [ MenuCategories[2].titleEng ] : Salads,
-  [ MenuCategories[3].titleEng ] : Wraps,
-};
 ```
 
 ## React-router
