@@ -41,40 +41,8 @@ const handleClick = useCallback((id) =>
 
 <br/>
 
-## WebAPI (window 관련)
-
-카카오맵 API를 이용하여, 새 창을 오픈하여 주소정보를 받아올 때 WebAPI인 `Window.postMessage()`와 `Window.opener`를 이용하여 구현하였다.
-
-```
-// Order.js
-
-// postMessage
-const HandlePopUp = () => {
-  window.open('search', 'addressSearch', "width=380 height=580 left=726 top=306").postMessage('message');
-};
-
-// Dispatch Event
-useEffect(() => {
-  const receiveMessage = (event) => {
-    if (event.origin !== window.location.origin) return;
-    if (event.source.name !== 'addressSearch') return;
-
-    setAddrValue(event.data); // 고객의 주소지 저장
-    getGeocode(event.data); // x좌표 y좌표 셋팅
-    setSubwayPlaces([]); // 기존값 삭제
-  };
-
-  window.addEventListener("message", receiveMessage, false);
-}, []);
-```
-
-> 💡 Note : [Window.postMessage()](https://developer.mozilla.org/ko/docs/Web/API/Window/postMessage)
-> [Window.opener](https://developer.mozilla.org/ko/docs/Web/API/Window/opener)
-
-<br/>
-
-## 속성 접근자(bracket notation)
-Menu페이지를 구현할 때 속성접근자를 사용하여 구현하였다. <br/>
+### 속성 접근자(bracket notation)
+Menu페이지를 구현할 때 속성접근자를 사용하여 구현하였다. 프로젝트 진행하며 처음 알게 된 JS문법.<br/>
 
 - 속성접근자? <br/>
 변수에 따라 변수값에 동적으로 접근할 수 있게 하는 것. <br/>
@@ -216,7 +184,67 @@ return (
 );
 ```
 
-## React-router
+<br/>
+
+### Controlled Component
+
+`input type="range"`에 value 속성만 주었더니 제대로 작동되지 않았다. onChange 이벤트를 등록하니 해결되었다. <br/>
+
+```
+// Veggie.js
+
+<RangeButton 
+  id={veg.id}
+  type="range" 
+  min="0"
+  max="100"
+  step="10"
+  value={step[veg.id]} /* 폼요소를 제어하기 위해, 대화형 속성 value을 사용한다. */
+  onChange={handleStepChange(veg.id)} /* onChange 이벤트를 함께 등록하여 value 속성을 읽을 수 있다. */
+/>
+```
+
+> 💡 Solution : 제어컴포넌트는 value값을 state를 이용해서 제어해야한다. [React에서 폼을 다루기 위한 권장 방법](https://thebook.io/006961/part01/ch07/01-04/)
+> 
+> React는 변경 가능한 속성인 value, checked, selected를 두어 폼 요소를 특별하게 다루고 있다. 이 특별한, 변경 가능한 속성을 대화형 속성(interactive properties)이라고 부른다. 폼 요소에 연결한 onChange 같은 이벤트에서 이 속성을 읽을 수 있다.
+> 
+
+<br/>
+
+### WebAPI (window 관련)
+
+카카오맵 API를 이용하여, 새 창을 오픈하여 주소정보를 받아올 때 WebAPI인 `Window.postMessage()`와 `Window.opener`를 이용하여 구현하였다.
+
+```
+// Order.js
+
+// postMessage
+const HandlePopUp = () => {
+  window.open('search', 'addressSearch', "width=380 height=580 left=726 top=306").postMessage('message');
+};
+
+// Dispatch Event
+useEffect(() => {
+  const receiveMessage = (event) => {
+    if (event.origin !== window.location.origin) return;
+    if (event.source.name !== 'addressSearch') return;
+
+    setAddrValue(event.data); // 고객의 주소지 저장
+    getGeocode(event.data); // x좌표 y좌표 셋팅
+    setSubwayPlaces([]); // 기존값 삭제
+  };
+
+  window.addEventListener("message", receiveMessage, false);
+}, []);
+```
+
+> 💡 Note : [Window.postMessage()](https://developer.mozilla.org/ko/docs/Web/API/Window/postMessage)
+> [Window.opener](https://developer.mozilla.org/ko/docs/Web/API/Window/opener)
+
+<br/>
+
+
+### React-router
 
 `<Link>`나 `useNavigate()`를 사용하여 페이지 이동 시, `state`를 다음 페이지로 전달해줄 수 있다. (type : Object).
 다음 페이지에서는 `useLocation`을 사용하여 state 전달받는다.
@@ -266,7 +294,7 @@ useEffect(() => {
 
 <br/>
 
-## 카카오맵 API
+### 카카오맵 API
 
 jQuery로 카카오맵API를 사용할 때는 Geocoder 라이브러리를 따로 불러오지 않아도 에러없이 구현이 되었는데, React로 구현할 때는 import 되지 않는 문제가 있었다. `var geocoder = new kakao.maps.services.Geocoder();`
 
