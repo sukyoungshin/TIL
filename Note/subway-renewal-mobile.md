@@ -186,6 +186,30 @@ return (
 
 <br/>
 
+### 엣지케이스
+야채 선택하는 페이지에서, 야채 옵션을 전체선택 / 해제 체크박스를 구현하는 것이 어려웠다. <br/>
+
+```
+// Veggie.js
+
+// 체크박스 선택 관련
+- 체크박스가 클릭되었을 때, 1) 전체 step을 50으로 조정한다. 2) CTA버튼을 활성화시킨다.
+- 체크박스가 해제되었을 때, 전체 step을 0으로 바꾼다. <br/>
+
+// 수량조절 버튼 관련, 
+- 야채 중 하나라도 step이 0이 되면, 전체선택 체크박스가 해제된다.
+- 야채 전체 step이 10이상이면, 전체 선택 체크박스가 체드된다. 
+
+// range 조정 관련, 
+- 클릭한 index의 id값을 받아와서, 해당 id값을 key값으로 사용하고 (속성접근자 bracket notation 사용)
+- 클릭한 index의 value값을 숫자로 바꿔온다. (valueAsNumber)
+
+// range값은 useState(step)을 사용하여 Object형태로 관리
+```
+
+> 💡 Note : [valueAsNumber](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)
+<br/>
+
 ### Controlled Component
 
 `input type="range"`에 value 속성만 주었더니 제대로 작동되지 않았다. onChange 이벤트를 등록하니 해결되었다. <br/>
