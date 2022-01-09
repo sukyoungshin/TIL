@@ -186,30 +186,6 @@ return (
 
 <br/>
 
-### 엣지케이스
-야채 선택하는 페이지에서, 야채 옵션을 전체선택 / 해제 체크박스를 구현하는 것이 어려웠다. <br/>
-
-```
-// Veggie.js
-
-// 체크박스 선택 관련
-- 체크박스가 클릭되었을 때, 1) 전체 step을 50으로 조정한다. 2) CTA버튼을 활성화시킨다.
-- 체크박스가 해제되었을 때, 전체 step을 0으로 바꾼다. <br/>
-
-// 수량조절 버튼 관련, 
-- 야채 중 하나라도 step이 0이 되면, 전체선택 체크박스가 해제된다.
-- 야채 전체 step이 10이상이면, 전체 선택 체크박스가 체드된다. 
-
-// range 조정 관련, 
-- 클릭한 index의 id값을 받아와서, 해당 id값을 key값으로 사용하고 (속성접근자 bracket notation 사용)
-- 클릭한 index의 value값을 숫자로 바꿔온다. (valueAsNumber)
-
-// range값은 useState(step)을 사용하여 Object형태로 관리
-```
-
-> 💡 Note : [valueAsNumber](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)
-<br/>
-
 ### Controlled Component
 
 `input type="range"`에 value 속성만 주었더니 제대로 작동되지 않았다. onChange 이벤트를 등록하니 해결되었다. <br/>
@@ -233,6 +209,47 @@ return (
 > React는 변경 가능한 속성인 value, checked, selected를 두어 폼 요소를 특별하게 다루고 있다. 이 특별한, 변경 가능한 속성을 대화형 속성(interactive properties)이라고 부른다. 폼 요소에 연결한 onChange 같은 이벤트에서 이 속성을 읽을 수 있다.
 > 
 
+<br/>
+
+### call by reference
+각 다른 reducer 함수에서 동일한 값을 초기값으로 가지며, 다른 리듀서에서 업데이트한 값이 동일하게 변경되어야 했다. <br/>
+call by reference를 사용하여 해결하였다. 🔗[생활코딩 참조](https://opentutorials.org/course/743/6507)<br/>
+
+```
+// call by value --> primitive type을 복사
+// - primitive type은 사용이나 선언 될 때 마다 새로 메모리에 올라간다.
+// - call by value는 스코프가 중요하다.
+a = {a:123}
+b = a
+b.a = 333
+a.a // 333
+a === b; // true
+
+// call by reference --> 배열의 값을 참조
+// - 불변성을 지켜준다
+// - call by reference 특징이 있으므로 객체는 사용시 주의해야한다.
+a = () => ({val:123})
+a() === a() // false
+```
+<br/>
+
+실제 코드
+```
+// reducers/index.js
+export const initialState = () => ({
+"category": {
+    "id": 0,
+    "nameKor": "에그마요",
+    "nameEng": "Egg Mayo",
+    "imgSrc": "/sandwich/eggmayo.png",
+    "kcal": 480,
+    "description": "부드러운 달걀과 고소한 마요네즈가 만나 더 부드러운 스테디셀러",
+    "price": 4300,
+    "amount": 1
+  },
+ (...생략)
+});
+```
 <br/>
 
 ### WebAPI (window 관련)
@@ -267,6 +284,29 @@ useEffect(() => {
 
 <br/>
 
+### 엣지케이스
+야채 선택하는 페이지에서, 야채 옵션을 전체선택 / 해제 체크박스를 구현하는 것이 어려웠다. <br/>
+
+```
+// Veggie.js
+
+// 체크박스 선택 관련
+- 체크박스가 클릭되었을 때, 1) 전체 step을 50으로 조정한다. 2) CTA버튼을 활성화시킨다.
+- 체크박스가 해제되었을 때, 전체 step을 0으로 바꾼다. <br/>
+
+// 수량조절 버튼 관련, 
+- 야채 중 하나라도 step이 0이 되면, 전체선택 체크박스가 해제된다.
+- 야채 전체 step이 10이상이면, 전체 선택 체크박스가 체드된다. 
+
+// range 조정 관련, 
+- 클릭한 index의 id값을 받아와서, 해당 id값을 key값으로 사용하고 (속성접근자 bracket notation 사용)
+- 클릭한 index의 value값을 숫자로 바꿔온다. (valueAsNumber)
+
+// range값은 useState(step)을 사용하여 Object형태로 관리
+```
+
+> 💡 Note : [valueAsNumber](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)
+<br/>
 
 ### React-router
 
