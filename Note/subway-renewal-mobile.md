@@ -1,9 +1,8 @@
 # Subway-renewal-mobile
 
 subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
-
-## Learn & Issues
-
+  
+## JavaScript 
 ### 커링함수 Currying
 
 아래의 조건으로 캐러셀을 구현하기 위해, JavaScript/jQuery 방식으로 실제 DOM의 index#를 추출하여 구현하고자 하였으나 실패.
@@ -186,32 +185,7 @@ return (
 
 <br/>
 
-### Controlled Component
-
-`input type="range"`에 value 속성만 주었더니 제대로 작동되지 않았다. onChange 이벤트를 등록하니 해결되었다. <br/>
-
-```
-// Veggie.js
-
-<RangeButton 
-  id={veg.id}
-  type="range" 
-  min="0"
-  max="100"
-  step="10"
-  value={step[veg.id]} /* 폼요소를 제어하기 위해, 대화형 속성 value을 사용한다. */
-  onChange={handleStepChange(veg.id)} /* onChange 이벤트를 함께 등록하여 value 속성을 읽을 수 있다. */
-/>
-```
-
-> 💡 Solution : 제어컴포넌트는 value값을 state를 이용해서 제어해야한다. [React에서 폼을 다루기 위한 권장 방법](https://thebook.io/006961/part01/ch07/01-04/)
-> 
-> React는 변경 가능한 속성인 value, checked, selected를 두어 폼 요소를 특별하게 다루고 있다. 이 특별한, 변경 가능한 속성을 대화형 속성(interactive properties)이라고 부른다. 폼 요소에 연결한 onChange 같은 이벤트에서 이 속성을 읽을 수 있다.
-> 
-
-<br/>
-
-### call by reference
+### Call by reference
 각 다른 reducer 함수에서 동일한 값을 초기값으로 가지며, 다른 리듀서에서 업데이트한 값이 동일하게 변경되어야 했다. <br/>
 call by reference를 사용하여 해결하였다. 🔗[생활코딩 참조](https://opentutorials.org/course/743/6507)<br/>
 
@@ -284,6 +258,31 @@ useEffect(() => {
 
 <br/>
 
+### 제어컴포넌트 Controlled Component (React)
+
+`input type="range"`에 value 속성만 주었더니 제대로 작동되지 않았다. onChange 이벤트를 등록하니 해결되었다. <br/>
+
+```
+// Veggie.js
+
+<RangeButton 
+  id={veg.id}
+  type="range" 
+  min="0"
+  max="100"
+  step="10"
+  value={step[veg.id]} /* 폼요소를 제어하기 위해, 대화형 속성 value을 사용한다. */
+  onChange={handleStepChange(veg.id)} /* onChange 이벤트를 함께 등록하여 value 속성을 읽을 수 있다. */
+/>
+```
+
+> 💡 Solution : 제어컴포넌트는 value값을 state를 이용해서 제어해야한다. [React에서 폼을 다루기 위한 권장 방법](https://thebook.io/006961/part01/ch07/01-04/)
+> 
+> React는 변경 가능한 속성인 value, checked, selected를 두어 폼 요소를 특별하게 다루고 있다. 이 특별한, 변경 가능한 속성을 대화형 속성(interactive properties)이라고 부른다. 폼 요소에 연결한 onChange 같은 이벤트에서 이 속성을 읽을 수 있다.
+> 
+
+<br/>
+
 ### 엣지케이스
 야채 선택하는 페이지에서, 야채 옵션을 전체선택 / 해제 체크박스를 구현하는 것이 어려웠다. <br/>
 
@@ -308,6 +307,7 @@ useEffect(() => {
 > 💡 Note : [valueAsNumber](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)
 <br/>
 
+## 라이브러리 관련
 ### React-router
 
 `<Link>`나 `useNavigate()`를 사용하여 페이지 이동 시, `state`를 다음 페이지로 전달해줄 수 있다. (type : Object).
@@ -365,6 +365,71 @@ jQuery로 카카오맵API를 사용할 때는 Geocoder 라이브러리를 따로
 > 💡 Solution : index.html에 Geocoder 라이브러리를 셋팅하여 해결. 왜 실행이 다르게 되는지 아직 잘 모르겠다. 🔗[카카오 지도API 가이드](https://apis.map.kakao.com/web/guide/#whatlibrary)
 
 <br/>
+
+### OAuth 프로토콜 관련
+🔗[OAuth Protocol process](https://gdtbgl93.tistory.com/180)
+
+
+### 카카오 OAuth 로그인 관련
+- 인가코드를 받아오기 위해 새로운 페이지를 만들어서 진행하였다.
+> Flow : KakaoLogin 로그인요청 -> Auth 페이지에서 인가코드 받아옴 -> 메인 페이지로 이동
+
+- 검색해보면 대부분 axios로 post 요청을 날리는데, 라이브러리 의존성을 낮춰서 요청해보고 싶어서 [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)를 사용하였다.
+- fetchAPI를 사용 시, 에러 핸들링을 쉽게 하기 위해 `.catch`를 넣는다. 🔗[에러핸들링](https://ko.javascript.info/promise-error-handling)
+
+- [POST 요청](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/POST) 시, Content-Type이 x-www-form-urlencoded;charset=utf-8인 경우에, [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)을 사용하여 parameters를 전달해준다. 🔗[StackOverFlow](https://stackoverflow.com/questions/35325370/how-do-i-post-a-x-www-form-urlencoded-request-using-fetch)
+
+```
+const PARAMS = new URLSearchParams(); // URL 쿼리스트링 객체로 반환해준다
+
+PARAMS.append('a', 123);
+PARAMS.append('b', 456);
+PARAMS.append('c', 789);
+PARAMS.append('d', 012);
+
+PARAMS.toString(); // 'a=123&b=456&c=789&d=10'
+```
+
+```
+// Auth.js
+
+const getToken = () => {
+
+  const payload = new URLSearchParams({
+    grant_type: "authorization_code",
+    client_id: REST_API_KEY,
+    redirect_uri: REDIRECT_URI,
+    code: code,
+    client_secret: CLIENT_SECRET,
+  });
+
+  // access token 가져오기
+  const fetchOption = {
+    method : 'POST',
+    body : payload,
+    headers:{
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    },
+  };
+
+  fetch('https://kauth.kakao.com/oauth/token', fetchOption)
+  .then((response) => response.json())
+  .then((json) => {
+    window.Kakao.Auth.setAccessToken(json.access_token); // access token 설정
+    navigate('/');
+  })
+  .catch((error) => {
+    console.log('error', error);
+  });
+};
+
+useEffect(() => {
+  getToken();
+}, []);
+
+```
+<br/>
+
 
 ### 구글OAuth 로그인 관련
 
@@ -444,6 +509,10 @@ export const LoginButton = styled.div`
   }
 `;
 ```
+
+<br/>
+
+## HTTP Method
 
 <br/>
 
