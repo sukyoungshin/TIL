@@ -226,6 +226,38 @@ export const initialState = () => ({
 ```
 <br/>
 
+### export 
+
+라우터 컴포넌트를 한 페이지에서 처리하여 한 번에 내보내기 위해 export 구문을 다음과 같이 사용하였다. 
+```
+// pages/router.js
+
+export { default as SplashScreen} from './SplashScreen';
+export { default as Layout} from './Layout';
+export { default as Main} from "./Main";
+export { default as Login} from "./Login";
+export { default as Signin} from "./Signin";
+export { default as Signup} from "./Signup";
+export { default as Addr} from './Addr';
+export { default as PostSearch} from './PostSearch';
+export { default as Menu} from './Menu';
+export { default as Bread} from './Bread';
+export { default as Cheese} from './Cheese';
+export { default as Veggie} from './Veggie';
+export { default as Sauce} from './Sauce';
+export { default as OrderPageLayout} from './OrderPageLayout';
+export { default as OrderCart} from './OrderCart';
+export { default as OrderInfo} from './OrderInfo';
+export { default as OrderMenu} from './OrderMenu';
+export { default as OrderConfirmLayout} from './OrderConfirmLayout';
+export { default as Auth} from './Auth';
+export { default as NoMatch} from './NoMatch';
+```
+
+> 💡 Note : 참고 - 모듈 내보내는 방법에 대한 mdn설명 [export](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export)
+
+<br/>
+
 ### WebAPI (window 관련)
 
 카카오맵 API를 이용하여, 새 창을 오픈하여 주소정보를 받아올 때 WebAPI인 `Window.postMessage()`와 `Window.opener`를 이용하여 구현하였다.
@@ -309,8 +341,19 @@ useEffect(() => {
 
 ## 라이브러리 관련
 ### React-router
+- App.js에서 컴포넌트를 깔끔하게 정돈하기 위해 map을 돌리고자 하였으나, React Router 6는 기존 버전과 달리 배열 형태로 Route property를 전달할 수 없으며, 공식문서에 따르면 아래의 두 가지 방법중 하나로 해결해야 한다. 
+  - `<Routes> and <Route>` if you're using JSX
+  - `useRoutes` if you'd prefer a JavaScript object-based config
 
-`<Link>`나 `useNavigate()`를 사용하여 페이지 이동 시, `state`를 다음 페이지로 전달해줄 수 있다. (type : Object).
+좀 더 깔끔하게 컴포넌트를 분리시키고자, `useRoutes` 훅을 이용하였다. 
+
+> 💡 Note : <br/>
+> StackOverFlow [Update for React Router v6](https://stackoverflow.com/questions/40541994/multiple-path-names-for-a-same-component-in-react-router) <br/>
+> react-router 공식문서 [useRoutes](https://reactrouter.com/docs/en/v6/api#useroutes)
+
+<br/>
+
+- `<Link>`나 `useNavigate()`를 사용하여 페이지 이동 시, `state`를 다음 페이지로 전달해줄 수 있다. (type : Object).
 다음 페이지에서는 `useLocation`을 사용하여 state 전달받는다.
 
 ```
