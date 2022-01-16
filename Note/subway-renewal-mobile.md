@@ -1,6 +1,7 @@
 # Subway-renewal-mobile
 
 subway-renewal-mobile를 작업하며 겪었던 이슈 및 배운 내용을 정리한 파일입니다.<br/><br/>
+
   
 ## JavaScript 
 ### 커링함수 Currying
@@ -337,6 +338,13 @@ useEffect(() => {
 ```
 
 > 💡 Note : [valueAsNumber](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)
+<br/>
+
+## React Structure 관련
+
+프로젝트 시작 시에는 공통 styles와 데이터만 처리하고 페이지는 한 디렉토리 내에서 핸들링하였는데, 프로젝트가 커지다보니 유지보수 및 가독성이 좋지 않아 구조 변경의 필요성을 느끼게 되었다. [리액트 공식문서](https://ko.reactjs.org/docs/faq-structure.html)에 따르면, React는 파일을 어떤 식으로 폴더에 분류할 것인지에 대해서 명확하게 제시하고 있지 않기에 여러가지 패턴을 찾아보고 가장 유지보수가 수월할 것 같은 방식으로 구조를 설계하였다. 
+> 💡 Note : 참고한 링크 [React Architecture Patterns for Your Projects](https://blog.openreplay.com/react-architecture-patterns-for-your-projects)
+
 <br/>
 
 ## 라이브러리 관련
