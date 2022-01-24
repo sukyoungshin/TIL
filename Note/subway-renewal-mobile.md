@@ -309,10 +309,85 @@ useEffect(() => {
 />
 ```
 
-> 💡 Solution : 제어컴포넌트는 value값을 state를 이용해서 제어해야한다. [React에서 폼을 다루기 위한 권장 방법](https://thebook.io/006961/part01/ch07/01-04/)
+> 💡 Note : 제어컴포넌트는 value값을 state를 이용해서 제어해야한다. [React에서 폼을 다루기 위한 권장 방법](https://thebook.io/006961/part01/ch07/01-04/)
 > 
 > React는 변경 가능한 속성인 value, checked, selected를 두어 폼 요소를 특별하게 다루고 있다. 이 특별한, 변경 가능한 속성을 대화형 속성(interactive properties)이라고 부른다. 폼 요소에 연결한 onChange 같은 이벤트에서 이 속성을 읽을 수 있다.
 > 
+
+<br/>
+
+### form
+회원가입 페이지를 작업할 때, form 외부에 submit 버튼을 배치하였더니, 폼 내부 input의 `required` 속성이 제대로 작동되지 않았다. 
+form에 id값을 주고 동일한 값을 
+
+```
+<form id='my-form' onSubmit={alert('Form submitted!')}>
+    // Form Inputs go here    
+</form>
+<button form='my-form' type="submit">Outside Button</button>
+```
+> 💡 Note : HTML의 속성을 이용하면 간단히 해결된다. form에 id값을 주고, button에 동일한 id값을 전달해주면 된다. [StackOverFlow](https://stackoverflow.com/questions/52577141/how-to-submit-form-from-a-button-outside-that-component-in-react)
+
+<br/>
+
+### input type="checkbox"
+회원가입 페이지를 작성할 때 겪은 이슈.
+여러개 input의 값을 하나의 Object로 관리하고, 여러개 input을 하나의 함수로 컨트롤 하려고 하였는데 checkbox input이 제대로 실행되지 않았다. <br/>
+
+문제가 되었던 코드 : 
+```
+// SignUp.js
+
+const [ userInfo, setUserInfo ] = useState({
+  username : '',
+  userpassword : '',
+  userphone: '',
+  useraddr : '',
+  agreement: false,
+});
+const handleUserInput = (e) => {
+  setUserInfo({
+    ...userInfo,
+    [e.target.id] : e.target.value || e.target.checked, 
+    // 예상 : 해당 input에 e.target.value 값을 지정해주지 않았으니까 
+    //        userInfo Object의 value는 e.target.checked으로 업데이트가 되어서, 
+    //        {agreement : true 또는 false} 형태로 업데이트가 될 것이라 생각했다.
+    // 결과 : 그러나 userInfo Object는 {agreement : 'on'}으로 업데이트가 되었다.
+  });
+};
+
+/* input */
+<input 
+  type="checkbox" 
+  id="agreement" 
+  className='checkbox' 
+  checked={userInfo.id} // input에 value값을 지정해준 적이 없음
+  onChange={handleUserInput}
+  required
+/>
+<label htmlFor="agreement">본인은 만 14세 이상입니다. (필수)</label>
+```
+
+> 💡 Solution : `input type="checkbox"`는 value값이 생략되어있으면 기본값이 on으로 들어가는 특징이 있다. [mdn](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox)
+
+따라서, 아래 방법으로 해결했다 :
+```
+// SignUp.js
+const handleUserInput = (e) => {
+  if (e.target.type === 'checkbox') {
+    setUserInfo({
+      ...userInfo,
+      [e.target.id] : e.target.checked,
+    });
+    setIsBtnActivated(e.target.checked);
+  } else {
+    setUserInfo({
+      ...userInfo,
+      [e.target.id] : e.target.value,
+    });
+  }
+};
+```
 
 <br/>
 
