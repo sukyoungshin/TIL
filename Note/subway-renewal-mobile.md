@@ -318,7 +318,6 @@ useEffect(() => {
 
 ### form
 회원가입 페이지를 작업할 때, form 외부에 submit 버튼을 배치하였더니, 폼 내부 input의 `required` 속성이 제대로 작동되지 않았다. 
-form에 id값을 주고 동일한 값을 
 
 ```
 <form id='my-form' onSubmit={alert('Form submitted!')}>
@@ -326,7 +325,7 @@ form에 id값을 주고 동일한 값을
 </form>
 <button form='my-form' type="submit">Outside Button</button>
 ```
-> 💡 Note : HTML의 속성을 이용하면 간단히 해결된다. form에 id값을 주고, button에 동일한 id값을 전달해주면 된다. [StackOverFlow](https://stackoverflow.com/questions/52577141/how-to-submit-form-from-a-button-outside-that-component-in-react)
+> 💡 Solution : HTML의 속성을 이용하면 간단히 해결된다. form에 id값을 주고, button에 동일한 id값을 전달해주면 된다. [StackOverFlow](https://stackoverflow.com/questions/52577141/how-to-submit-form-from-a-button-outside-that-component-in-react)
 
 <br/>
 
@@ -368,7 +367,7 @@ const handleUserInput = (e) => {
 <label htmlFor="agreement">본인은 만 14세 이상입니다. (필수)</label>
 ```
 
-> 💡 Solution : `input type="checkbox"`는 value값이 생략되어있으면 기본값이 on으로 들어가는 특징이 있다. [mdn](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox)
+> 💡 Note : `input type="checkbox"`는 value값이 생략되어있으면 기본값이 on으로 들어가는 특징이 있다. [mdn](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox)
 
 따라서, 아래 방법으로 해결했다 :
 ```
@@ -388,6 +387,13 @@ const handleUserInput = (e) => {
   }
 };
 ```
+
+<br/>
+
+### Custom Hook
+주소찾기 페이지에 입력한 카카오맵 로직이 길어지고 관리가 어려워서 [커스텀 훅](https://ko.reactjs.org/docs/hooks-custom.html)을 사용하여 비즈니스 로직을 따로 분리하였다.
+
+> 💡 커스텀 훅 관련링크 : [React공식문서](https://ko.reactjs.org/docs/hooks-custom.html)
 
 <br/>
 
