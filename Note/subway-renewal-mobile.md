@@ -390,13 +390,6 @@ const handleUserInput = (e) => {
 
 <br/>
 
-### Custom Hook
-주소찾기 페이지에 입력한 카카오맵 로직이 길어지고 관리가 어려워서 [커스텀 훅](https://ko.reactjs.org/docs/hooks-custom.html)을 사용하여 비즈니스 로직을 따로 분리하였다.
-
-> 💡 커스텀 훅 관련링크 : [React공식문서](https://ko.reactjs.org/docs/hooks-custom.html)
-
-<br/>
-
 ### 엣지케이스
 야채 선택하는 페이지에서, 야채 옵션을 전체선택 / 해제 체크박스를 구현하는 것이 어려웠다. <br/>
 
@@ -429,16 +422,117 @@ const handleUserInput = (e) => {
 <br/>
 
 ## 라이브러리 관련
-### React-router
-- App.js에서 컴포넌트를 깔끔하게 정돈하기 위해 map을 돌리고자 하였으나, React Router 6는 기존 버전과 달리 배열 형태로 Route property를 전달할 수 없으며, 공식문서에 따르면 아래의 두 가지 방법중 하나로 해결해야 한다. 
+### React-router & Custom Hook
+
+프로젝트 초기에는 App.js의 구조가 아래와 같았다. 
+```
+// App.js
+
+const App = () => {
+
+  // Splash Screen
+  const [ isLoading, setIsLoading ] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
+
+return (
+    <BrowserRouter>
+      <GlobalStyle />
+      <Routes>
+      { 
+        isLoading
+        ? <Route path="/" element={<SplashScreen />} />
+        : (
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Main />} />
+            <Route path="main" element={<Main />} />
+            <Route path="login" element={<Login />} />
+            <Route path="order" element={<Order />} />
+            <Route path="menu" element={<Menu />} />
+            <Route path="search" element={<PostSearch />} />
+            <Route path="signin" element={<Signin />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="*" element={<NoMatch />} />
+          </Route>          
+          )
+      }
+      </Routes>
+    </BrowserRouter>
+  );
+};
+export default App;
+```
+1) 프로젝트 규모가 커지면서 App.js에서 사용하는 Route elements의 갯수가 늘어나다보니 정돈이 필요해졌다. <br/>
+Route elements 요소들을 배열로 꺼내어 map을 돌리고자 하였으나, React Router 6는 기존 버전과 달리 배열 형태로 Route property를 전달할 수 없으며, 공식문서에 따르면 아래의 두 가지 방법중 하나로 해결해야 한다. 
   - `<Routes> and <Route>` if you're using JSX
   - `useRoutes` if you'd prefer a JavaScript object-based config
+> 💡 Note : StackOverFlow [Update for React Router v6](https://stackoverflow.com/questions/40541994/multiple-path-names-for-a-same-component-in-react-router), react-router 공식문서 [useRoutes](https://reactrouter.com/docs/en/v6/api#useroutes)
 
-좀 더 깔끔하게 컴포넌트를 분리시키고자, `useRoutes` 훅을 이용하였다. 
+따라서, 좀 더 깔끔하게 컴포넌트를 정리하기 위해 `useRoutes` 훅을 이용하였다. (참고 : router.js)<br/>
 
-> 💡 Note : <br/>
-> StackOverFlow [Update for React Router v6](https://stackoverflow.com/questions/40541994/multiple-path-names-for-a-same-component-in-react-router) <br/>
-> react-router 공식문서 [useRoutes](https://reactrouter.com/docs/en/v6/api#useroutes)
+2) router.js로 router elements를 분리시켰더니 메인페이지에 접속할 때마다 SplashScreen이 3초동안 실행되는 문제가 발생했다. <br/>
+Session Storage를 이용하여, 최초 1회만 SplashScreen이 실행되도록 설정해주었다. 컴포넌트를 간결하게 하기 위해 비즈니스 로직은 커스텀훅으로 따로 빼내어주었다.
+> 💡 커스텀 훅 : [React공식문서](https://ko.reactjs.org/docs/hooks-custom.html)
+
+<br/>
+
+
+```
+// Main.js
+const Main = () => {
+
+  /* 라우터 */
+  const navigate = useNavigate(); 
+  const handleNavAddr = () => navigate(LINK.ADDR);
+
+  /* 스플래쉬스크린 커스텀훅 */
+  const isLoading = useSplashScreen();
+
+  return (
+    <>
+      {   
+        isLoading 
+        ? <SplashScreen />
+        : <MainScreen handleNavAddr={handleNavAddr} />
+      }  
+    </>
+  );
+};
+
+export default Main;
+```
+
+```
+// hooks.js
+import { useState, useEffect } from "react";
+
+export const useSplashScreen = () => {
+
+  const LOADING = 'loading';
+  const [ isLoading, setIsLoading ] = useState(
+    JSON.parse(sessionStorage.getItem(LOADING))
+  );
+
+  useEffect(() => {
+    if (isLoading === null) {
+      sessionStorage.setItem(LOADING, true);
+      setIsLoading(true);
+    } 
+    setTimeout(() => {
+      sessionStorage.setItem(LOADING, false)
+      setIsLoading(false);
+    }, 3000);
+
+    // eslint-disable-next-line
+  }, []);
+
+  return isLoading;
+};
+```
+
 
 <br/>
 
