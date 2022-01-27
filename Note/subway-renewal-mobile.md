@@ -421,6 +421,56 @@ const handleUserInput = (e) => {
 
 <br/>
 
+## Array.prototype.fill()
+
+- 기본 사용법 (참고 : [mdn](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/fill))
+```
+const array1 = [1, 2, 3, 4];
+
+console.log(new Array(10).fill('🥪'));
+console.log([array1].fill('서브웨이'));
+```
+
+코드에 적용한 예 :
+```
+// OrderCart.js
+
+const Full = ({ AddedCartItem, itemCount }) => {
+  const { nameKor, nameEng, imgSrc, description, price } = AddedCartItem;
+  const ItemArray = new Array(itemCount).fill(null);  // ✅
+
+  return (
+    <>
+    <SectionStyled>
+      <h2>장바구니 내역</h2>
+      {
+        ItemArray.map((item, index) => (
+          <MenuCardStyled key={index}>
+            <article className="card-img">
+              <img 
+                src={`${BASEURL}${imgSrc}`} 
+                alt={`${nameKor}, ${nameEng}`}
+              />
+            </article>
+            <article className="card-content">
+              <h3>
+                {nameKor}
+                <span>{price} krw</span>
+              </h3>
+              <p>
+                {description}
+              </p>
+            </article>
+          </MenuCardStyled>
+        ))
+      }
+    </SectionStyled>
+    </>
+  );
+};
+```
+<br/>
+
 ## 라이브러리 관련
 ### React-router & Custom Hook
 
