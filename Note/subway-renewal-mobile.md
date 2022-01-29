@@ -593,7 +593,8 @@ Route elements 요소들을 배열로 꺼내어 map을 돌리고자 하였으나
 
 2) router.js로 router elements를 분리시켰더니 메인페이지에 접속할 때마다 SplashScreen이 3초동안 실행되는 문제가 발생했다. <br/>
 Session Storage를 이용하여, 최초 1회만 SplashScreen이 실행되도록 설정해주었다. 컴포넌트를 간결하게 하기 위해 비즈니스 로직은 커스텀훅으로 따로 빼내어주었다.
-> 💡 커스텀 훅 : [React공식문서](https://ko.reactjs.org/docs/hooks-custom.html)
+> 💡 커스텀 훅 : [React공식문서](https://ko.reactjs.org/docs/hooks-custom.html), <br/>
+> [Custom hook의 return value를 array or object 중 무엇으로 해야할까](https://blog.doitreviews.com/development/2020-07-01-return-value-of-custom-hooks/)
 
 <br/>
 
