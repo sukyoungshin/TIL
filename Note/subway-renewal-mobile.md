@@ -476,7 +476,6 @@ const Full = ({ AddedCartItem, itemCount }) => {
 이 로직을 한 곳에서 정의하고 많은 컴포넌트에서 로직을 공유할 수 있게 하기 위해 [HOC](https://ko.reactjs.org/docs/higher-order-components.html#dont-mutate-the-original-component-use-composition)(컴포넌트를 가져와 새 컴포넌트를 반환하는 함수)을 사용하여 구현하였다.
  
 ```
-// goToMainIfAddrIsNotExistHOC
 const goToMainIfAddrIsNotExistHOC = (Component) => {
   
   return () => {
@@ -485,7 +484,9 @@ const goToMainIfAddrIsNotExistHOC = (Component) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-      if (addr === undefined) navigate(LINK.ROOT);
+      if (addr === undefined) {
+        setTimeout(() => navigate(LINK.ROOT), 1000) // 잘못된 접근 시, 메인페이지로 이동
+      }
     // eslint-disable-next-line
     }, []);
     if (addr === undefined) return <NoMatch />;
@@ -496,6 +497,9 @@ const goToMainIfAddrIsNotExistHOC = (Component) => {
 
 export default goToMainIfAddrIsNotExistHOC;
 ```
+
+> 💡 `useNavigate`를 바로 사용하였더니 작동되지 않았다. 렌더 단계에선 동작하지 않게 설계되어 있으므로, setTimeout()내부에서 사용하도록 한다.
+>  [참고 : react-router issue](https://github.com/remix-run/react-router/issues/8248#issuecomment-962470602)
 
 ```
 // router.js
