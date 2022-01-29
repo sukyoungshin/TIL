@@ -471,6 +471,70 @@ const Full = ({ AddedCartItem, itemCount }) => {
 ```
 <br/>
 
+### HOC
+여러 페이지에 잘못된 방식으로 접근하면, 동일한 페이지(NoMatch)가 보이도록 구현해야했다. <br/>
+이 로직을 한 곳에서 정의하고 많은 컴포넌트에서 로직을 공유할 수 있게 하기 위해 [HOC](https://ko.reactjs.org/docs/higher-order-components.html#dont-mutate-the-original-component-use-composition)(컴포넌트를 가져와 새 컴포넌트를 반환하는 함수)을 사용하여 구현하였다.
+ 
+```
+// goToMainIfAddrIsNotExistHOC
+const goToMainIfAddrIsNotExistHOC = (Component) => {
+  
+  return () => {
+    /* 리덕스 및 라우터 */
+    const addr = useSelector(addrSelector);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (addr === undefined) navigate(LINK.ROOT);
+    // eslint-disable-next-line
+    }, []);
+    if (addr === undefined) return <NoMatch />;
+
+    return <Component />;
+  }
+};
+
+export default goToMainIfAddrIsNotExistHOC;
+```
+
+```
+// router.js
+
+const render = (C) => <C/>;
+const elementLists = [
+  {
+    path : RouterPath.ROOT,
+    element : <AppLayout/>,
+    children : [
+      {
+        index: true,
+        element : <Main />,
+      },
+      {
+        path : RouterPath.MAIN,
+        element : <Main />,
+      },
+      {
+        path : RouterPath.ADDR,
+        element : <Addr />,
+      },
+      {
+        path : RouterPath.MENU,
+        element: render(goToMainIfAddrIsNotExistHOC(Menu)),
+      },
+      {
+        path : RouterPath.BREAD,
+        element: render(goToMainIfAddrIsNotExistHOC(Bread)),
+      },
+      (......생략)
+];
+```
+
+
+
+<br/>
+
+
 ## 라이브러리 관련
 ### React-router & Custom Hook
 
