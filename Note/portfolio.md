@@ -75,10 +75,19 @@ CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deploym
 <br/>
 
 ### 배포
-gh-pages로 배포를 진행하였다. 참고: [gh-pages 배포](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)<br/>
-`yarn run deploy`를 입력하여 deploy를 진행한다.
+gh-pages로 배포를 진행하였는데 배포 도중 실패가 되기도 하고, 겨우 배포는 성공했는데 blank screen이 뜨는 등 여러 이슈로 인해 배포과정이 굉장히 힘들었다.
 
-> 💡 Solution : gh-pages 공식문서에 따라, public 레포에서 static hosting을 진행할 경우 `.nojekyll` 파일을 생성하여 해결. [Static site generators]((https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#static-site-generators)
+```
+// package.json
+ "name": "githubpage",
+ "homepage": "https://sukyoungshin.github.io/"
+ "private": true,
+```
+package.json에 위 내용을 입력하고, 배포시 `yarn run deploy`를 입력하여 배포를 진행한다. 자세한 과정은 아래 공식문서 링크에서 확인할 수 있다.
+
+> 💡 Solution <br/>
+[CRA deploy](https://create-react-app.dev/docs/deployment/#github-pages) : package.json에 입력해야 하는 내용 <br/>
+[gh-pages deploy](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)<br/>
 
 <br/>
 
