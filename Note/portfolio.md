@@ -75,8 +75,10 @@ CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deploym
 <br/>
 
 ### 배포
-gh-pages로 배포를 진행하였다. 참고: [gh-pages 배포](https://byul91oh.tistory.com/209), [배포](https://codingapple.com/unit/react-build-deploy-github-pages/) <br/>
-`yarn run build`를 입력하여 deploy를 진행하였는데, gh-pages가 업데이트가 되지 않는 이슈가 있었다. setting의 pages에서 branch를 바꿔서 저장한 뒤, 다시 gh-pages 브랜치를 저장하였더니 업데이트가 되었다. 참고: [StackOverFlow](https://stackoverflow.com/questions/24713112/why-does-my-github-page-do-not-update-its-content)
+gh-pages로 배포를 진행하였다. 참고: [gh-pages 배포](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)<br/>
+`yarn run deploy`를 입력하여 deploy를 진행한다.
+
+> 💡 Solution : gh-pages 공식문서에 따라, public 레포에서 static hosting을 진행할 경우 `.nojekyll` 파일을 생성하여 해결. [Static site generators]((https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#static-site-generators)
 
 <br/>
 
