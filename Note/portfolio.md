@@ -74,6 +74,12 @@ CRA 공식문서의 🔗[GitHub Pages](https://create-react-app.dev/docs/deploym
 
 <br/>
 
+### 배포
+gh-pages로 배포를 진행하였다. 참고: [gh-pages 배포](https://byul91oh.tistory.com/209), [배포](https://codingapple.com/unit/react-build-deploy-github-pages/) <br/>
+`yarn run build`를 입력하여 deploy를 진행하였는데, gh-pages가 업데이트가 되지 않는 이슈가 있었다. setting의 pages에서 branch를 바꿔서 저장한 뒤, 다시 gh-pages 브랜치를 저장하였더니 업데이트가 되었다. 참고: [StackOverFlow](https://stackoverflow.com/questions/24713112/why-does-my-github-page-do-not-update-its-content)
+
+<br/>
+
 ### 기기별 테스트 
 - 실제 모바일(Galaxy S7 Edge)에서 사이트에 접속했을 때와, 크롬 및 Firefox 화면 뷰에 차이가 있었다. 
 <div style="display: flex; flex-direction: row;">
