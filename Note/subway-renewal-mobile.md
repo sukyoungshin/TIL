@@ -227,12 +227,11 @@ export const initialState = () => ({
 ```
 <br/>
 
-### export 
+### Named Exports 
 
 라우터 컴포넌트를 한 페이지에서 처리하여 한 번에 내보내기 위해 export 구문을 다음과 같이 사용하였다. 
 ```
 // pages/router.js
-
 export { default as SplashScreen} from './SplashScreen';
 export { default as Layout} from './Layout';
 export { default as Main} from "./Main";
@@ -255,7 +254,9 @@ export { default as Auth} from './Auth';
 export { default as NoMatch} from './NoMatch';
 ```
 
-> 💡 Note : 참고 - 모듈 내보내는 방법에 대한 mdn설명 [export](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export)
+> 💡 참고 링크 <br/>
+> MDN: [Exports](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export) <br/>
+> React 공식문서 : [Named Exports](https://ko.reactjs.org/docs/code-splitting.html#named-exports) <br/>
 
 <br/>
 
