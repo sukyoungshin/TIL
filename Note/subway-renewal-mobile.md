@@ -292,30 +292,6 @@ useEffect(() => {
 
 <br/>
 
-### 제어컴포넌트 Controlled Component (React)
-
-`input type="range"`에 value 속성만 주었더니 제대로 작동되지 않았다. onChange 이벤트를 등록하니 해결되었다. <br/>
-
-```
-// Veggie.js
-
-<RangeButton 
-  id={veg.id}
-  type="range" 
-  min="0"
-  max="100"
-  step="10"
-  value={step[veg.id]} /* 폼요소를 제어하기 위해, 대화형 속성 value을 사용한다. */
-  onChange={handleStepChange(veg.id)} /* onChange 이벤트를 함께 등록하여 value 속성을 읽을 수 있다. */
-/>
-```
-
-> 💡 Note : 제어컴포넌트는 value값을 state를 이용해서 제어해야한다. [React에서 폼을 다루기 위한 권장 방법](https://thebook.io/006961/part01/ch07/01-04/)
-> 
-> React는 변경 가능한 속성인 value, checked, selected를 두어 폼 요소를 특별하게 다루고 있다. 이 특별한, 변경 가능한 속성을 대화형 속성(interactive properties)이라고 부른다. 폼 요소에 연결한 onChange 같은 이벤트에서 이 속성을 읽을 수 있다.
-> 
-
-<br/>
 
 ### form
 회원가입 페이지를 작업할 때, form 외부에 submit 버튼을 배치하였더니, 폼 내부 input의 `required` 속성이 제대로 작동되지 않았다. 
@@ -415,14 +391,7 @@ const handleUserInput = (e) => {
 > 💡 Note : [valueAsNumber](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)
 <br/>
 
-## React Structure 관련
-
-프로젝트 시작 시에는 공통 styles와 데이터만 처리하고 페이지는 한 디렉토리 내에서 핸들링하였는데, 프로젝트가 커지다보니 유지보수 및 가독성이 좋지 않아 구조 변경의 필요성을 느끼게 되었다. [리액트 공식문서](https://ko.reactjs.org/docs/faq-structure.html)에 따르면, React는 파일을 어떤 식으로 폴더에 분류할 것인지에 대해서 명확하게 제시하고 있지 않기에 여러가지 패턴을 찾아보고 가장 유지보수가 수월할 것 같은 방식으로 구조를 설계하였다. 
-> 💡 Note : 참고한 링크 [React Architecture Patterns for Your Projects](https://blog.openreplay.com/react-architecture-patterns-for-your-projects)
-
-<br/>
-
-## Array.prototype.fill()
+### Array.prototype.fill()
 
 - 기본 사용법 (참고 : [mdn](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/fill))
 ```
@@ -470,6 +439,21 @@ const Full = ({ AddedCartItem, itemCount }) => {
   );
 };
 ```
+<br/>
+
+
+## React 관련
+
+### 프로젝트 구조
+프로젝트 시작 시에는 공통 styles와 데이터만 처리하고 페이지는 한 디렉토리 내에서 핸들링하였는데, 프로젝트가 커지다보니 유지보수 및 가독성이 좋지 않아 구조 변경의 필요성을 느끼게 되었다. [리액트 공식문서](https://ko.reactjs.org/docs/faq-structure.html)에 따르면, React는 파일을 어떤 식으로 폴더에 분류할 것인지에 대해서 명확하게 제시하고 있지 않기에 여러가지 패턴을 찾아보고 가장 유지보수가 수월할 것 같은 방식으로 구조를 설계하였다. 
+> 💡 Note : 참고한 링크 [React Architecture Patterns for Your Projects](https://blog.openreplay.com/react-architecture-patterns-for-your-projects)
+
+<br/>
+
+### 환경설정
+- [상대경로 -> 절대경로로 path 변경] (https://react.codepot.kr/docs/week05/doc2)
+<br/>
+
 <br/>
 
 ### HOC
@@ -534,11 +518,32 @@ const elementLists = [
       (......생략)
 ];
 ```
-
-
-
 <br/>
 
+### 제어컴포넌트 Controlled Component (React)
+
+`input type="range"`에 value 속성만 주었더니 제대로 작동되지 않았다. onChange 이벤트를 등록하니 해결되었다. <br/>
+
+```
+// Veggie.js
+
+<RangeButton 
+  id={veg.id}
+  type="range" 
+  min="0"
+  max="100"
+  step="10"
+  value={step[veg.id]} /* 폼요소를 제어하기 위해, 대화형 속성 value을 사용한다. */
+  onChange={handleStepChange(veg.id)} /* onChange 이벤트를 함께 등록하여 value 속성을 읽을 수 있다. */
+/>
+```
+
+> 💡 Note : 제어컴포넌트는 value값을 state를 이용해서 제어해야한다. [React에서 폼을 다루기 위한 권장 방법](https://thebook.io/006961/part01/ch07/01-04/)
+> 
+> React는 변경 가능한 속성인 value, checked, selected를 두어 폼 요소를 특별하게 다루고 있다. 이 특별한, 변경 가능한 속성을 대화형 속성(interactive properties)이라고 부른다. 폼 요소에 연결한 onChange 같은 이벤트에서 이 속성을 읽을 수 있다.
+> 
+
+<br/>
 
 ## 라이브러리 관련
 ### React-router & Custom Hook
