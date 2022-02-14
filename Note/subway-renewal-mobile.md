@@ -889,6 +889,55 @@ const PaginationList = styled.li`
 
 <br/>
 
+### Refactoring
+## 로딩스피너
+이미지가 로딩 되기 전에 공통적으로 CSS Spinner를 나타내줄 필요가 있었습니다.
+- [CSS Loader](https://loading.io/css/) 사이트에서 SVG 형태인 커스텀 스피너를 생성하였습니다.
+- 스피너를 도입하기 위하여 이미지 속성 중, `onLoad` property를 사용하였습니다. 💡 참고 : [StackOverFlow](https://stackoverflow.com/questions/57162865/react-onload-event-on-image-tag-is-not-getting-called-when-using-conditional-ren), [GlobalEventHandlers.onload](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload)
+- 이미지가 로딩 되기 전에 CSS Spinner 컴포넌트를 공통적으로 사용해야 하기 때문에 components 디렉토리에 `Spinners`와 `ImgSpinner`를 생성하였습니다.
+- CSS Spinner가 사용되어야 하는 위치는 메인페이지의 이미지영역과 그 외의 다른 페이지인데, 메인페이지와 다른 페이지의 이미지 사이즈가 달라서 로딩스피너의 이미지가 일관적으로 나타나지 않는 현상이 있었습니다.
+- 이를 해결하기 위해 data url을 사용하였습니다. 💡 참고 : [Data URLs](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Data_URIs), [url-encorder](https://yoksel.github.io/url-encoder/), [data url vs image file](https://mygumi.tistory.com/282)
+
+실제 코드는 다음과 같습니다.
+```
+// Spinner.js
+const imageData = "data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' xmlns-xlink='http://www.w3.org/1999/xlink' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid'%3E%3Ccircle cx='50' cy='50' r='0' fill='none' stroke='%23009743' stroke-width='3'%3E%3Canimate attributeName='r' repeatCount='indefinite' dur='1.25s' values='0;40' keyTimes='0;1' keySplines='0 0.2 0.8 1' calcMode='spline' begin='0s'%3E%3C/animate%3E%3Canimate attributeName='opacity' repeatCount='indefinite' dur='1.25s' values='1;0' keyTimes='0;1' keySplines='0.2 0 0.8 1' calcMode='spline' begin='0s'%3E%3C/animate%3E%3C/circle%3E%3Ccircle cx='50' cy='50' r='0' fill='none' stroke='%23ffcb08' stroke-width='3'%3E%3Canimate attributeName='r' repeatCount='indefinite' dur='1.25s' values='0;40' keyTimes='0;1' keySplines='0 0.2 0.8 1' calcMode='spline' begin='-0.625s'%3E%3C/animate%3E%3Canimate attributeName='opacity' repeatCount='indefinite' dur='1.25s' values='1;0' keyTimes='0;1' keySplines='0.2 0 0.8 1' calcMode='spline' begin='-0.625s'%3E%3C/animate%3E%3C/circle%3E%3C/svg%3E";
+const Spinner = () => {
+  return <img src={imageData} alt="로딩중..." />;
+};
+
+export default Spinner;
+```
+
+```
+// ImgSpinner.js
+const ImgSpinner = (props) => {
+  const [ loaded, setLoaded ] = useState(false);
+  const onLoad = () => {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1000)
+  };
+
+  return (
+    <>
+    <img 
+      style={{display: loaded? 'block': 'none'}}
+      onLoad={onLoad}
+      src={props.src}
+      alt={props.alt}
+      {...props}
+    />
+    {!loaded && <Spinner />}
+    </>
+  );
+};
+
+export default ImgSpinner;
+```
+
+<br/>
+
 ### Netlify CI/CD Deploy
 
 - Netlify 환경에서 eslint warning을 error로 간주해서 배포실패
