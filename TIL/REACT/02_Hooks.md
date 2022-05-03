@@ -4,8 +4,8 @@
 주로 [리액트를 다루는 기술](https://thebook.io/080203/), [벨로퍼트와 함께하는 모던리액트](https://github.com/velopert/react-tutorial)을 참고하였습니다 <br/><br/>
 Hooks는 리액트 v16.8에 새로 도입된 기능으로 함수형 컴포넌트에서도 상태 관리를 할 수 있는 useState, 렌더링 직후 작업을 설정하는 useEffect 등의 기능을 제공하여 기존의 함수형 컴포넌트에서 할 수 없었던 다양한 작업을 할 수 있게 해 줍니다.<br/><br/>
 
-훅은 React 16.8에 새로 추가되었습니다. 
-Class를 작성하지 않고 state 및 기타 React 기능을 사용할 수 있습니다.
+훅은 React 16.8에 새로 추가된, use로 시작하는 함수입니다.
+Class를 작성하지 않고 state 및 기타 React 기능을 사용할 수 있습니다. [React(beta)](https://beta.reactjs.org/learn/state-a-components-memory)
 
 
 ## 🔗 Index
