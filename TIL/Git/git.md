@@ -33,6 +33,30 @@ Git bash를 처음 사용할 때, `/node_modules`폴더를 remote repo에 업로
 
 과거의 특정 커밋으로 체크아웃했다가, 현재 작업하던 곳으로 다시 체크아웃을 하면 git detached Head 이슈가 발생했다. 해당 블로그 글([detached HEAD](https://www.devhak.com/blog/git-detached-head))을 참고하여 임시브랜치를 만들어서 해결했다. 다만, 이 과정에서 불필요한 깃 히스토리 커밋이 남아있어서 지워버리고 싶다... 나중에 방법 배워서 지워야겠다.
 
+### Git (SSH, HTTPS)
+git pull을 하는데, Permission denied(publickey)가 뜨며 pull이 정상적으로 되지 않았습니다.<br/>
+> 💡 Solution : `git remote set-url` 커멘드를 사용하여, 리모트URL을 SSH에서 HTTPS로 변경하였더니 해결되었습니다. <br/>
+> 다른 노트북에서는 ssh로 설정해도 pull, push가 잘 되는데 데스크탑에서는 왜 안되는지 잘 모르겠습니다. (차후 이유발견시 추가)<br/>
+```
+// 이슈
+PS C:\Users\aaa\TypeScript-Snippet> git pull  
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+```
+// SSH -> HTTPS로 변경 (해결)
+PS C:\Users\aaa\TypeScript-Snippet> git remote set-url origin https://github.com/Awesome-Tomato/TypeScript-Snippet.git
+PS C:\Users\aaa\TypeScript-Snippet> git remote -v
+origin  https://github.com/Awesome-Tomato/TypeScript-Snippet.git (fetch)
+origin  https://github.com/Awesome-Tomato/TypeScript-Snippet.git (push)
+PS C:\Users\aaa\TypeScript-Snippet> git pull
+Already up to date.
+```
+
 <hr />
 
 ## GitHub
