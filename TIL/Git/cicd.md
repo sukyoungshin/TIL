@@ -54,3 +54,5 @@ CI에서 예로 든 MSA와 같은 환경에서 Agile 방법론이 적용될 경�
 - [출처](https://www.redhat.com/ko/topics/devops/what-is-ci-cd)
 - [Basics of CI/CD](https://levelup.gitconnected.com/basics-of-ci-cd-a98340c60b04)
 - [CI/CD (지속적 통합/지속적 제공) 개념과 과정](https://devuna.tistory.com/56)
+- [CI/CD fundamentals (Gitlab)](https://about.gitlab.com/topics/ci-cd/)
+- 
