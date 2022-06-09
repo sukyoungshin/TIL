@@ -254,6 +254,12 @@ export { default as Auth} from './Auth';
 export { default as NoMatch} from './NoMatch';
 ```
 
+이런식으로도 사용 가능하다. 단점은 export 해야하는 컴포넌트가 많아지면 매번 import와 export를 따로해야해서 번거롭다.
+```
+import Layout from './Layout/Layout';
+export { Layout };
+```
+
 > 💡 참고 링크 <br/>
 > MDN: [Exports](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export) <br/>
 > React 공식문서 : [Named Exports](https://ko.reactjs.org/docs/code-splitting.html#named-exports) <br/>
